@@ -22,6 +22,14 @@ public class mecanummovement extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("backLeft");
         frontRight = hardwareMap.dcMotor.get("frontRight");
         backRight = hardwareMap.dcMotor.get("backRight");
+        frontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        backLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        frontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        LinearSlide1 = hardwareMap.dcMotor.get("LinearSlide1");
+        LinearSlide2 = hardwareMap.dcMotor.get("LinearSlide2");
+        Servo intake1 = hardwareMap.servo.get("intake1");
+        Servo intake2 = hardwareMap.servo.get("intake2");
 
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
