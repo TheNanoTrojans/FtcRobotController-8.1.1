@@ -47,6 +47,7 @@ public class mecanummovement extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
+            
             double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
             double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
             double rightX = gamepad1.right_stick_x;
@@ -72,9 +73,7 @@ public class mecanummovement extends LinearOpMode {
             }
             */
 
-            if(gamepad2.b) {
-                intakeClaw.setPosition(90);            }
-            t
+
         /*    if (gamepad2.a){
                 afLeft.setPosition(180);
                 afRight.setPosition(180);
