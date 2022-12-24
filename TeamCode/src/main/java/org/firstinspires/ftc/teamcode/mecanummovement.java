@@ -14,9 +14,9 @@ public class mecanummovement extends LinearOpMode {
     private DcMotor frontRight = null;
     private DcMotor backLeft = null;
     private DcMotor backRight = null;
-    private DcMotor LinearSlide1 = null;
-    private DcMotor LinearSlide2 = null;
-    private Servo intakeClaw = null;
+    private DcMotor lsLeft = null;
+    private DcMotor lsRight = null;
+    //private Servo intakeClaw = null;
     //private Servo armturn = null;
     //private Servo armflip1 = null;
     //private Servo armflip2 = null;
@@ -33,9 +33,9 @@ public class mecanummovement extends LinearOpMode {
         //backLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         //frontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         //backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
-        LinearSlideleft = hardwareMap.dcMotor.get("LinearSlideleft");
-        LinearSlideright = hardwareMap.dcMotor.get("LinearSlideright");
-        intakeClaw = hardwareMap.servo.get("intakeClaw");
+        lsLeft = hardwareMap.dcMotor.get("lsLeft");
+        lsRight = hardwareMap.dcMotor.get("lsRight");
+        //intakeClaw = hardwareMap.servo.get("intakeClaw");
         //armturn = hardwareMap.servo.get("armturn");
         //armflip1 = hardwareMap.servo.get("armflip1");
         //armflip2 = hardwareMap.servo.get("armflip2");
@@ -59,11 +59,11 @@ public class mecanummovement extends LinearOpMode {
             backLeft.setPower(v3);
             backRight.setPower(v4);
 
-            if(gamepad2.b) {
+        /*   if(gamepad2.b) {
                 intakeClaw.setPosition(90);
 
             }
-
+            */
             //Finds the hypotenous of the triangle created by the two joystick values. Used to find the absoulte direction to go in.
             //double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
             //Finds the robot's angle from the raw values of the joystick
