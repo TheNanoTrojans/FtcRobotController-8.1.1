@@ -40,9 +40,9 @@ public class mecanummovement extends LinearOpMode {
         //armflip1 = hardwareMap.servo.get("armflip1");
         //armflip2 = hardwareMap.servo.get("armflip2");
 
-        frontRight.setDirection(DcMotor.Direction.REVERSE);
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
-        backRight.setDirection(DcMotor.Direction.REVERSE);
+        
         waitForStart();
 
         while (opModeIsActive()) {
