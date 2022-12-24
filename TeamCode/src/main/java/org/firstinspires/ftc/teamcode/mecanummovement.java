@@ -63,11 +63,18 @@ public class mecanummovement extends LinearOpMode {
             lsRight.setPower(gamepad2.left_stick_y);
 
 
-        /*   if(gamepad2.b) {
+            /*if(gamepad2.b) {
                 intakeClaw.setPosition(90);
 
             }
+            if(gamepad2.x) {
+                intakeClaw.setPosition(-90);
+            }
             */
+
+            if(gamepad2.b) {
+                intakeClaw.setPosition(90);            }
+            t
         /*    if (gamepad2.a){
                 afLeft.setPosition(180);
                 afRight.setPosition(180);
@@ -76,7 +83,7 @@ public class mecanummovement extends LinearOpMode {
 
          */
 
-            }
+
 
         }
     }
