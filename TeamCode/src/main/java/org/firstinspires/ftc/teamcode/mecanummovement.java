@@ -43,6 +43,7 @@ public class mecanummovement extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         backRight.setDirection(DcMotor.Direction.REVERSE);
+        lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         waitForStart();
 
         while (opModeIsActive()) {
@@ -58,6 +59,8 @@ public class mecanummovement extends LinearOpMode {
             frontRight.setPower(v2);
             backLeft.setPower(v3);
             backRight.setPower(v4);
+            lsLeft.setPower(gamepad2.left_stick_y);
+            lsRight.setPower(gamepad2.left_stick_y);
 
         /*   if(gamepad2.b) {
                 intakeClaw.setPosition(90);
