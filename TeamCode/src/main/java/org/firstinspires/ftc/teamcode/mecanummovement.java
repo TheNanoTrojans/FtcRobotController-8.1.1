@@ -35,7 +35,7 @@ public class mecanummovement extends LinearOpMode {
         //backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         LinearSlide1 = hardwareMap.dcMotor.get("LinearSlide1");
         LinearSlide2 = hardwareMap.dcMotor.get("LinearSlide2");
-        intakeClaw = hardwareMap.servo.get("arm");
+        intakeClaw = hardwareMap.servo.get("intakeClaw");
         //armturn = hardwareMap.servo.get("armturn");
         //armflip1 = hardwareMap.servo.get("armflip1");
         //armflip2 = hardwareMap.servo.get("armflip2");
@@ -60,7 +60,7 @@ public class mecanummovement extends LinearOpMode {
             backRight.setPower(v4);
 
             if(gamepad2.b) {
-                arm.setPosition(90);
+                intakeClaw.setPosition(90);
 
             }
 
