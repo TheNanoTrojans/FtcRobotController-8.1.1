@@ -18,8 +18,8 @@ public class mecanummovement extends LinearOpMode {
     private DcMotor lsRight = null;
     //private Servo intakeClaw = null;
     //private Servo armturn = null;
-    //private Servo armflip1 = null;
-    //private Servo armflip2 = null;
+    //private Servo afLeft = null;
+    //private Servo afRight = null;
     private final double driveAdjuster = 1;
     @Override
     public void runOpMode()  throws InterruptedException {
@@ -37,8 +37,8 @@ public class mecanummovement extends LinearOpMode {
         lsRight = hardwareMap.dcMotor.get("lsRight");
         //intakeClaw = hardwareMap.servo.get("intakeClaw");
         //armturn = hardwareMap.servo.get("armturn");
-        //armflip1 = hardwareMap.servo.get("armflip1");
-        //armflip2 = hardwareMap.servo.get("armflip2");
+        //afLeft = hardwareMap.servo.get("afLeft");
+        //afRight = hardwareMap.servo.get("afRight");
 
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -62,47 +62,21 @@ public class mecanummovement extends LinearOpMode {
             lsLeft.setPower(gamepad2.left_stick_y);
             lsRight.setPower(gamepad2.left_stick_y);
 
+
         /*   if(gamepad2.b) {
                 intakeClaw.setPosition(90);
 
             }
             */
-            //Finds the hypotenous of the triangle created by the two joystick values. Used to find the absoulte direction to go in.
-            //double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
-            //Finds the robot's angle from the raw values of the joystick
-            //double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
-            //double rightX = gamepad1.right_stick_x;
-            //final double v1 = r * Math.cos(robotAngle) + rightX;
-            //final double v2 = r * Math.sin(robotAngle) - rightX;
-            //final double v3 = r * Math.sin(robotAngle) + rightX;
-            //final double v4 = r * Math.cos(robotAngle) - rightX;
-            //if(gamepad1.left_stick_y > 0.15 || gamepad1.left_stick_y < -0.15 || gamepad1.left_stick_x > 0.15 || gamepad1.left_stick_x < -0.15) {
-                //frontLeft.setPower(v1);
-                //frontRight.setPower(v2);
-                //backLeft.setPower(v3);
-                //backRight.setPower(v4);
-            //}
-            //Spins the robot right
-            //else if(gamepad1.right_bumper) {
-                //frontLeft.setPower(0.5);
-                //backLeft.setPower(0.5);
-                //frontRight.setPower(-0.5);
-                //backRight.setPower(-0.5);
-            //}
-            //Spins the robot left
-            //else if(gamepad1.left_bumper) {
-                //frontLeft.setPower(-0.5);
-                //backLeft.setPower(-0.5);
-                //frontRight.setPower(0.5);
-                //backRight.setPower(0.5);
-            //}
-            //Stops all movement
-            //else {
-                //frontLeft.setPower(0);
-                //backLeft.setPower(0);
-                //frontRight.setPower(0);
-                //backRight.setPower(0);
-            //}
+        /*    if (gamepad2.a){
+                afLeft.setPosition(180);
+                afRight.setPosition(180);
+                wait(5000);
+                armturn.setPosition(180);
+
+         */
+
+            }
 
         }
     }
