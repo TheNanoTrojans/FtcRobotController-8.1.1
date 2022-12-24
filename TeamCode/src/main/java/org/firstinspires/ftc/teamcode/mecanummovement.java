@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 @TeleOp(name="2022PowerPlay5", group="TeleOp")
@@ -13,6 +14,12 @@ public class mecanummovement extends LinearOpMode {
     private DcMotor frontRight = null;
     private DcMotor backLeft = null;
     private DcMotor backRight = null;
+    private DcMotor LinearSlide1 = null;
+    private DcMotor LinearSlide2 = null;
+    private Servo arm = null;
+    private Servo armturn = null;
+    private Servo armflip1 = null;
+    private Servo armflip2 = null;
     private final double driveAdjuster = 1;
     @Override
     public void runOpMode()  throws InterruptedException {
@@ -22,14 +29,16 @@ public class mecanummovement extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("backLeft");
         frontRight = hardwareMap.dcMotor.get("frontRight");
         backRight = hardwareMap.dcMotor.get("backRight");
-        frontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
-        backLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
-        frontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
-        backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        //frontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        //backLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        //frontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        //backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         LinearSlide1 = hardwareMap.dcMotor.get("LinearSlide1");
         LinearSlide2 = hardwareMap.dcMotor.get("LinearSlide2");
-        Servo intake1 = hardwareMap.servo.get("intake1");
-        Servo intake2 = hardwareMap.servo.get("intake2");
+        arm = hardwareMap.servo.get("arm");
+        armturn = hardwareMap.servo.get("armturn");
+        armflip1 = hardwareMap.servo.get("armflip1");
+        armflip2 = hardwareMap.servo.get("armflip2");
 
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
