@@ -16,7 +16,7 @@ public class mecanummovement extends LinearOpMode {
     private DcMotor backRight = null;
     private DcMotor LinearSlide1 = null;
     private DcMotor LinearSlide2 = null;
-    //private Servo arm = null;
+    private Servo arm = null;
     //private Servo armturn = null;
     //private Servo armflip1 = null;
     //private Servo armflip2 = null;
@@ -35,7 +35,7 @@ public class mecanummovement extends LinearOpMode {
         //backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         LinearSlide1 = hardwareMap.dcMotor.get("LinearSlide1");
         LinearSlide2 = hardwareMap.dcMotor.get("LinearSlide2");
-        //arm = hardwareMap.servo.get("arm");
+        arm = hardwareMap.servo.get("arm");
         //armturn = hardwareMap.servo.get("armturn");
         //armflip1 = hardwareMap.servo.get("armflip1");
         //armflip2 = hardwareMap.servo.get("armflip2");
@@ -59,7 +59,10 @@ public class mecanummovement extends LinearOpMode {
             backLeft.setPower(v3);
             backRight.setPower(v4);
 
-            if(game)
+            if(gamepad2.b) {
+                arm.setPosition(90);
+
+            }
 
             //Finds the hypotenous of the triangle created by the two joystick values. Used to find the absoulte direction to go in.
             //double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
