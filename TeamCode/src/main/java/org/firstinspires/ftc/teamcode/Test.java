@@ -45,7 +45,7 @@ public class Test extends LinearOpMode {
                 afRight.setPosition(0);
                 afRight.setPosition(2);
                 sleep(1000);
-                ArmUp(1000,0.25);
+                ArmUp(1000,1);
                 armturn.setPosition(0);
                 armturn.setPosition(0.5);
             }
