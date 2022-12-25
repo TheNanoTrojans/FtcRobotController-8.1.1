@@ -41,6 +41,7 @@ public class mecanummovement extends LinearOpMode {
         armturn = hardwareMap.servo.get("armturn");
         afLeft = hardwareMap.servo.get("afLeft");
         afRight = hardwareMap.servo.get("afRight");
+        afLeft.setDirection(Servo.Direction.REVERSE);
 
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         //backLeft.setDirection(DcMotor.Direction.REVERSE);
