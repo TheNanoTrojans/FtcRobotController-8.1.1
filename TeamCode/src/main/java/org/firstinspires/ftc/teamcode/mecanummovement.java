@@ -11,15 +11,15 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="2022PowerPlay5", group="TeleOp")
 public class mecanummovement extends LinearOpMode {
-    Hardware robot = new Hardware();
+    //Hardware robot = new Hardware();
     private DcMotor frontLeft = null;
     private DcMotor frontRight = null;
     private DcMotor backLeft = null;
     private DcMotor backRight = null;
     private DcMotor lsLeft = null;
     private DcMotor lsRight = null;
-    //private Servo intakeClaw = null;
-    //private Servo armturn = null;
+    private Servo intakeClaw = null;
+    private Servo armturn = null;
     private Servo afLeft = null;
     private Servo afRight = null;
     private final double driveAdjuster = 1;
@@ -37,12 +37,12 @@ public class mecanummovement extends LinearOpMode {
         //backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
         lsLeft = hardwareMap.dcMotor.get("lsLeft");
         lsRight = hardwareMap.dcMotor.get("lsRight");
-        //intakeClaw = hardwareMap.servo.get("intakeClaw");
-        //armturn = hardwareMap.servo.get("armturn");
-        //afLeft = hardwareMap.servo.get("afLeft");
-        //afRight = hardwareMap.servo.get("afRight");
+        intakeClaw = hardwareMap.servo.get("intakeClaw");
+        armturn = hardwareMap.servo.get("armturn");
+        afLeft = hardwareMap.servo.get("afLeft");
+        afRight = hardwareMap.servo.get("afRight");
 
-        robot.frontLeft.setDirection(DcMotor.Direction.REVERSE);
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
         //backLeft.setDirection(DcMotor.Direction.REVERSE);
         //backRight.setDirection(DcMotor.Direction.REVERSE);
         lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -62,10 +62,10 @@ public class mecanummovement extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            robot.frontLeft.setPower(frontLeftPower);
-            robot.backLeft.setPower(backLeftPower);
-            robot.frontRight.setPower(frontRightPower);
-            robot.backRight.setPower(backRightPower);
+            frontLeft.setPower(frontLeftPower);
+            backLeft.setPower(backLeftPower);
+            frontRight.setPower(frontRightPower);
+            backRight.setPower(backRightPower);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
 
@@ -93,11 +93,11 @@ public class mecanummovement extends LinearOpMode {
 
         }
         if(gamepad2.left_bumper){
-            robot.intakeClaw.setPosition(35);
+            intakeClaw.setPosition(35);
 
         }
         if (gamepad2.right_bumper){
-            robot.intakeClaw.setPosition(0);
+            intakeClaw.setPosition(0);
         }
     }
 }
