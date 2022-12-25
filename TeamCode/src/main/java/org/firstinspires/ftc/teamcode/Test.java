@@ -25,7 +25,8 @@ public class Test extends OpMode {
         if (gamepad2.right_bumper) {
             afLeft.setPosition(185);
             afRight.setPosition(185);
-		
+            afLeft.setPosition(185);
+            afRight.setPosition(185);
         }
         if(gamepad2.left_bumper){
             afLeft.setPosition(-5);
