@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 //declares motors
@@ -34,7 +35,9 @@ public class Test extends OpMode {
     @Override
     public void loop() {
         afLeft.setDirection(Servo.Direction.REVERSE);
-        
+        lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        lsLeft.setPower(gamepad2.left_stick_y);
+        lsRight.setPower(gamepad2.left_stick_y);
         if (gamepad2.right_bumper) {
             afLeft.setPosition(0);
             afLeft.setPosition(2);
