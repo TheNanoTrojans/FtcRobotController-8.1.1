@@ -91,8 +91,12 @@ public class mecanummovement extends LinearOpMode {
 
 
         }
-        private void ArmMovement() {
-            afLeft.setPosition();
+        if(gamepad2.left_bumper){
+            robot.intakeClaw.setPosition(35);
+
+        }
+        if (gamepad2.right_bumper){
+            robot.intakeClaw.setPosition(0);
         }
     }
 }
