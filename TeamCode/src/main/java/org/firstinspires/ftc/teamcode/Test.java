@@ -23,14 +23,13 @@ public class Test extends OpMode {
     public void loop() {
         afLeft.setDirection(Servo.Direction.REVERSE);
         if (gamepad2.right_bumper) {
-            afLeft.setPosition(185);
-            afRight.setPosition(185);
-            afLeft.setPosition(185);
-            afRight.setPosition(185);
+            afLeft.setPosition(1);
+            afRight.setPosition(1);
+
         }
         if(gamepad2.left_bumper){
-            afLeft.setPosition(-5);
-            afRight.setPosition(-5);
+            afLeft.setPosition(-0.5);
+            afRight.setPosition(-0.5);
         }
         }
 
