@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 //declares motors
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "Test")
-public class Test extends OpMode {
+public class Test extends LinearOpMode {
 
     protected Servo afLeft;
     protected Servo afRight;
@@ -58,8 +58,14 @@ public class Test extends OpMode {
         }
         }
 
-    }
-    private void ArmUp(int ArmUpTarget, double ArmSpeed){
+    private void ArmUp(int ArmUpTarget, double ArmSpeed) {
         ArmUpPos += ArmUpTarget;
-        lsLeft.setTargetPosition();
+        lsLeft.setTargetPosition(ArmUpTarget);
+        lsRight.setTargetPosition(ArmUpTarget);
+        lsLeft.setPower(ArmSpeed);
+        lsRight.setPower(ArmSpeed);
+        while (opModeIsActive() && ArmUp1.isBusy()) {
+            idle();
+        }
     }
+}
