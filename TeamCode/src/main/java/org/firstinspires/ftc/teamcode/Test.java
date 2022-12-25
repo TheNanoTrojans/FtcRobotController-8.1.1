@@ -16,12 +16,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class Test extends OpMode {
 
     protected Servo afLeft;
-    protected Servo afRight;
+    //protected Servo afRight;
     protected Servo armturn;
     @Override
     public void init() {
         afLeft =  hardwareMap.servo.get("afLeft");
-        afRight =hardwareMap.servo.get("afRight");
+        //afRight =hardwareMap.servo.get("afRight");
         armturn =  hardwareMap.servo.get("armturn");
 
     }
@@ -31,13 +31,13 @@ public class Test extends OpMode {
         afLeft.setDirection(Servo.Direction.REVERSE);
         if (gamepad2.right_bumper) {
             afLeft.setPosition(1.5);
-            afRight.setPosition(1.5);
+            //afRight.setPosition(1);
             sleep(1000);
-            armturn.setPosition(0.4);
+            armturn.setPosition(0.5);
         }
         if(gamepad2.left_bumper){
             afLeft.setPosition(-0.5);
-            afRight.setPosition(-0.5);
+            //afRight.setPosition(-0.5);
 
         }
         }
