@@ -15,29 +15,32 @@ import com.qualcomm.robotcore.hardware.Servo;
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "Test")
 public class Test extends OpMode {
 
-    protected Servo afLeft;
-    //protected Servo afRight;
+    //protected Servo afLeft;
+    protected Servo afRight;
     protected Servo armturn;
     @Override
     public void init() {
-        afLeft =  hardwareMap.servo.get("afLeft");
-        //afRight =hardwareMap.servo.get("afRight");
+        //afLeft =  hardwareMap.servo.get("afLeft");
+        afRight =hardwareMap.servo.get("afRight");
         armturn =  hardwareMap.servo.get("armturn");
 
     }
 
     @Override
     public void loop() {
-        afLeft.setDirection(Servo.Direction.REVERSE);
+        //afLeft.setDirection(Servo.Direction.REVERSE);
         if (gamepad2.right_bumper) {
-            afLeft.setPosition(1.5);
-            //afRight.setPosition(1);
+            //afLeft.setPosition(0);
+            //afLeft.setPosition(1.5);
+            afRight.setPosition(0);
+            afRight.setPosition(2);
             sleep(1000);
+            armturn.setPosition(0);
             armturn.setPosition(0.5);
         }
         if(gamepad2.left_bumper){
-            afLeft.setPosition(-0.5);
-            //afRight.setPosition(-0.5);
+            //afLeft.setPosition(-0.5);
+            afRight.setPosition(-0.5);
 
         }
         }
