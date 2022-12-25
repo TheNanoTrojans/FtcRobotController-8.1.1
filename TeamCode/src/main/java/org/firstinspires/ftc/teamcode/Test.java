@@ -13,6 +13,7 @@ public class Test extends OpMode {
 
     protected Servo afLeft;
     protected Servo afRight;
+    protected Servo armturn;
     @Override
     public void init() {
         afLeft =  hardwareMap.servo.get("afLeft");
@@ -25,11 +26,13 @@ public class Test extends OpMode {
         if (gamepad2.right_bumper) {
             afLeft.setPosition(1.5);
             afRight.setPosition(1.5);
+            armturn.setPosition(90);
 
         }
         if(gamepad2.left_bumper){
             afLeft.setPosition(-0.5);
             afRight.setPosition(-0.5);
+            armturn.setPosition(0);
         }
         }
 
