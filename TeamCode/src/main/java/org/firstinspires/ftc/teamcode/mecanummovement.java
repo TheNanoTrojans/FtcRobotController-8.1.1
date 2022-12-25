@@ -47,7 +47,9 @@ public class mecanummovement extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            
+            //afLeft.setPosition(20);
+            //afRight.setPosition(20);
+
             double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
             double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
             double rightX = gamepad1.right_stick_x;
