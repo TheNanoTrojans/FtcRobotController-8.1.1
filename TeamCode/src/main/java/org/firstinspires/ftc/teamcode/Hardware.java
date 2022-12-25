@@ -19,6 +19,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.util.List;
@@ -40,19 +41,22 @@ public class Hardware extends LinearOpMode{
 
     }
     public VuforiaCurrentGame vuforiaFreightFrenzy;
-    CarouselBlue carouselBlue = new CarouselBlue();
-    CarouselRed carouselRed = new CarouselRed();
-    ShippingBlue shippingBlue = new ShippingBlue();
+    //CarouselBlue carouselBlue = new CarouselBlue();
+    //CarouselRed carouselRed = new CarouselRed();
+    //ShippingBlue shippingBlue = new ShippingBlue();
     public Recognition recognition;
     public TfodCustomModel tfodCustomModel;
-    public DcMotor ArmUp1;
-    public DcMotor ArmHorizontal;
-    public DcMotor intake;
-    public DcMotor frontLeft;
-    public DcMotor backLeft;
-    public DcMotor frontRight;
-    public DcMotor backRight;
-    public DcMotor carousel;
+
+    private DcMotor frontLeft = null;
+    private DcMotor frontRight = null;
+    private DcMotor backLeft = null;
+    private DcMotor backRight = null;
+    private DcMotor lsLeft = null;
+    private DcMotor lsRight = null;
+    private Servo intakeClaw = null;
+    private Servo armturn = null;
+    private Servo afLeft = null;
+    private Servo afRight = null;
     public int frontLeftPos ;
     public int frontRightPos ;
     public int backLeftPos ;
@@ -89,22 +93,22 @@ public class Hardware extends LinearOpMode{
 
     private void intialize(HardwareMap ahwMap) {
         hwMap = ahwMap;
-        ArmUp1 = hardwareMap.get(DcMotor.class, "ArmUp1");
-        ArmHorizontal = hardwareMap.get(DcMotor.class, "ArmHorizontal");
-        intake = hardwareMap.get(DcMotor.class, "intake");
+        afLeft = hardwareMap.get(Servo.class, "afLeft");
+        afRight = hardwareMap.get(DcMotor.class, "afRight");
+        intakeClaw = hardwareMap.get(Servo.class, "intakeClaw");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
-        carousel = hardwareMap.get(DcMotor.class, "carousel");
+        armturn = hardwareMap.get(Servo.class, "carousel");
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        ArmUp1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        carousel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        ArmHorizontal.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //ArmUp1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //carousel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //ArmHorizontal.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -113,17 +117,17 @@ public class Hardware extends LinearOpMode{
         backLeft.setPower(0);
         frontRight.setPower(0);
         backRight.setPower(0);
-        ArmUp1.setPower(0);
-        carousel.setPower(0);
-        intake.setPower(0);
-        ArmHorizontal.setPower(0);
+        //ArmUp1.setPower(0);
+        //carousel.setPower(0);
+        //intake.setPower(0);
+        //ArmHorizontal.setPower(0);
         frontLeftPos = 0;
         frontRightPos = 0;
         backLeftPos = 0;
         backRightPos = 0;
         ArmUpPos = 0;
         CarouselPos = 0;
-        IntakePos=0;
+        IntakePos=0/
     }
     public void drive(int frontLeftTarget, int backLeftTarget,int frontRightTarget,int backRightTarget, double speed) {
         this.frontLeftPos += frontLeftTarget;

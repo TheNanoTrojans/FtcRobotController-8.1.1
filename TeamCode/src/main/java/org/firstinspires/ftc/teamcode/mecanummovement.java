@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="2022PowerPlay5", group="TeleOp")
 public class mecanummovement extends LinearOpMode {
+    Hardware robot = new Hardware();
     private DcMotor frontLeft = null;
     private DcMotor frontRight = null;
     private DcMotor backLeft = null;
@@ -60,10 +61,10 @@ public class mecanummovement extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            frontLeft.setPower(frontLeftPower);
-            backLeft.setPower(backLeftPower);
-            frontRight.setPower(frontRightPower);
-            backRight.setPower(backRightPower);
+            robot.frontLeft.setPower(frontLeftPower);
+            robot.backLeft.setPower(backLeftPower);
+            robot.frontRight.setPower(frontRightPower);
+            robot.backRight.setPower(backRightPower);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
 
