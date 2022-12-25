@@ -23,40 +23,42 @@ public class Test extends LinearOpMode {
     protected DcMotor lsRight;
     protected Servo armturn;
     protected int ArmUpPos = 0;
+
     @Override
-    public void init() {
+    public void runOpMode() throws InterruptedException {
+        waitForStart();
         afLeft =  hardwareMap.servo.get("afLeft");
         afRight =hardwareMap.servo.get("afRight");
         armturn =  hardwareMap.servo.get("armturn");
         lsLeft = hardwareMap.dcMotor.get("lsLeft");
         lsRight = hardwareMap.dcMotor.get("lsRight");
+        while (opModeIsActive()){
+            afLeft.setDirection(Servo.Direction.REVERSE);
+            lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            lsLeft.setPower(gamepad2.left_stick_y);
+            lsRight.setPower(gamepad2.left_stick_y);
+            if (gamepad2.right_bumper) {
+                afLeft.setPosition(0);
+                afLeft.setPosition(2);
+                afRight.setPosition(0);
+                afRight.setPosition(2);
+                sleep(1000);
+                ArmUp(1000,0.25);
+                armturn.setPosition(0);
+                armturn.setPosition(0.5);
+            }
+            if(gamepad2.left_bumper){
+                afLeft.setPosition(-0.5);
+                afRight.setPosition(-0.5);
 
+            }
+        }
     }
 
-    @Override
-    public void loop() {
-        afLeft.setDirection(Servo.Direction.REVERSE);
-        lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        lsLeft.setPower(gamepad2.left_stick_y);
-        lsRight.setPower(gamepad2.left_stick_y);
-        if (gamepad2.right_bumper) {
 
-            afLeft.setPosition(0);
-            afLeft.setPosition(2);
-            afRight.setPosition(0);
-            afRight.setPosition(2);
-            sleep(1000);
-            armturn.setPosition(0);
-            armturn.setPosition(0.5);
-        }
-        if(gamepad2.left_bumper){
-            afLeft.setPosition(-0.5);
-            afRight.setPosition(-0.5);
 
-        }
-        }
 
     private void ArmUp(int ArmUpTarget, double ArmSpeed) {
         ArmUpPos += ArmUpTarget;
@@ -64,7 +66,7 @@ public class Test extends LinearOpMode {
         lsRight.setTargetPosition(ArmUpTarget);
         lsLeft.setPower(ArmSpeed);
         lsRight.setPower(ArmSpeed);
-        while (opModeIsActive() && ArmUp1.isBusy()) {
+        while (opModeIsActive() && lsLeft.isBusy() && lsRight.isBusy()) {
             idle();
         }
     }
