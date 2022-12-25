@@ -1,10 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
 //imports libraries
+import static android.os.SystemClock.sleep;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 //import com.qualcomm.robotcore.hardware.DcMotor;
 //import com.qualcomm.robotcore.hardware.DcMotorSimple;
 //import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 //declares motors
@@ -18,6 +22,7 @@ public class Test extends OpMode {
     public void init() {
         afLeft =  hardwareMap.servo.get("afLeft");
         afRight =hardwareMap.servo.get("afRight");
+        armturn =  hardwareMap.servo.get("armturn");
 
     }
 
@@ -27,8 +32,8 @@ public class Test extends OpMode {
         if (gamepad2.right_bumper) {
             afLeft.setPosition(1.5);
             afRight.setPosition(1.5);
-
-
+            sleep(1000);
+            armturn.setPosition(0.25);
         }
         if(gamepad2.left_bumper){
             afLeft.setPosition(-0.5);
