@@ -2,9 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 //imports libraries
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.util.Range;
+//import com.qualcomm.robotcore.hardware.DcMotor;
+//import com.qualcomm.robotcore.hardware.DcMotorSimple;
+//import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.Servo;
 
 //declares motors
@@ -23,13 +23,13 @@ public class Test extends OpMode {
     public void loop() {
         afLeft.setDirection(Servo.Direction.REVERSE);
         if (gamepad2.right_bumper) {
-            afLeft.setPosition(135);
-            afRight.setPosition(135);
+            afLeft.setPosition(185);
+            afRight.setPosition(185);
 		
         }
         if(gamepad2.left_bumper){
-            afLeft.setPosition(10);
-            afRight.setPosition(10);
+            afLeft.setPosition(-5);
+            afRight.setPosition(-5);
         }
         }
 
