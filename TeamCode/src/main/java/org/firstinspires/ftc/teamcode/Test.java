@@ -22,6 +22,7 @@ public class Test extends OpMode {
     protected DcMotor lsLeft;
     protected DcMotor lsRight;
     protected Servo armturn;
+    protected int ArmUpPos = 0;
     @Override
     public void init() {
         afLeft =  hardwareMap.servo.get("afLeft");
@@ -36,9 +37,12 @@ public class Test extends OpMode {
     public void loop() {
         afLeft.setDirection(Servo.Direction.REVERSE);
         lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         lsLeft.setPower(gamepad2.left_stick_y);
         lsRight.setPower(gamepad2.left_stick_y);
         if (gamepad2.right_bumper) {
+
             afLeft.setPosition(0);
             afLeft.setPosition(2);
             afRight.setPosition(0);
@@ -54,4 +58,8 @@ public class Test extends OpMode {
         }
         }
 
+    }
+    private void ArmUp(int ArmUpTarget, double ArmSpeed){
+        ArmUpPos += ArmUpTarget;
+        lsLeft.setTargetPosition();
     }
