@@ -9,29 +9,35 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 //import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 //declares motors
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "Test")
 public class Test extends OpMode {
 
-    //protected Servo afLeft;
+    protected Servo afLeft;
     protected Servo afRight;
+    protected DcMotor lsLeft;
+    protected DcMotor lsRight;
     protected Servo armturn;
     @Override
     public void init() {
-        //afLeft =  hardwareMap.servo.get("afLeft");
+        afLeft =  hardwareMap.servo.get("afLeft");
         afRight =hardwareMap.servo.get("afRight");
         armturn =  hardwareMap.servo.get("armturn");
+        lsLeft = hardwareMap.dcMotor.get("lsLeft");
+        lsRight = hardwareMap.dcMotor.get("lsRight");
 
     }
 
     @Override
     public void loop() {
-        //afLeft.setDirection(Servo.Direction.REVERSE);
+        afLeft.setDirection(Servo.Direction.REVERSE);
+        
         if (gamepad2.right_bumper) {
-            //afLeft.setPosition(0);
-            //afLeft.setPosition(1.5);
+            afLeft.setPosition(0);
+            afLeft.setPosition(2);
             afRight.setPosition(0);
             afRight.setPosition(2);
             sleep(1000);
@@ -39,7 +45,7 @@ public class Test extends OpMode {
             armturn.setPosition(0.5);
         }
         if(gamepad2.left_bumper){
-            //afLeft.setPosition(-0.5);
+            afLeft.setPosition(-0.5);
             afRight.setPosition(-0.5);
 
         }
