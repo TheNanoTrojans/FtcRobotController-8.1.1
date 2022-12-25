@@ -37,6 +37,7 @@ public class Test extends LinearOpMode {
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
             lsLeft.setPower(gamepad2.left_stick_y);
             lsRight.setPower(gamepad2.left_stick_y);
             if (gamepad2.right_bumper) {
@@ -45,7 +46,7 @@ public class Test extends LinearOpMode {
                 afRight.setPosition(0);
                 afRight.setPosition(2);
                 sleep(1000);
-                ArmUp(1000,1);
+                ArmUp(40000,1);
                 armturn.setPosition(0);
                 armturn.setPosition(0.5);
             }
