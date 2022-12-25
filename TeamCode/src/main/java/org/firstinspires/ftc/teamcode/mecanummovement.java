@@ -18,8 +18,8 @@ public class mecanummovement extends LinearOpMode {
     private DcMotor lsRight = null;
     //private Servo intakeClaw = null;
     //private Servo armturn = null;
-    //private Servo afLeft = null;
-    //private Servo afRight = null;
+    private Servo afLeft = null;
+    private Servo afRight = null;
     private final double driveAdjuster = 1;
     @Override
     public void runOpMode()  throws InterruptedException {
@@ -89,6 +89,9 @@ public class mecanummovement extends LinearOpMode {
 
 
 
+        }
+        private void ArmMovement() {
+            afLeft.setPosition();
         }
     }
 }
