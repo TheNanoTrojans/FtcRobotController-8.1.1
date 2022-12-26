@@ -23,6 +23,7 @@ public class Test extends LinearOpMode {
     protected DcMotor lsRight;
     protected Servo armturn;
     protected int ArmUpPos = 0;
+    protected float power = 0;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -37,7 +38,7 @@ public class Test extends LinearOpMode {
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            telemetry.addData("Speed and Power:", "Power" + gamepad2.left_stick_y);
+            telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
             lsLeft.setPower(gamepad2.left_stick_y);
             lsRight.setPower(gamepad2.left_stick_y);
             if (gamepad2.right_bumper) {
