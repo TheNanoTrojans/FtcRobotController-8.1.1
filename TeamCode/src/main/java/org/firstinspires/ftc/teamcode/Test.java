@@ -26,7 +26,10 @@ public class Test extends LinearOpMode {
     protected Servo intakeClaw;
     protected int ArmUpPos = 0;
     protected float power = 0;
-
+    private DcMotor frontLeft = null;
+    private DcMotor frontRight = null;
+    private DcMotor backLeft = null;
+    private DcMotor backRight = null;
     @Override
     public void runOpMode() throws InterruptedException {
         waitForStart();
@@ -36,7 +39,12 @@ public class Test extends LinearOpMode {
         armturn =  hardwareMap.crservo.get("armturn");
         lsLeft = hardwareMap.dcMotor.get("lsLeft");
         lsRight = hardwareMap.dcMotor.get("lsRight");
+        frontLeft = hardwareMap.dcMotor.get("frontLeft");
+        backLeft = hardwareMap.dcMotor.get("backLeft");
+        frontRight = hardwareMap.dcMotor.get("frontRight");
+        backRight = hardwareMap.dcMotor.get("backRight");
         while (opModeIsActive()){
+            frontLeft.setDirection(DcMotor.Direction.REVERSE);
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -71,6 +79,25 @@ public class Test extends LinearOpMode {
              if (gamepad2.a){
                  intakeClaw.setPosition(0);
              }
+            double y = -gamepad1.left_stick_y; // Remember, this is reversed!
+            double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
+            double rx = gamepad1.right_stick_x;
+
+            // Denominator is the largest motor power (absolute value) or 1
+            // This ensures all the powers maintain the same ratio, but only when
+            // at least one is out of the range [-1, 1]
+            double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
+            double frontLeftPower = (y + x + rx) / denominator;
+            double backLeftPower = (y - x + rx) / denominator;
+            double frontRightPower = (y - x - rx) / denominator;
+            double backRightPower = (y + x - rx) / denominator;
+
+            frontLeft.setPower(frontLeftPower);
+            backLeft.setPower(backLeftPower);
+            frontRight.setPower(frontRightPower);
+            backRight.setPower(backRightPower);
+            lsLeft.setPower(-gamepad2.left_stick_y);
+            lsRight.setPower(-gamepad2.left_stick_y);
 
         }
     }
