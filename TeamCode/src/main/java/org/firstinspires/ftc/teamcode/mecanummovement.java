@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -19,9 +20,9 @@ public class mecanummovement extends LinearOpMode {
     private DcMotor lsLeft = null;
     private DcMotor lsRight = null;
     private Servo intakeClaw = null;
-    private Servo armturn = null;
-    private Servo afLeft = null;
-    private Servo afRight = null;
+    private CRServo armturn = null;
+    private CRServo afLeft = null;
+    private CRServo afRight = null;
     private final double driveAdjuster = 1;
     @Override
     public void runOpMode()  throws InterruptedException {
@@ -38,10 +39,10 @@ public class mecanummovement extends LinearOpMode {
         lsLeft = hardwareMap.dcMotor.get("lsLeft");
         lsRight = hardwareMap.dcMotor.get("lsRight");
         intakeClaw = hardwareMap.servo.get("intakeClaw");
-        armturn = hardwareMap.servo.get("armturn");
-        afLeft = hardwareMap.servo.get("afLeft");
-        afRight = hardwareMap.servo.get("afRight");
-        afLeft.setDirection(Servo.Direction.REVERSE);
+        armturn = hardwareMap.crservo.get("armturn");
+        afLeft = hardwareMap.crservo.get("afLeft");
+        afRight = hardwareMap.crservo.get("afRight");
+        afLeft.setDirection(CRServo.Direction.REVERSE);
 
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         //backLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -69,7 +70,7 @@ public class mecanummovement extends LinearOpMode {
             backRight.setPower(backRightPower);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
-
+            armturn.setPower(-gamepad2.right_stick_x);
 
 
             /*if(gamepad2.b) {

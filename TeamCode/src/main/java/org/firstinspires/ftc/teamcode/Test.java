@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 //import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -17,45 +18,60 @@ import com.qualcomm.robotcore.hardware.Servo;
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "Test")
 public class Test extends LinearOpMode {
 
-    protected Servo afLeft;
-    protected Servo afRight;
+    protected CRServo afLeft;
+    protected CRServo afRight;
     protected DcMotor lsLeft;
     protected DcMotor lsRight;
-    protected Servo armturn;
+    protected CRServo armturn;
+    protected Servo intakeClaw;
     protected int ArmUpPos = 0;
     protected float power = 0;
 
     @Override
     public void runOpMode() throws InterruptedException {
         waitForStart();
-        afLeft =  hardwareMap.servo.get("afLeft");
-        afRight =hardwareMap.servo.get("afRight");
-        armturn =  hardwareMap.servo.get("armturn");
+        intakeClaw = hardwareMap.servo.get("intakeClaw");
+        afLeft =  hardwareMap.crservo.get("afLeft");
+        afRight = hardwareMap.crservo.get("afRight");
+        armturn =  hardwareMap.crservo.get("armturn");
         lsLeft = hardwareMap.dcMotor.get("lsLeft");
         lsRight = hardwareMap.dcMotor.get("lsRight");
         while (opModeIsActive()){
-            afLeft.setDirection(Servo.Direction.REVERSE);
+            afRight.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
             lsLeft.setPower(gamepad2.left_stick_y);
             lsRight.setPower(gamepad2.left_stick_y);
+            afLeft.setPower(-gamepad2.right_stick_y);
+            afRight.setPower(-gamepad2.right_stick_y);
+            armturn.setPower(-gamepad2.right_stick_x);
             if (gamepad2.right_bumper) {
-                afLeft.setPosition(0);
-                afLeft.setPosition(2);
-                afRight.setPosition(0);
-                afRight.setPosition(2);
+                afLeft.setPower(1);
+                afRight.setPower(1);
                 sleep(1000);
-                ArmUp(40000,1);
-                armturn.setPosition(0);
-                armturn.setPosition(0.5);
+                afLeft.setPower(0);
+                afRight.setPower(0);
+                //ArmUp(40000,1);
+                //armturn.setPosition(0);
+                //armturn.setPosition(0.5);
             }
-            if(gamepad2.left_bumper){
-                afLeft.setPosition(-0.5);
-                afRight.setPosition(-0.5);
+             if(gamepad2.left_bumper){
+                afLeft.setPower(-1);
+                afRight.setPower(-1);
+                sleep(1000);
+                afLeft.setPower(0);
+                afRight.setPower(0);
 
             }
+             if (gamepad2.y){
+                 intakeClaw.setPosition(105);
+             }
+             if (gamepad2.a){
+                 intakeClaw.setPosition(0);
+             }
+
         }
     }
 
