@@ -96,8 +96,8 @@ public class Test extends LinearOpMode {
             backLeft.setPower(backLeftPower);
             frontRight.setPower(frontRightPower);
             backRight.setPower(backRightPower);
-            lsLeft.setPower(-gamepad2.left_stick_y);
-            lsRight.setPower(-gamepad2.left_stick_y);
+            //lsLeft.setPower(-gamepad2.left_stick_y);
+            //lsRight.setPower(-gamepad2.left_stick_y);
 
         }
     }
