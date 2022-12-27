@@ -70,7 +70,7 @@ public class mecanummovement extends LinearOpMode {
             backRight.setPower(backRightPower);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
-            armturn.setPower(-gamepad2.right_stick_x);
+            //armturn.setPower(-gamepad2.right_stick_x);
 
 
             /*if(gamepad2.b) {
@@ -94,16 +94,32 @@ public class mecanummovement extends LinearOpMode {
 
 
         }
+        afLeft.setPower(-gamepad2.right_stick_y);
+        afRight.setPower(-gamepad2.right_stick_y);
+        armturn.setPower(-gamepad2.right_stick_x);
+        if (gamepad2.right_bumper) {
+            afLeft.setPower(1);
+            afRight.setPower(1);
+            sleep(1000);
+            afLeft.setPower(0);
+            afRight.setPower(0);
+            //  ArmUp(40000,1);
+            //armturn.setPosition(0);
+            //armturn.setPosition(0.5);
+        }
         if(gamepad2.left_bumper){
-            intakeClaw.setPosition(35);
+            afLeft.setPower(-1);
+            afRight.setPower(-1);
+            sleep(1000);
+            afLeft.setPower(0);
+            afRight.setPower(0);
 
         }
-        if (gamepad2.right_bumper){
-            intakeClaw.setPosition(0);
+        if (gamepad2.y){
+            intakeClaw.setPosition(105);
         }
-        if(gamepad2.y){
-         //   afLeft.setPosition(45);
-           // afRight.setPosition(45);
+        if (gamepad2.a){
+            intakeClaw.setPosition(0);
         }
     }
 }
