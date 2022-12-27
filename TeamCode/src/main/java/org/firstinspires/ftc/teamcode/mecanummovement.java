@@ -102,8 +102,8 @@ public class mecanummovement extends LinearOpMode {
             intakeClaw.setPosition(0);
         }
         if(gamepad2.y){
-            afLeft.setPosition(45);
-            afRight.setPosition(45);
+         //   afLeft.setPosition(45);
+           // afRight.setPosition(45);
         }
     }
 }
