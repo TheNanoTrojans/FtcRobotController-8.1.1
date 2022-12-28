@@ -63,7 +63,7 @@ public class Test extends LinearOpMode {
                 sleep(1000);
                 afLeft.setPower(0);
                 afRight.setPower(0);
-                ArmUp(5000,1);
+                ArmUp(50000,1);
                 //armturn.setPower(0.5);
                 //sleep(1000);
                 //armturn.setPower(0);
@@ -117,8 +117,8 @@ public class Test extends LinearOpMode {
 
     private void ArmUp(int ArmUpTarget, double ArmSpeed) {
         ArmUpPos += ArmUpTarget;
-        lsLeft.setTargetPosition(ArmUpTarget);
-        lsRight.setTargetPosition(ArmUpTarget);
+        lsLeft.setTargetPosition(ArmUpPos);
+        lsRight.setTargetPosition(ArmUpPos);
         lsLeft.setPower(ArmSpeed);
         lsRight.setPower(ArmSpeed);
         while (opModeIsActive() && lsLeft.isBusy() && lsRight.isBusy()) {
