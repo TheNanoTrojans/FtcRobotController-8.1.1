@@ -46,6 +46,7 @@ public class Test extends LinearOpMode {
         while (opModeIsActive()){
             frontLeft.setDirection(DcMotor.Direction.REVERSE);
             backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            backRight.setDirection(DcMotorSimple.Direction.REVERSE);
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
