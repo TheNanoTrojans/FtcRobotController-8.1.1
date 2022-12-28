@@ -45,8 +45,8 @@ public class Test extends LinearOpMode {
         backRight = hardwareMap.dcMotor.get("backRight");
         while (opModeIsActive()){
             frontLeft.setDirection(DcMotor.Direction.REVERSE);
-            backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-            backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+            //backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -86,7 +86,7 @@ public class Test extends LinearOpMode {
              if (gamepad2.a){
                  intakeClaw.setPosition(0);
              }
-             frontRight.setPower(1);
+             //frontRight.setPower(1);
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
             double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
             double rx = gamepad1.right_stick_x;
