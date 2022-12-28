@@ -71,7 +71,7 @@ public class Test extends LinearOpMode {
                 armturn.setPower(0);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
-                sleep(2450);
+                sleep(2400);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
 
@@ -88,7 +88,7 @@ public class Test extends LinearOpMode {
 
                  lsLeft.setPower(-1);
                  lsRight.setPower(-1);
-                 sleep(2450);
+                 sleep(2400);
                  lsLeft.setPower(0);
                  lsRight.setPower(0);
                  intakeClaw.setPosition(1);
