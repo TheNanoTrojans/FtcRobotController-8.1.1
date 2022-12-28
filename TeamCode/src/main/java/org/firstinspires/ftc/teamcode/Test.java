@@ -60,7 +60,7 @@ public class Test extends LinearOpMode {
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
-                sleep(1000);
+                sleep(3000);
                 afLeft.setPower(0);
                 afRight.setPower(0);
                 //ArmUp(1000,1);
