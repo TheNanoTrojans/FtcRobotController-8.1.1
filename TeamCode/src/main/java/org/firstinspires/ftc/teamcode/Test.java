@@ -81,6 +81,7 @@ public class Test extends LinearOpMode {
                 lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             }
              if(gamepad2.left_bumper){
+                 intakeClaw.setPosition(1);
                  afLeft.setPower(1);
                  afRight.setPower(1);
                  sleep(1000);
