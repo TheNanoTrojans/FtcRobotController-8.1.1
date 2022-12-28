@@ -64,14 +64,15 @@ public class Test extends LinearOpMode {
                 afLeft.setPower(0);
                 afRight.setPower(0);
                 //ArmUp(50000,1);
+                armturn.setPower(0.5);
+                sleep(400);
+                armturn.setPower(0);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
-                sleep(2000);
+                sleep(2250);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
-                armturn.setPower(0.5);
-                sleep(500);
-                armturn.setPower(0);
+
                 //intakeClaw.setPosition(0);
                 //  ArmUp(40000,1);
                 //armturn.setPosition(0);
@@ -91,7 +92,7 @@ public class Test extends LinearOpMode {
                  intakeClaw.setPosition(180);
              }
              if (gamepad2.a){
-                 intakeClaw.setPosition(0);
+                 intakeClaw.setPosition(30);
              }
              //frontRight.setPower(1);
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
