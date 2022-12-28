@@ -63,7 +63,7 @@ public class Test extends LinearOpMode {
                 sleep(3000);
                 afLeft.setPower(0);
                 afRight.setPower(0);
-                //ArmUp(1000,1);
+                ArmUp(1000,1);
                 //armturn.setPower(0.5);
                 //sleep(1000);
                 //armturn.setPower(0);
