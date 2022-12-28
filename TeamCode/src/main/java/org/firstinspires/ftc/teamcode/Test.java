@@ -54,9 +54,9 @@ public class Test extends LinearOpMode {
             telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
-            afLeft.setPower(-gamepad2.right_stick_y);
-            afRight.setPower(-gamepad2.right_stick_y);
-            armturn.setPower(-gamepad2.right_stick_x);
+            afLeft.setPower(-gamepad2.right_stick_x);
+            afRight.setPower(-gamepad2.right_stick_x);
+            armturn.setPower(-gamepad2.right_stick_y);
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
@@ -64,14 +64,14 @@ public class Test extends LinearOpMode {
                 afLeft.setPower(0);
                 afRight.setPower(0);
                 //ArmUp(50000,1);
-                //lsLeft.setPower(1);
-                //lsRight.setPower(1);
-                //sleep(2000);
-                //lsLeft.setPower(0);
-                //lsRight.setPower(0);
-                //armturn.setPower(0.5);
-                //sleep(1000);
-                //armturn.setPower(0);
+                lsLeft.setPower(1);
+                lsRight.setPower(1);
+                sleep(2000);
+                lsLeft.setPower(0);
+                lsRight.setPower(0);
+                armturn.setPower(0.5);
+                sleep(500);
+                armturn.setPower(0);
                 //intakeClaw.setPosition(0);
                 //  ArmUp(40000,1);
                 //armturn.setPosition(0);
