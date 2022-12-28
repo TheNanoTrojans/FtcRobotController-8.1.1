@@ -71,7 +71,7 @@ public class Test extends LinearOpMode {
                 armturn.setPower(0);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
-                sleep(2450);
+                sleep(2350);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
 
@@ -83,14 +83,15 @@ public class Test extends LinearOpMode {
                 lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             }
              if(gamepad2.left_bumper){
-                 intakeClaw.setPosition(1);
+
                  //ArmUp(50000,1);
 
                  lsLeft.setPower(-1);
                  lsRight.setPower(-1);
-                 sleep(2450);
+                 sleep(2350);
                  lsLeft.setPower(0);
                  lsRight.setPower(0);
+                 intakeClaw.setPosition(1);
                  armturn.setPower(-0.5);
                  sleep(400);
                  armturn.setPower(0);
