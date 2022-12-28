@@ -49,6 +49,8 @@ public class Test extends LinearOpMode {
             //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+            lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
@@ -69,7 +71,7 @@ public class Test extends LinearOpMode {
                 armturn.setPower(0);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
-                sleep(2250);
+                sleep(2150);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
 
@@ -82,20 +84,21 @@ public class Test extends LinearOpMode {
             }
              if(gamepad2.left_bumper){
                  intakeClaw.setPosition(1);
+                 //ArmUp(50000,1);
+
+                 lsLeft.setPower(-1);
+                 lsRight.setPower(-1);
+                 sleep(2150);
+                 lsLeft.setPower(0);
+                 lsRight.setPower(0);
+                 armturn.setPower(-0.5);
+                 sleep(400);
+                 armturn.setPower(0);
                  afLeft.setPower(1);
                  afRight.setPower(1);
                  sleep(1000);
                  afLeft.setPower(0);
                  afRight.setPower(0);
-                 //ArmUp(50000,1);
-                 armturn.setPower(-0.5);
-                 sleep(400);
-                 armturn.setPower(0);
-                 lsLeft.setPower(-1);
-                 lsRight.setPower(-1);
-                 sleep(2250);
-                 lsLeft.setPower(0);
-                 lsRight.setPower(0);
 
                  //intakeClaw.setPosition(0);
                  //  ArmUp(40000,1);
