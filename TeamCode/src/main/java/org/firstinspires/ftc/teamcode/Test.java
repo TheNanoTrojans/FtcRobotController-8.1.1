@@ -92,7 +92,7 @@ public class Test extends LinearOpMode {
                  intakeClaw.setPosition(180);
              }
              if (gamepad2.a){
-                 intakeClaw.setPosition(-180);
+                 intakeClaw.setPosition(-0.1);
              }
              //frontRight.setPower(1);
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
