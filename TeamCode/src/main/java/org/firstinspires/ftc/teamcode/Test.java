@@ -54,9 +54,9 @@ public class Test extends LinearOpMode {
             telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
-            afLeft.setPower(-gamepad2.right_stick_x);
-            afRight.setPower(-gamepad2.right_stick_x);
-            armturn.setPower(-gamepad2.right_stick_y);
+            afLeft.setPower(-gamepad2.right_stick_y);
+            afRight.setPower(-gamepad2.right_stick_y);
+            armturn.setPower(-gamepad2.right_stick_x);
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
@@ -81,18 +81,34 @@ public class Test extends LinearOpMode {
                 lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             }
              if(gamepad2.left_bumper){
-                afLeft.setPower(-1);
-                afRight.setPower(-1);
-                sleep(1000);
-                afLeft.setPower(0);
-                afRight.setPower(0);
+                 afLeft.setPower(1);
+                 afRight.setPower(1);
+                 sleep(1000);
+                 afLeft.setPower(0);
+                 afRight.setPower(0);
+                 //ArmUp(50000,1);
+                 armturn.setPower(-0.5);
+                 sleep(400);
+                 armturn.setPower(0);
+                 lsLeft.setPower(-1);
+                 lsRight.setPower(-1);
+                 sleep(2250);
+                 lsLeft.setPower(0);
+                 lsRight.setPower(0);
+
+                 //intakeClaw.setPosition(0);
+                 //  ArmUp(40000,1);
+                 //armturn.setPosition(0);
+                 //armturn.setPosition(0.5);
+                 lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                 lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             }
              if (gamepad2.y){
                  intakeClaw.setPosition(1);
              }
              if (gamepad2.a){
-                 intakeClaw.setPosition(0.5);
+                 intakeClaw.setPosition(0.2);
              }
              //frontRight.setPower(1);
             double y = -gamepad1.left_stick_y; // Remember, this is reversed!
