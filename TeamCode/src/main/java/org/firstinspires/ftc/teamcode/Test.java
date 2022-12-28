@@ -71,7 +71,7 @@ public class Test extends LinearOpMode {
                 armturn.setPower(0);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
-                sleep(2150);
+                sleep(2450);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
 
@@ -88,7 +88,7 @@ public class Test extends LinearOpMode {
 
                  lsLeft.setPower(-1);
                  lsRight.setPower(-1);
-                 sleep(2150);
+                 sleep(2450);
                  lsLeft.setPower(0);
                  lsRight.setPower(0);
                  armturn.setPower(-0.5);
@@ -115,9 +115,9 @@ public class Test extends LinearOpMode {
                  intakeClaw.setPosition(0.2);
              }
              //frontRight.setPower(1);
-            double y = -gamepad1.left_stick_y; // Remember, this is reversed!
+            double y = -gamepad1.left_stick_y ; // Remember, this is reversed!
             double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
-            double rx = gamepad1.right_stick_x;
+            double rx = gamepad1.right_stick_x*0.75;
 
             // Denominator is the largest motor power (absolute value) or 1
             // This ensures all the powers maintain the same ratio, but only when
