@@ -88,7 +88,7 @@ public class DriveConstants {
         264mm+48mm+48mm+38mm
      */
     public static double MAX_VEL = 50.22;
-    public static double MAX_ACCEL = 57.3921623808;
+    public static double MAX_ACCEL = 30;
     public static double MAX_ANG_VEL = Math.toRadians(245.35326306325433);
     public static double MAX_ANG_ACCEL = Math.toRadians(184.02607784577722);
 
