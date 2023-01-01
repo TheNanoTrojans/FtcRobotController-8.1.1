@@ -137,7 +137,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         }
 
         setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
+        setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap));
         if (RUN_USING_ENCODER && MOTOR_VELO_PID != null) {
             setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, MOTOR_VELO_PID);
         }
