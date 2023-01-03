@@ -40,38 +40,37 @@ public class VisionTest extends LinearOpMode {
             @Override
             public void onError(int errorCode) {}
         });
-        while(opModeInInit()){
+
+        if(opModeIsActive()){
             telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
             telemetry.update();
-        }
-        if(opModeIsActive()){
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
                     .strafeTo(new Vector2d(0,55))
 
                     .build();
+            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
+                    .strafeTo(new Vector2d(12,45))
+                    .build();
+            Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
+                    .strafeTo(new Vector2d(36,54))
+                    .build();
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
             drive.followTrajectory(myTrajectory);
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
-                Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
-                        .strafeTo(new Vector2d(12,45))
-                                .build();
+
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
 
-                waitForStart();
-                if(isStopRequested()) return;
+
 
                 //drive.turn(Math.toRadians(90));
                 drive.followTrajectory(traj1);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
-                Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
-                        .strafeTo(new Vector2d(36,54))
-                        .build();
-                waitForStart();
-                if(isStopRequested()) return;
+
+
                 drive.followTrajectory(traj2);
             }
         }
