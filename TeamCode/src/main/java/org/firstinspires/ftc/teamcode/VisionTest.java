@@ -44,8 +44,5 @@ public class VisionTest extends LinearOpMode {
         }
 
         waitForStart();
-        if (sleeveDetection.getPosition() == SleeveDetection.ParkingPosition.LEFT) {
-            
-        }
     }
 }
