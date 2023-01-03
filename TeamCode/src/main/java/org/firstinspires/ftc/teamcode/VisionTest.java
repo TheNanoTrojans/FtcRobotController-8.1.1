@@ -53,7 +53,7 @@ public class VisionTest extends LinearOpMode {
 
                     .build();
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
-            drive.followTrajectory(myTrajectory);
+
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
                 Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
@@ -65,6 +65,7 @@ public class VisionTest extends LinearOpMode {
                 if(isStopRequested()) return;
 
                 //drive.turn(Math.toRadians(90));
+                drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(traj1);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
@@ -73,18 +74,20 @@ public class VisionTest extends LinearOpMode {
                         .build();
                 waitForStart();
                 if(isStopRequested()) return;
+                drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(traj2);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
-                SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-                Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
-                        .strafeTo(new Vector2d(0,55))
+
+                Trajectory traj3 = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
+                        .strafeTo(new Vector2d(60,45))
                         .build();
 
 
-                drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
+                //drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
                 drive.followTrajectory(myTrajectory);
+                drive.followTrajectory(traj3);
             }
         }
 
