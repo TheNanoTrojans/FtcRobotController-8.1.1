@@ -17,7 +17,6 @@ public class VisionTest extends LinearOpMode {
 
     private SleeveDetection sleeveDetection;
     private OpenCvCamera camera;
-    private String color;
     
     // Name of the Webcam to be set in the config
     private String webcamName = "Webcam 1";
@@ -28,7 +27,6 @@ public class VisionTest extends LinearOpMode {
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
         sleeveDetection = new SleeveDetection();
         camera.setPipeline(sleeveDetection);
-        
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
         {
             @Override
@@ -71,12 +69,9 @@ public class VisionTest extends LinearOpMode {
                         .build();
                 drive.followTrajectory(traj2);
             }
-            if(isStopRequested()) return;
 
         }
 
 
-
-        waitForStart();
     }
 }
