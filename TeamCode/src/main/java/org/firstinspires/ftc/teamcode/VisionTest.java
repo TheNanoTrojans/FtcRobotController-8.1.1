@@ -62,7 +62,7 @@ public class VisionTest extends LinearOpMode {
 
                 waitForStart();
                 if(isStopRequested()) return;
-;
+
                 //drive.turn(Math.toRadians(90));
                 drive.followTrajectory(traj1);
             }
@@ -72,6 +72,7 @@ public class VisionTest extends LinearOpMode {
                         .build();
                 waitForStart();
                 if(isStopRequested()) return;
+                drive.followTrajectory(traj2);
             }
         }
 
