@@ -22,6 +22,6 @@ public class Code extends LinearOpMode {
         if(isStopRequested()) return;
 
         drive.followTrajectory(myTrajectory);
-        //drive.turn(Math.toRadians(90));
+        drive.turn(Math.toRadians(90));
     }
 }
