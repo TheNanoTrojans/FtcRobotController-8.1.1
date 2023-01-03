@@ -49,7 +49,7 @@ public class VisionTest extends LinearOpMode {
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
-                    .strafeTo(new Vector2d(0,55))
+                    .strafeTo(new Vector2d(8,65))
 
                     .build();
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
