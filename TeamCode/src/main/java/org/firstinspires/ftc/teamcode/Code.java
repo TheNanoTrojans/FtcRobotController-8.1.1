@@ -13,11 +13,8 @@ public class Code extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,65,Math.toRadians(0)))
-                .forward(5)
-                .strafeRight(30)
-
-
+        Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,65,Math.toRadians(270)))
+                .lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
                 .build();
         Trajectory traj1 =  drive.trajectoryBuilder(myTrajectory.end())
                 .splineTo(new Vector2d(0,55), Math.toRadians(0))
@@ -29,6 +26,6 @@ public class Code extends LinearOpMode {
         //drive.turn(Math.toRadians(90));
         drive.followTrajectory(myTrajectory);
         //drive.turn(Math.toRadians(90));
-        drive.followTrajectory(traj1);
+        //drive.followTrajectory(traj1);
     }
 }
