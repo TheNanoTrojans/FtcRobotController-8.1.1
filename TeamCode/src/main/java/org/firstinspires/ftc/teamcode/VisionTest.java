@@ -40,7 +40,12 @@ public class VisionTest extends LinearOpMode {
             @Override
             public void onError(int errorCode) {}
         });
+        while(opModeInInit()){
+            telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
+            telemetry.update();
+        }
         if(opModeIsActive()){
+
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
                 SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
@@ -62,10 +67,7 @@ public class VisionTest extends LinearOpMode {
             }
         }
 
-        while (!isStarted()) {
-            telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
-            telemetry.update();
-        }
+
 
         waitForStart();
     }
