@@ -52,13 +52,14 @@ public class VisionTest extends LinearOpMode {
                     .strafeTo(new Vector2d(8,65))
 
                     .build();
+            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
+                    .strafeTo(new Vector2d(12,45))
+                    .build();
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
 
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
-                Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
-                        .strafeTo(new Vector2d(12,45))
-                                .build();
+
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
 
                 waitForStart();
@@ -69,25 +70,26 @@ public class VisionTest extends LinearOpMode {
                 drive.followTrajectory(traj1);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
-                Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
+                Trajectory traj2 = drive.trajectoryBuilder(traj1.end())
                         .strafeTo(new Vector2d(36,45))
                         .build();
                 waitForStart();
                 if(isStopRequested()) return;
                 drive.followTrajectory(myTrajectory);
-                drive
+                drive.followTrajectory(traj1);
                 drive.followTrajectory(traj2);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
 
 
-                Trajectory traj3 = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
+                Trajectory traj3 = drive.trajectoryBuilder(traj1.end())
                         .strafeTo(new Vector2d(60,45))
                         .build();
 
 
                 //drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
                 drive.followTrajectory(myTrajectory);
+                drive.followTrajectory(traj1);
                 drive.followTrajectory(traj3);
             }
         }
