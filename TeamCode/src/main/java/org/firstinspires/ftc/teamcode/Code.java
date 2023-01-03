@@ -24,7 +24,7 @@ public class Code extends LinearOpMode {
         drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
         //drive.turn(Math.toRadians(90));
         drive.followTrajectory(myTrajectory);
-        
+
         //drive.turn(Math.toRadians(90));
         //drive.followTrajectory(traj1);
     }
