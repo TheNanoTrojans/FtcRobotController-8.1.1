@@ -14,16 +14,21 @@ public class Code extends LinearOpMode {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
         Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,65,Math.toRadians(0)))
-                .forward(10)
+                .forward(5)
+                .strafeRight(30)
+
+
+                .build();
+        Trajectory traj1 =  drive.trajectoryBuilder(myTrajectory.end())
                 .splineTo(new Vector2d(0,55), Math.toRadians(0))
-                //.splineTo(new Vector2d(0,0), Math.toRadians(0))
                         .build();
 
         waitForStart();
         if(isStopRequested()) return;
         drive.setPoseEstimate(new Pose2d(35,65, Math.toRadians(0)));
-        drive.turn(Math.toRadians(90));
+        //drive.turn(Math.toRadians(90));
         drive.followTrajectory(myTrajectory);
-        drive.turn(Math.toRadians(90));
+        //drive.turn(Math.toRadians(90));
+        drive.followTrajectory(traj1);
     }
 }
