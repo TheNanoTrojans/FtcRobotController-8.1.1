@@ -12,8 +12,8 @@ import org.openftc.easyopencv.OpenCvPipeline;
 public class SleeveDetection extends OpenCvPipeline {
     /*
     YELLOW  = Parking Left
-    GREEN    = Parking Middle
-    MAGENTA = Parking Right
+    MAGENTA    = Parking Middle
+    GREEN = Parking Right
      */
 
     public enum SleeveColors {
