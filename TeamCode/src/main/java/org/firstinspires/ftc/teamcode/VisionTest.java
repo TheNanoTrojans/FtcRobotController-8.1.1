@@ -68,7 +68,8 @@ public class VisionTest extends LinearOpMode {
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
-                        .strafeTo()
+                        .strafeTo(new Vector2d(36,54))
+                        .build();
             }
         }
 
