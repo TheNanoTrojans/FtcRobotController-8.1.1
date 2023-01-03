@@ -12,14 +12,14 @@ import org.openftc.easyopencv.OpenCvPipeline;
 public class SleeveDetection extends OpenCvPipeline {
     /*
     YELLOW  = Parking Left
-    CYAN    = Parking Middle
+    GREEN    = Parking Middle
     MAGENTA = Parking Right
      */
 
-    public enum ParkingPosition {
-        LEFT,
-        CENTER,
-        RIGHT
+    public enum SleeveColors {
+        YELLOW,
+        GREEN,
+        MAGENTA
     }
 
     // TOPLEFT anchor point for the bounding box
@@ -32,8 +32,8 @@ public class SleeveDetection extends OpenCvPipeline {
     // Color definitions
     private final Scalar
             YELLOW  = new Scalar(255, 255, 0),
-            CYAN    = new Scalar(214, 2, 147),
-            MAGENTA = new Scalar(2, 176, 89);
+            CYAN    = new Scalar(2, 176, 89),
+            MAGENTA = new Scalar(214, 2, 147);
 
     // Anchor point definitions
     Point sleeve_pointA = new Point(
@@ -44,7 +44,7 @@ public class SleeveDetection extends OpenCvPipeline {
             SLEEVE_TOPLEFT_ANCHOR_POINT.y + REGION_HEIGHT);
 
     // Running variable storing the parking position
-    private volatile ParkingPosition position = ParkingPosition.LEFT;
+    private volatile SleeveColors position = SleeveColors.YELLOW;
 
     @Override
     public Mat processFrame(Mat input) {
@@ -57,7 +57,7 @@ public class SleeveDetection extends OpenCvPipeline {
 
         // Change the bounding box color based on the sleeve color
         if (sumColors.val[0] == minColor) {
-            position = ParkingPosition.CENTER;
+            position = SleeveColors.GREEN;
             Imgproc.rectangle(
                     input,
                     sleeve_pointA,
@@ -66,7 +66,7 @@ public class SleeveDetection extends OpenCvPipeline {
                     2
             );
         } else if (sumColors.val[1] == minColor) {
-            position = ParkingPosition.RIGHT;
+            position = SleeveColors.MAGENTA;
             Imgproc.rectangle(
                     input,
                     sleeve_pointA,
@@ -75,7 +75,7 @@ public class SleeveDetection extends OpenCvPipeline {
                     2
             );
         } else {
-            position = ParkingPosition.LEFT;
+            position = SleeveColors.YELLOW;
             Imgproc.rectangle(
                     input,
                     sleeve_pointA,
@@ -91,7 +91,7 @@ public class SleeveDetection extends OpenCvPipeline {
     }
 
     // Returns an enum being the current position where the robot will park
-    public ParkingPosition getPosition() {
+    public SleeveColors getPosition() {
         return position;
     }
 }
