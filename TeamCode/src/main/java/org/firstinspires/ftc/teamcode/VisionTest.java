@@ -28,7 +28,7 @@ public class VisionTest extends LinearOpMode {
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
         sleeveDetection = new SleeveDetection();
         camera.setPipeline(sleeveDetection);
-
+        
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
         {
             @Override
@@ -42,25 +42,21 @@ public class VisionTest extends LinearOpMode {
         });
 
         if(opModeIsActive()){
-            telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
-            telemetry.update();
+
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
                     .strafeTo(new Vector2d(0,55))
+                    .build();
 
-                    .build();
-            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .strafeTo(new Vector2d(12,45))
-                    .build();
-            Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
-                    .strafeTo(new Vector2d(36,54))
-                    .build();
+
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
             drive.followTrajectory(myTrajectory);
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
-
+                Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
+                        .strafeTo(new Vector2d(12,45))
+                        .build();
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
 
 
@@ -70,9 +66,13 @@ public class VisionTest extends LinearOpMode {
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
 
-
+                Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
+                        .strafeTo(new Vector2d(36,54))
+                        .build();
                 drive.followTrajectory(traj2);
             }
+            if(isStopRequested()) return;
+
         }
 
 
