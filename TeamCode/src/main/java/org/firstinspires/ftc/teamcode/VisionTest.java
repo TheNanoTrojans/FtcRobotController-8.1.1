@@ -54,7 +54,7 @@ public class VisionTest extends LinearOpMode {
 
                         .build();
                 Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
-                        .strafeTo(new Vector2d(12,35))
+                        .strafeTo(new Vector2d(12,45))
                                 .build();
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
 
