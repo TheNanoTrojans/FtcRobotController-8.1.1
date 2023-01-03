@@ -17,7 +17,8 @@ public class Code extends LinearOpMode {
                 .forward(7)
                 .build();
         Trajectory traj1 =  drive.trajectoryBuilder(myTrajectory.end())
-                .lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
+                //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
+                .strafeTo(new Vector2d())
                         .build();
 
         waitForStart();
