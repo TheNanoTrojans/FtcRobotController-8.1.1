@@ -32,8 +32,8 @@ public class SleeveDetection extends OpenCvPipeline {
     // Color definitions
     private final Scalar
             YELLOW  = new Scalar(255, 255, 0),
-            CYAN    = new Scalar(0, 255, 255),
-            MAGENTA = new Scalar(255, 0, 255);
+            CYAN    = new Scalar(214, 2, 147),
+            MAGENTA = new Scalar(2, 176, 89);
 
     // Anchor point definitions
     Point sleeve_pointA = new Point(
