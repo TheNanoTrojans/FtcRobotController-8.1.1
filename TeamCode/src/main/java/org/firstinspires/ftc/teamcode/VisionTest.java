@@ -7,6 +7,7 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.SleeveDetection;
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -41,7 +42,23 @@ public class VisionTest extends LinearOpMode {
         });
         if(opModeIsActive()){
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+                SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
+                Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
+                        .strafeTo(new Vector2d(0,55))
+
+                        .build();
+                Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
+                        .strafeTo(new Vector2d(12,35))
+                                .build();
+                //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
+
+                waitForStart();
+                if(isStopRequested()) return;
+                drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
+                //drive.turn(Math.toRadians(90));
+                drive.followTrajectory(myTrajectory);
+                drive.followTrajectory(traj1);
             }
         }
 
