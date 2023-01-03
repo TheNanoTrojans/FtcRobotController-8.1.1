@@ -70,6 +70,8 @@ public class VisionTest extends LinearOpMode {
                 Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
                         .strafeTo(new Vector2d(36,54))
                         .build();
+                waitForStart();
+                if(isStopRequested()) return;
             }
         }
 
