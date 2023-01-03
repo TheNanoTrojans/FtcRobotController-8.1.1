@@ -37,6 +37,11 @@ public class VisionTest extends LinearOpMode {
             @Override
             public void onError(int errorCode) {}
         });
+        if(opModeIsActive()){
+            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+
+            }
+        }
 
         while (!isStarted()) {
             telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
