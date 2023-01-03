@@ -66,7 +66,7 @@ public class VisionTest extends LinearOpMode {
 
                 //drive.turn(Math.toRadians(90));
                 drive.followTrajectory(myTrajectory);
-               // drive.followTrajectory(traj1);
+                drive.followTrajectory(traj1);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
@@ -75,6 +75,7 @@ public class VisionTest extends LinearOpMode {
                 waitForStart();
                 if(isStopRequested()) return;
                 drive.followTrajectory(myTrajectory);
+                drive
                 drive.followTrajectory(traj2);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
