@@ -92,12 +92,12 @@ public class MyTeleopOpmode extends LinearOpMode {
             telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
-            afLeft.setPower(gamepad2.right_stick_y);
-            afRight.setPower(gamepad2.right_stick_y);
+            afLeft.setPower(gamepad2.right_stick_y *0.5);
+            afRight.setPower(gamepad2.right_stick_y*0.5);
             armturn.setPower(-gamepad2.right_stick_x);
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
-                //afRight.setPower(-1);
+                afRight.setPower(-1);
                 sleep(2000);
                 afLeft.setPower(0);
                 afRight.setPower(0);
