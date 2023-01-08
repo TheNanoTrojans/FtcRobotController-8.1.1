@@ -97,7 +97,7 @@ public class AutoRightBlue extends LinearOpMode {
             drive.followTrajectory(myTrajectory1);
             afLeft.setPower(-1);
             afRight.setPower(-1);
-            sleep(2300);
+            sleep(2000);
             afLeft.setPower(0);
             afRight.setPower(0);
             //ArmUp(50000,1);
