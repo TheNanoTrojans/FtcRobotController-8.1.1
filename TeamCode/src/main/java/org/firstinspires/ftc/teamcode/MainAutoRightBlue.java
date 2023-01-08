@@ -168,6 +168,7 @@ public class MainAutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(traj3);
                 //drive.followTrajectory(traj5);
             }
+            PoseStorage.currentPose = drive.getPoseEstimate();
         }
 
 
