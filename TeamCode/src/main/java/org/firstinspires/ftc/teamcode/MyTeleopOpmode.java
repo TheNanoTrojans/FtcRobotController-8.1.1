@@ -77,7 +77,7 @@ public class MyTeleopOpmode extends LinearOpMode {
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
-                sleep(750);
+                sleep(1350);
                 afLeft.setPower(0);
                 afRight.setPower(0);
                 //ArmUp(50000,1);
@@ -112,7 +112,7 @@ public class MyTeleopOpmode extends LinearOpMode {
                 armturn.setPower(0);
                 afLeft.setPower(1);
                 afRight.setPower(1);
-                sleep(750);
+                sleep(1350);
                 afLeft.setPower(0);
                 afRight.setPower(0);
 
