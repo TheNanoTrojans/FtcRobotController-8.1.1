@@ -72,7 +72,7 @@ public class MyTeleopOpmode extends LinearOpMode {
                     )
             );
             drive.setPoseEstimate(PoseStorage.currentPose);
-
+            PoseStorage.currentPose = drive.getPoseEstimate();
             telemetry.addData("x", PoseStorage.currentPose.getX());
 
             telemetry.addData("y", PoseStorage.currentPose.getY());
