@@ -75,7 +75,7 @@ public class AutoRightBlue extends LinearOpMode {
             telemetry.update();
         }
         if(opModeIsActive()){
-            intakeClaw.setPosition(0.2);
+            intakeClaw.setPosition(0.8);
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(180)))
@@ -109,7 +109,7 @@ public class AutoRightBlue extends LinearOpMode {
             sleep(2450);
             lsLeft.setPower(0);
             lsRight.setPower(0);
-            intakeClaw.setPosition(0.6);
+            intakeClaw.setPosition(0.5);
 
             sleep(2000);
             //intakeClaw.setPosition(0);
@@ -123,7 +123,7 @@ public class AutoRightBlue extends LinearOpMode {
             sleep(2450);
             lsLeft.setPower(0);
             lsRight.setPower(0);
-            intakeClaw.setPosition(0.2);
+            intakeClaw.setPosition(0.8);
             armturn.setPower(-0.5);
             sleep(400);
             armturn.setPower(0);

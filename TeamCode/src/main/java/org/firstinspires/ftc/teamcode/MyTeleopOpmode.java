@@ -92,13 +92,13 @@ public class MyTeleopOpmode extends LinearOpMode {
             telemetry.addData("Speed and Power:", gamepad2.left_stick_y);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
-            afLeft.setPower(-gamepad2.right_stick_y);
-            afRight.setPower(-gamepad2.right_stick_y);
+            afLeft.setPower(gamepad2.right_stick_y);
+            afRight.setPower(gamepad2.right_stick_y);
             armturn.setPower(-gamepad2.right_stick_x);
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
-                sleep(1350);
+                sleep(2300);
                 afLeft.setPower(0);
                 afRight.setPower(0);
                 //ArmUp(50000,1);
@@ -133,7 +133,7 @@ public class MyTeleopOpmode extends LinearOpMode {
                 armturn.setPower(0);
                 afLeft.setPower(1);
                 afRight.setPower(1);
-                sleep(1350);
+                sleep(2300);
                 afLeft.setPower(0);
                 afRight.setPower(0);
 
@@ -146,10 +146,10 @@ public class MyTeleopOpmode extends LinearOpMode {
 
             }
             if (gamepad2.y){
-                intakeClaw.setPosition(1);
+                intakeClaw.setPosition(0.8);
             }
             if (gamepad2.a){
-                intakeClaw.setPosition(0.2);
+                intakeClaw.setPosition(0.5);
             }
             if (gamepad1.y){
                 drive.followTrajectory(myTrajectory);
