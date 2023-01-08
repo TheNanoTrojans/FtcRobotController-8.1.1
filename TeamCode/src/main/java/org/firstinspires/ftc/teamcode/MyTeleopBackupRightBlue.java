@@ -68,7 +68,6 @@ public class MyTeleopBackupRightBlue extends LinearOpMode {
             drive.setPoseEstimate(PoseStorage.currentPose);
             PoseStorage.currentPose = drive.getPoseEstimate();
             telemetry.addData("x", PoseEstimate.getX());
-
             telemetry.addData("y", PoseEstimate.getY());
             telemetry.addData("heading", PoseEstimate.getHeading());
         }
