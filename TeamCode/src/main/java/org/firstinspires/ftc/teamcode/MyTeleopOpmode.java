@@ -54,7 +54,24 @@ public class MyTeleopOpmode extends LinearOpMode {
 
 
             // Retrieve your pose
+        while (!isStopRequested()){
 
+            drive.setWeightedDrivePower(
+                    new Pose2d(
+                            -gamepad1.left_stick_y,
+                            -gamepad1.left_stick_x,
+                            -gamepad1.right_stick_x
+                    )
+            );
+            drive.update();
+            Pose2d PoseEstimate = drive.getPoseEstimate();
+            drive.setPoseEstimate(PoseStorage.currentPose);
+            PoseStorage.currentPose = drive.getPoseEstimate();
+            telemetry.addData("x", PoseEstimate.getX());
+
+            telemetry.addData("y", PoseEstimate.getY());
+            telemetry.addData("heading", PoseEstimate.getHeading());
+        }
 
 
             // Insert whatever teleop code you're using
@@ -63,20 +80,10 @@ public class MyTeleopOpmode extends LinearOpMode {
             // Increasing loop time by utilizing bulk reads and minimizing writes will increase your odometry accuracy
 
            // drive.setPoseEstimate(new Pose2d(10, 10, Math.toRadians(90)));
-            drive.update();
-            drive.setWeightedDrivePower(
-                    new Pose2d(
-                            -gamepad1.left_stick_y,
-                            -gamepad1.left_stick_x,
-                            -gamepad1.right_stick_x
-                    )
-            );
+
             drive.setPoseEstimate(PoseStorage.currentPose);
             PoseStorage.currentPose = drive.getPoseEstimate();
-            telemetry.addData("x", PoseStorage.currentPose.getX());
 
-            telemetry.addData("y", PoseStorage.currentPose.getY());
-            telemetry.addData("heading", PoseStorage.currentPose.getHeading());
             Trajectory myTrajectory = drive.trajectoryBuilder(PoseStorage.currentPose)
                     .strafeTo(new Vector2d(8,65))
                     .build();
