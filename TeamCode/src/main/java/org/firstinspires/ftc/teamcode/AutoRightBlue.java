@@ -73,7 +73,7 @@ public class AutoRightBlue extends LinearOpMode {
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
                         .strafeTo(new Vector2d(-36,65))
-                        .lineTo(new Vector2d(-36,45))
+                        .strafeTo(new Vector2d(-36,45))
 
                         .build();
                 waitForStart();
@@ -87,7 +87,7 @@ public class AutoRightBlue extends LinearOpMode {
 
                 Trajectory traj3 = drive.trajectoryBuilder(myTrajectory.end())
                         .strafeTo(new Vector2d(-60,65))
-                        .lineTo(new Vector2d(-60,45))
+                        .strafeTo(new Vector2d(-60,45))
                         .build();
 
 
