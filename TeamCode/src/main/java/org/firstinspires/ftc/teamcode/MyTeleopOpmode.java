@@ -54,6 +54,14 @@ public class MyTeleopOpmode extends LinearOpMode {
 
 
             // Retrieve your pose
+
+
+
+            // Insert whatever teleop code you're using
+        while(opModeIsActive()) {
+            // Make sure to call myLocalizer.update() on *every* loop
+            // Increasing loop time by utilizing bulk reads and minimizing writes will increase your odometry accuracy
+            myLocalizer.setPoseEstimate(new Pose2d(10, 10, Math.toRadians(90)));
             drive.setWeightedDrivePower(
                     new Pose2d(
                             -gamepad1.left_stick_y,
@@ -66,13 +74,7 @@ public class MyTeleopOpmode extends LinearOpMode {
             telemetry.addData("x", myPose.getX());
             telemetry.addData("y", myPose.getY());
             telemetry.addData("heading", myPose.getHeading());
-
-            // Insert whatever teleop code you're using
-        while(opModeIsActive()) {
-            // Make sure to call myLocalizer.update() on *every* loop
-            // Increasing loop time by utilizing bulk reads and minimizing writes will increase your odometry accuracy
-            myLocalizer.setPoseEstimate(new Pose2d(10, 10, Math.toRadians(90)));
-            Trajectory myTrajectory = drive.trajectoryBuilder(myLocalizer.getPoseEstimate())
+            Trajectory myTrajectory = drive.trajectoryBuilder(myPose)
                     .strafeTo(new Vector2d(8,65))
                     .build();
             myLocalizer.update();
@@ -148,10 +150,8 @@ public class MyTeleopOpmode extends LinearOpMode {
                 intakeClaw.setPosition(0.2);
             }
             if (gamepad1.y){
-                drive.followTrajectoryAsync(myTrajectory);
-                if(gamepad1.b){
-                    stop();
-                }
+                drive.followTrajectory(myTrajectory);
+
 
             }
         }
