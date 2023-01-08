@@ -5,25 +5,20 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
-@Autonomous(name = "Code", group = "Autonomous")
+@Autonomous(name = "Test", group = "Autonomous")
 public class Code extends LinearOpMode {
+    protected CRServo armturn;
+
     @Override
     public void runOpMode() throws InterruptedException {
-        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-
-        Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(90)))
-                .strafeTo(new Vector2d(0,55))
-
-                .build();
-                //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
-
         waitForStart();
-        if(isStopRequested()) return;
-        drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
-        //drive.turn(Math.toRadians(90));
-        drive.followTrajectory(myTrajectory);
+        armturn =  hardwareMap.crservo.get("armturn");
+        while (opModeIsActive()){
+            armturn.setPower(gamepad2.right_stick_y);
+        }
 
         //drive.turn(Math.toRadians(90));
         //drive.followTrajectory(traj1);
