@@ -49,12 +49,15 @@ public class AutoRightBlue extends LinearOpMode {
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(180)))
-                    .lineToLinearHeading(new Pose2d(8, 65, Math.toRadians(90)))
+                    .lineToLinearHeading(new Pose2d(8, 65, Math.toRadians(75)))
 
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .strafeTo(new Vector2d(-12,45))
+                    .lineToLinearHeading(new Pose2d(-12,65,90))
                     .build();
+            Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
+                            .strafeTo(new Vector2d(-12,45))
+                            .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             drive.followTrajectory(myTrajectory);
 
@@ -69,6 +72,7 @@ public class AutoRightBlue extends LinearOpMode {
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(traj1);
+                drive.followTrajectory(traj4);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 Trajectory traj2 = drive.trajectoryBuilder(myTrajectory.end())
