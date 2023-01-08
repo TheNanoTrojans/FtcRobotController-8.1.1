@@ -5,7 +5,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.SleeveDetection;
@@ -20,6 +23,15 @@ public class AutoRightBlue extends LinearOpMode {
     private SleeveDetection sleeveDetection;
     private OpenCvCamera camera;
     private String color;
+    protected CRServo afLeft;
+    protected CRServo afRight;
+    protected DcMotor lsLeft;
+    protected DcMotor lsRight;
+    protected CRServo armturn;
+    protected Servo intakeClaw;
+    protected int ArmUpPos = 0;
+    protected float power = 0;
+
 
     // Name of the Webcam to be set in the config
     private String webcamName = "Webcam 1";
@@ -30,7 +42,23 @@ public class AutoRightBlue extends LinearOpMode {
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
         sleeveDetection = new SleeveDetection();
         camera.setPipeline(sleeveDetection);
+        intakeClaw = hardwareMap.servo.get("intakeClaw");
+        afLeft =  hardwareMap.crservo.get("afLeft");
+        afRight = hardwareMap.crservo.get("afRight");
+        armturn =  hardwareMap.crservo.get("armturn");
+        lsLeft = hardwareMap.dcMotor.get("lsLeft");
+        lsRight = hardwareMap.dcMotor.get("lsRight");
 
+        // This is assuming you're using StandardTrackingWheelLoc
+        //frontLeft.setDirection(DcMotor.Direction.REVERSE);
+        //backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        afLeft.setDirection(CRServo.Direction.REVERSE);
+        lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        lsLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lsRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
         {
             @Override
@@ -69,7 +97,7 @@ public class AutoRightBlue extends LinearOpMode {
             drive.followTrajectory(myTrajectory1);
             afLeft.setPower(-1);
             afRight.setPower(-1);
-            sleep(1350);
+            sleep(2300);
             afLeft.setPower(0);
             afRight.setPower(0);
             //ArmUp(50000,1);
@@ -81,6 +109,8 @@ public class AutoRightBlue extends LinearOpMode {
             sleep(2450);
             lsLeft.setPower(0);
             lsRight.setPower(0);
+            intakeClaw.setPosition(0.2);
+
 
             //intakeClaw.setPosition(0);
             //  ArmUp(40000,1);
@@ -88,6 +118,20 @@ public class AutoRightBlue extends LinearOpMode {
             //armturn.setPosition(0.5);
             lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            lsLeft.setPower(-1);
+            lsRight.setPower(-1);
+            sleep(2450);
+            lsLeft.setPower(0);
+            lsRight.setPower(0);
+            intakeClaw.setPosition(1);
+            armturn.setPower(-0.5);
+            sleep(400);
+            armturn.setPower(0);
+            afLeft.setPower(1);
+            afRight.setPower(1);
+            sleep(2000);
+            afLeft.setPower(0);
+            afRight.setPower(0);
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
