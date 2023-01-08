@@ -86,7 +86,7 @@ public class MainAutoRightBlue extends LinearOpMode {
                     .strafeTo(new Vector2d(-65, 12))
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .strafeTo(new Vector2d(-12,45))
+                    .strafeTo(new Vector2d(-12,35))
                     .build();
 
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
@@ -143,8 +143,7 @@ public class MainAutoRightBlue extends LinearOpMode {
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 Trajectory traj2 = drive.trajectoryBuilder(myTrajectory1.end())
-                        .strafeTo(new Vector2d(-36,65))
-                        .strafeTo(new Vector2d(-36,45))
+                        .splineTo(new Vector2d(-45,35), Math.toRadians(180))
 
                         .build();
                 waitForStart();
@@ -157,7 +156,7 @@ public class MainAutoRightBlue extends LinearOpMode {
 
 
                 Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
-                        .strafeTo(new Vector2d(-60,65))
+                        .strafeTo(new Vector2d(-65,35))
                         .build();
                 Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
                         .strafeTo(new Vector2d(-60,45))
@@ -167,7 +166,7 @@ public class MainAutoRightBlue extends LinearOpMode {
                 //drive.followTrajectory(myTrajectory);
                 // drive.followTrajectory(traj1);
                 drive.followTrajectory(traj3);
-                drive.followTrajectory(traj5);
+                //drive.followTrajectory(traj5);
             }
         }
 
