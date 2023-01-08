@@ -44,7 +44,7 @@ public class MyTeleopOpmode extends LinearOpMode {
         // This is assuming you're using StandardTrackingWheelLocalizer.java
         // Switch this class to something else (Like TwoWheeTrackingLocalizer.java) if your configuration is different
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        TwoTrackingWheelLocalizer myLocalizer = new TwoWheelTrackingLocalizer(hardwareMap, drive);
+        //TwoTrackingWheelLocalizer myLocalizer = new TwoWheelTrackingLocalizer(hardwareMap, drive);
 
         // Set your initial pose to x: 10, y: 10, facing 90 degrees
 
@@ -61,7 +61,9 @@ public class MyTeleopOpmode extends LinearOpMode {
         while(opModeIsActive()) {
             // Make sure to call myLocalizer.update() on *every* loop
             // Increasing loop time by utilizing bulk reads and minimizing writes will increase your odometry accuracy
-            myLocalizer.setPoseEstimate(new Pose2d(10, 10, Math.toRadians(90)));
+
+           // drive.setPoseEstimate(new Pose2d(10, 10, Math.toRadians(90)));
+            drive.update();
             drive.setWeightedDrivePower(
                     new Pose2d(
                             -gamepad1.left_stick_y,
@@ -69,7 +71,7 @@ public class MyTeleopOpmode extends LinearOpMode {
                             -gamepad1.right_stick_x
                     )
             );
-            Pose2d myPose = myLocalizer.getPoseEstimate();
+            Pose2d myPose = drive.getPoseEstimate();
 
             telemetry.addData("x", myPose.getX());
             telemetry.addData("y", myPose.getY());
@@ -77,7 +79,7 @@ public class MyTeleopOpmode extends LinearOpMode {
             Trajectory myTrajectory = drive.trajectoryBuilder(myPose)
                     .strafeTo(new Vector2d(8,65))
                     .build();
-            myLocalizer.update();
+
             frontLeft.setDirection(DcMotor.Direction.REVERSE);
             //backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
