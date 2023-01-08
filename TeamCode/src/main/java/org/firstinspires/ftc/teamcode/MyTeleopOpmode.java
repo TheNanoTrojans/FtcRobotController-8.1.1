@@ -71,12 +71,13 @@ public class MyTeleopOpmode extends LinearOpMode {
                             -gamepad1.right_stick_x
                     )
             );
-            Pose2d myPose = drive.getPoseEstimate();
+            drive.setPoseEstimate(PoseStorage.currentPose);
 
-            telemetry.addData("x", myPose.getX());
-            telemetry.addData("y", myPose.getY());
-            telemetry.addData("heading", myPose.getHeading());
-            Trajectory myTrajectory = drive.trajectoryBuilder(myPose)
+            telemetry.addData("x", PoseStorage.currentPose.getX());
+
+            telemetry.addData("y", PoseStorage.currentPose.getY());
+            telemetry.addData("heading", PoseStorage.currentPose.getHeading());
+            Trajectory myTrajectory = drive.trajectoryBuilder(PoseStorage.currentPose)
                     .strafeTo(new Vector2d(8,65))
                     .build();
 
