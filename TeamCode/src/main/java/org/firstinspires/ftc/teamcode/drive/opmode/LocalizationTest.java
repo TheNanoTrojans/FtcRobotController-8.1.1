@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.localization.TwoTrackingWheelLocalizer;
+import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -37,6 +38,9 @@ public class LocalizationTest extends LinearOpMode {
             drive.update();
             drive.setPoseEstimate(PoseStorage.currentPose);
             Pose2d poseEstimate = drive.getPoseEstimate();
+            Trajectory myTrajectory = drive.trajectoryBuilder(PoseStorage.currentPose)
+                            .lineToLinearHeading(new Pose2d(8,65,Math.toRadians(75)))
+                            .build();
             telemetry.addData("x", poseEstimate.getX());
             telemetry.addData("y", poseEstimate.getY());
             telemetry.addData("heading", poseEstimate.getHeading());
