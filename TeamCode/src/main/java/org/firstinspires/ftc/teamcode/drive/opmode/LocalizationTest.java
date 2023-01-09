@@ -41,6 +41,10 @@ public class LocalizationTest extends LinearOpMode {
             Trajectory myTrajectory = drive.trajectoryBuilder(PoseStorage.currentPose)
                             .lineToLinearHeading(new Pose2d(8,65,Math.toRadians(75)))
                             .build();
+            if(gamepad1.y){
+                drive.followTrajectory(myTrajectory);
+            }
+
             telemetry.addData("x", poseEstimate.getX());
             telemetry.addData("y", poseEstimate.getY());
             telemetry.addData("heading", poseEstimate.getHeading());
