@@ -54,7 +54,7 @@ public class MyTeleopBackupRightBlue extends LinearOpMode {
 
 
             // Retrieve your pose
-        while (!isStopRequested()){
+       /* while (!isStopRequested()){
 
             drive.setWeightedDrivePower(
                     new Pose2d(
@@ -70,7 +70,7 @@ public class MyTeleopBackupRightBlue extends LinearOpMode {
             telemetry.addData("x", PoseEstimate.getX());
             telemetry.addData("y", PoseEstimate.getY());
             telemetry.addData("heading", PoseEstimate.getHeading());
-        }
+        }*/
 
 
             // Insert whatever teleop code you're using
@@ -80,12 +80,12 @@ public class MyTeleopBackupRightBlue extends LinearOpMode {
 
            // drive.setPoseEstimate(new Pose2d(10, 10, Math.toRadians(90)));
 
-            drive.setPoseEstimate(PoseStorage.currentPose);
+            /*drive.setPoseEstimate(PoseStorage.currentPose);
             PoseStorage.currentPose = drive.getPoseEstimate();
 
             Trajectory myTrajectory = drive.trajectoryBuilder(PoseStorage.currentPose)
                     .strafeTo(new Vector2d(8,65))
-                    .build();
+                    .build();*/
 
             frontLeft.setDirection(DcMotor.Direction.REVERSE);
             //backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
