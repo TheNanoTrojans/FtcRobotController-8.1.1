@@ -157,10 +157,10 @@ public class MyTeleopBackupRightBlue extends LinearOpMode {
 
             }
             if (gamepad2.y){
-                intakeClaw.setPosition(0.8);
+                intakeClaw.setPosition(1);
             }
             if (gamepad2.a){
-                intakeClaw.setPosition(0.5);
+                intakeClaw.setPosition(0.2);
             }
             if (gamepad1.y){
                 //drive.followTrajectory(myTrajectory);

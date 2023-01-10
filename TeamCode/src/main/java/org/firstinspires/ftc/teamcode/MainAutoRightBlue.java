@@ -17,7 +17,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-@Autonomous(name = "MainAutoRightBlue")
+@Autonomous(name = "MainAutoRightBlue", group = "MainAuto")
 public class MainAutoRightBlue extends LinearOpMode {
     private SleeveDetection sleeveDetection;
     private OpenCvCamera camera;

@@ -75,7 +75,7 @@ public class AutoRightBlue extends LinearOpMode {
             telemetry.update();
         }
         if(opModeIsActive()){
-            intakeClaw.setPosition(0.8);
+
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(180)))
@@ -84,7 +84,7 @@ public class AutoRightBlue extends LinearOpMode {
 
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .lineToLinearHeading(new Pose2d(12, 65, Math.toRadians(75)))
+                    .lineToLinearHeading(new Pose2d(8, 65, Math.toRadians(180)))
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
@@ -93,8 +93,11 @@ public class AutoRightBlue extends LinearOpMode {
                             .strafeTo(new Vector2d(-12,45))
                             .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
+            intakeClaw.setPosition(1);
             drive.followTrajectory(myTrajectory);
             drive.followTrajectory(myTrajectory1);
+            drive.turn(Math.toRadians(105 + 1e-6));
+            //drive.turn(Math.toRadians(180) + 1e-6);
             afLeft.setPower(-1);
             afRight.setPower(-1);
             sleep(2000);
@@ -109,9 +112,10 @@ public class AutoRightBlue extends LinearOpMode {
             sleep(2450);
             lsLeft.setPower(0);
             lsRight.setPower(0);
-            intakeClaw.setPosition(0.5);
+            sleep(100);
+            intakeClaw.setPosition(0.2);
 
-            sleep(2000);
+            sleep(500);
             //intakeClaw.setPosition(0);
             //  ArmUp(40000,1);
             //armturn.setPosition(0);
@@ -123,7 +127,7 @@ public class AutoRightBlue extends LinearOpMode {
             sleep(2450);
             lsLeft.setPower(0);
             lsRight.setPower(0);
-            intakeClaw.setPosition(0.8);
+            intakeClaw.setPosition(1);
             armturn.setPower(-0.5);
             sleep(400);
             armturn.setPower(0);
@@ -143,7 +147,7 @@ public class AutoRightBlue extends LinearOpMode {
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(traj1);
-                //drive.followTrajectory(traj4);
+                drive.followTrajectory(traj4);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 Trajectory traj2 = drive.trajectoryBuilder(myTrajectory1.end())
