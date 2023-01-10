@@ -70,6 +70,12 @@ public class AutoRightBlue extends LinearOpMode {
             @Override
             public void onError(int errorCode) {}
         });
+        if(opModeInInit()){
+            intakeClaw.setPosition(0.2);
+        }
+        if(isStopRequested()){
+            intakeClaw.setPosition(1);
+        }
         while(opModeInInit()){
             telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
             telemetry.update();
