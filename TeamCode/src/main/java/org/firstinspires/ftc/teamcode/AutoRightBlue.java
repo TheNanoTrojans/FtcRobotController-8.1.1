@@ -130,16 +130,21 @@ public class AutoRightBlue extends LinearOpMode {
             lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lsLeft.setPower(-1);
             lsRight.setPower(-1);
+            afLeft.setPower(1);
+            afRight.setPower(1);
+            sleep(1000);
+            afLeft.setPower(0);
+            afRight.setPower(0);
             sleep(2400);
             lsLeft.setPower(0);
             lsRight.setPower(0);
             intakeClaw.setPosition(1);
             armturn.setPower(-0.5);
-            sleep(600);
+            sleep(550);
             armturn.setPower(0);
             afLeft.setPower(1);
             afRight.setPower(1);
-            sleep(2000);
+            sleep(1000);
             afLeft.setPower(0);
             afRight.setPower(0);
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){

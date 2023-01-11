@@ -10,14 +10,14 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 @Autonomous(name = "Test", group = "Autonomous")
 public class Code extends LinearOpMode {
-    protected CRServo armturn;
+    protected CRServo afLeft;
 
     @Override
     public void runOpMode() throws InterruptedException {
         waitForStart();
-        armturn =  hardwareMap.crservo.get("armturn");
+        afLeft =  hardwareMap.crservo.get("afLeft");
         while (opModeIsActive()){
-            armturn.setPower(gamepad2.right_stick_y);
+            afLeft.setPower(gamepad2.right_stick_y);
         }
 
         //drive.turn(Math.toRadians(90));
