@@ -115,7 +115,7 @@ public class AutoRightBlue extends LinearOpMode {
             armturn.setPower(0);
             lsLeft.setPower(1);
             lsRight.setPower(1);
-            sleep(2350);
+            sleep(2450);
             lsLeft.setPower(0);
             lsRight.setPower(0);
             sleep(100);
@@ -130,7 +130,7 @@ public class AutoRightBlue extends LinearOpMode {
             lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lsLeft.setPower(-1);
             lsRight.setPower(-1);
-            sleep(2450);
+            sleep(2400);
             lsLeft.setPower(0);
             lsRight.setPower(0);
             intakeClaw.setPosition(1);
