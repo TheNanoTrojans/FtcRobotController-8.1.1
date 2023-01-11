@@ -96,7 +96,7 @@ public class AutoRightBlue extends LinearOpMode {
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
                     .build();
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
-                            .strafeTo(new Vector2d(-12,45))
+                            .strafeTo(new Vector2d(-12,40))
                             .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
@@ -115,7 +115,7 @@ public class AutoRightBlue extends LinearOpMode {
             armturn.setPower(0);
             lsLeft.setPower(1);
             lsRight.setPower(1);
-            sleep(2450);
+            sleep(2350);
             lsLeft.setPower(0);
             lsRight.setPower(0);
             sleep(100);
