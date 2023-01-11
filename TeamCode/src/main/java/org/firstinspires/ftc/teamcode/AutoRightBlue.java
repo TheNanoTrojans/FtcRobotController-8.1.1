@@ -111,7 +111,7 @@ public class AutoRightBlue extends LinearOpMode {
             afRight.setPower(0);
             //ArmUp(50000,1);
             armturn.setPower(0.5);
-            sleep(400);
+            sleep(600);
             armturn.setPower(0);
             lsLeft.setPower(1);
             lsRight.setPower(1);
@@ -135,7 +135,7 @@ public class AutoRightBlue extends LinearOpMode {
             lsRight.setPower(0);
             intakeClaw.setPosition(1);
             armturn.setPower(-0.5);
-            sleep(400);
+            sleep(600);
             armturn.setPower(0);
             afLeft.setPower(1);
             afRight.setPower(1);
