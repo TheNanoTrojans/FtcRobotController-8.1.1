@@ -2,6 +2,8 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -31,6 +33,7 @@ public class TeleOpJustLocalizer extends LinearOpMode {
 
         // Retrieve our pose from the PoseStorage.currentPose static field
         // See AutoTransferPose.java for further details
+
         myLocalizer.setPoseEstimate(PoseStorage.currentPose);
 
         waitForStart();
@@ -45,7 +48,9 @@ public class TeleOpJustLocalizer extends LinearOpMode {
 
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
-
+            Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
+                    .lineToLinearHeading(new Pose2d(8,65, Math.toRadians(75)))
+                    .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
             telemetry.addData("y", myPose.getY());
@@ -61,6 +66,9 @@ public class TeleOpJustLocalizer extends LinearOpMode {
 
             // Set drive power
             robot.setDrivePower(x, y, rx);
+            if(gamepad1.y){
+                myLocalizer.followTrajectoryAsync(myTrajectory);
+            }
         }
     }
 
