@@ -55,7 +55,7 @@ public class AutoLeftBlue extends LinearOpMode {
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
                     .strafeTo(new Vector2d(12,40))
                     .build();
-            drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
+            drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(180)));
 
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
