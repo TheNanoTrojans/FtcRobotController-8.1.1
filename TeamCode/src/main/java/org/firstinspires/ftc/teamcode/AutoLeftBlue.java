@@ -67,6 +67,7 @@ public class AutoLeftBlue extends LinearOpMode {
 
                 //drive.turn(Math.toRadians(90));
                 drive.followTrajectory(myTrajectory);
+                drive.turn(Math.toRadians(-105));
                 drive.followTrajectory(traj1);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
@@ -76,6 +77,7 @@ public class AutoLeftBlue extends LinearOpMode {
                 waitForStart();
                 if(isStopRequested()) return;
                 drive.followTrajectory(myTrajectory);
+                drive.turn(Math.toRadians(-105));
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj2);
             }
@@ -89,6 +91,7 @@ public class AutoLeftBlue extends LinearOpMode {
 
                 //drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
                 drive.followTrajectory(myTrajectory);
+                drive.turn(Math.toRadians(-105));
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj3);
             }
