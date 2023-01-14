@@ -1,5 +1,5 @@
 
-/*package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
@@ -16,9 +16,7 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.StandardTrackingWheelLocalizer;
 
 
- * This opmode assumes you have your own robot class and simply wish to utilize Road Runner's
- * packaged localizer tools.
- */
+
 @TeleOp(group = "advanced")
 public class TeleOpJustLocalizer extends LinearOpMode {
     @Override

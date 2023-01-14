@@ -143,7 +143,7 @@ public class MyTeleopMainRightBlue extends LinearOpMode {
                 armturn.setPower(0);
                 afLeft.setPower(1);
                 afRight.setPower(1);
-                sleep(1700);
+                sleep(2000);
                 afLeft.setPower(0);
                 afRight.setPower(0);
 
