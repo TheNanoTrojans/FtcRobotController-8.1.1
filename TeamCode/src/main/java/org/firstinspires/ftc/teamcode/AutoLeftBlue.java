@@ -18,9 +18,11 @@ public class AutoLeftBlue extends LinearOpMode {
     private SleeveDetection sleeveDetection;
     private OpenCvCamera camera;
     private String color;
+    PoseStorage PoseStorage1 =  new PoseStorage();
     
     // Name of the Webcam to be set in the config
     private String webcamName = "Webcam 1";
+    //SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -47,7 +49,7 @@ public class AutoLeftBlue extends LinearOpMode {
         if(opModeIsActive()){
 
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-
+            drive.update();
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(180)))
                     .strafeTo(new Vector2d(8,65))
 
@@ -95,6 +97,7 @@ public class AutoLeftBlue extends LinearOpMode {
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj3);
             }
+            PoseStorage.currentPose = drive.getPoseEstimate();
         }
 
 

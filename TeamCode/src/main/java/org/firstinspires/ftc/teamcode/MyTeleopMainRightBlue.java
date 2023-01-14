@@ -79,7 +79,7 @@ public class MyTeleopMainRightBlue extends LinearOpMode {
 
            // drive.setPoseEstimate(new Pose2d(10, 10, Math.toRadians(90)));
 
-            drive.setPoseEstimate(PoseStorage.currentPose);
+            //drive.setPoseEstimate(PoseStorage.currentPose);
             PoseStorage.currentPose = drive.getPoseEstimate();
 
             Trajectory myTrajectory = drive.trajectoryBuilder(PoseStorage.currentPose)
