@@ -27,6 +27,7 @@ public class LocalizationTest extends LinearOpMode {
         waitForStart();
 
         while (!isStopRequested()) {
+            drive.setPoseEstimate(PoseStorage.currentPose);
             drive.setWeightedDrivePower(
                     new Pose2d(
                             -gamepad1.left_stick_y,
@@ -36,14 +37,7 @@ public class LocalizationTest extends LinearOpMode {
             );
 
             drive.update();
-            drive.setPoseEstimate(PoseStorage.currentPose);
             Pose2d poseEstimate = drive.getPoseEstimate();
-            Trajectory myTrajectory = drive.trajectoryBuilder(PoseStorage.currentPose)
-                            .lineToLinearHeading(new Pose2d(8,65,Math.toRadians(75)))
-                            .build();
-            if(gamepad1.y){
-                drive.followTrajectory(myTrajectory);
-            }
 
             telemetry.addData("x", poseEstimate.getX());
             telemetry.addData("y", poseEstimate.getY());
