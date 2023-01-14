@@ -67,7 +67,7 @@ public class TeleOpJustLocalizer extends LinearOpMode {
             // Set drive power
             robot.setDrivePower(x, y, rx);
             if(gamepad1.y){
-                myLocalizer.followTrajectoryAsync(myTrajectory);
+                myLocalizer.followTrajectory(myTrajectory);
             }
         }
     }
