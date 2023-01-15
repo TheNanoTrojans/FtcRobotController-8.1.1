@@ -93,7 +93,7 @@ public class AutoRightBlue extends LinearOpMode {
                     .lineToLinearHeading(new Pose2d(8, 65, Math.toRadians(180)))
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
+                    .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(180)))
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
@@ -170,8 +170,8 @@ public class AutoRightBlue extends LinearOpMode {
                 waitForStart();
                 if(isStopRequested()) return;
 
-                drive.followTrajectory(traj1);
-                drive.followTrajectory(traj4);
+                //drive.followTrajectory(traj1);
+                //drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
