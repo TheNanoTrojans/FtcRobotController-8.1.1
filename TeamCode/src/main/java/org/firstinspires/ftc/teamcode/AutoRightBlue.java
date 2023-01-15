@@ -104,8 +104,8 @@ public class AutoRightBlue extends LinearOpMode {
                     //.strafeTo(new Vector2d(-36,45))
 
                     .build();
-            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .strafeTo(new Vector2d(-60,65))
+            Trajectory traj3 = drive.trajectoryBuilder(traj4.end())
+                    .strafeTo(new Vector2d(-60,43))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
                     .strafeTo(new Vector2d(-60,45))
@@ -196,6 +196,13 @@ public class AutoRightBlue extends LinearOpMode {
                // drive.followTrajectory(traj1);
                // drive.followTrajectory(traj3);
                // drive.followTrajectory(traj5);
+                drive.followTrajectory(myTrajectory);
+                drive.followTrajectory(myTrajectory1);
+                drive.turn(Math.toRadians(-108));
+                runArm();
+                drive.followTrajectory(traj1);
+                drive.followTrajectory(traj4);
+                drive.followTrajectory(traj3);
             }
             PoseStorage.currentPose = drive.getPoseEstimate();
         }
