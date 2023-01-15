@@ -49,7 +49,7 @@ public class AutoLeftRed extends LinearOpMode {
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,-70,Math.toRadians(180)))
-                    .strafeTo(new Vector2d(8,-65))
+                    .lineToLinearHeading(new Pose2d(8,-65,Math.toRadians(-105)))
 
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory.end())
