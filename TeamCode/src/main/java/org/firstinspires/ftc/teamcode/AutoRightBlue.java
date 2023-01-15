@@ -97,10 +97,10 @@ public class AutoRightBlue extends LinearOpMode {
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
-                            .strafeTo(new Vector2d(-12,40 ))
+                            .strafeTo(new Vector2d(-12,43 ))
                             .build();
             Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
-                    .strafeTo(new Vector2d(-36,40))
+                    .strafeTo(new Vector2d(-36,43))
                     //.strafeTo(new Vector2d(-36,45))
 
                     .build();
