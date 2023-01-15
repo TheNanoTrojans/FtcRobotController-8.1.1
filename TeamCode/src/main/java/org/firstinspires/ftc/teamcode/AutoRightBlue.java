@@ -114,7 +114,7 @@ public class AutoRightBlue extends LinearOpMode {
             intakeClaw.setPosition(1);
             drive.followTrajectory(myTrajectory);
             drive.followTrajectory(myTrajectory1);
-            drive.turn(Math.toRadians(-105));
+            drive.turn(Math.toRadians(-108));
             //drive.turn(Math.toRadians(180) + 1e-6);
             afLeft.setPower(-1);
             afRight.setPower(-1);
@@ -127,7 +127,7 @@ public class AutoRightBlue extends LinearOpMode {
             armturn.setPower(0);
             lsLeft.setPower(1);
             lsRight.setPower(1);
-            sleep(2300);
+            sleep(2250);
             lsLeft.setPower(0);
             lsRight.setPower(0);
             sleep(100);
@@ -170,7 +170,7 @@ public class AutoRightBlue extends LinearOpMode {
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(traj1);
-               // drive.followTrajectory(traj4);
+                drive.followTrajectory(traj4);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
 
