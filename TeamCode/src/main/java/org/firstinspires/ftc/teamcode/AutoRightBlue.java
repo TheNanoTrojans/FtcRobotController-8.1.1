@@ -111,7 +111,7 @@ public class AutoRightBlue extends LinearOpMode {
             afRight.setPower(0);
             //ArmUp(50000,1);
             armturn.setPower(0.5);
-            sleep(600);
+            sleep(900);
             armturn.setPower(0);
             lsLeft.setPower(1);
             lsRight.setPower(1);
@@ -130,11 +130,11 @@ public class AutoRightBlue extends LinearOpMode {
             lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lsLeft.setPower(-1);
             lsRight.setPower(-1);
-            afLeft.setPower(1);
-            afRight.setPower(1);
-            sleep(1000);
-            afLeft.setPower(0);
-            afRight.setPower(0);
+            //afLeft.setPower(1);
+            //afRight.setPower(1);
+            //sleep(1000);
+            //afLeft.setPower(0);
+            //afRight.setPower(0);
             sleep(2400);
             lsLeft.setPower(0);
             lsRight.setPower(0);
@@ -147,7 +147,7 @@ public class AutoRightBlue extends LinearOpMode {
             sleep(1000);
             afLeft.setPower(0);
             afRight.setPower(0);
-            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+           /* if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
@@ -187,7 +187,7 @@ public class AutoRightBlue extends LinearOpMode {
                // drive.followTrajectory(traj1);
                 drive.followTrajectory(traj3);
                 drive.followTrajectory(traj5);
-            }
+            }*/
             PoseStorage.currentPose = drive.getPoseEstimate();
         }
 
