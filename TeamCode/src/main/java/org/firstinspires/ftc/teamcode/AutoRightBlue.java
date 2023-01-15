@@ -89,7 +89,7 @@ public class AutoRightBlue extends LinearOpMode {
 
 
                     .build();
-            Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
+            Trajectory myTrajectory1 = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(180)))
                     .lineToLinearHeading(new Pose2d(8, 65, Math.toRadians(180)))
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
@@ -99,13 +99,24 @@ public class AutoRightBlue extends LinearOpMode {
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
                             .strafeTo(new Vector2d(-12,45 ))
                             .build();
+            Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
+                    .strafeTo(new Vector2d(-36,65))
+                    //.strafeTo(new Vector2d(-36,45))
+
+                    .build();
+            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
+                    .strafeTo(new Vector2d(-60,65))
+                    .build();
+            Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
+                    .strafeTo(new Vector2d(-60,45))
+                    .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
-            drive.followTrajectory(myTrajectory);
-            //drive.followTrajectory(myTrajectory1);
+            //drive.followTrajectory(myTrajectory);
+            drive.followTrajectory(myTrajectory1);
             //drive.turn(Math.toRadians(-105));
             //drive.turn(Math.toRadians(180) + 1e-6);
-            afLeft.setPower(-1);
+           /* afLeft.setPower(-1);
             afRight.setPower(-1);
             sleep(2000);
             afLeft.setPower(0);
@@ -147,7 +158,7 @@ public class AutoRightBlue extends LinearOpMode {
             afRight.setPower(1);
             sleep(2000);
             afLeft.setPower(0);
-            afRight.setPower(0);
+            afRight.setPower(0);*/
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
 
 
@@ -162,33 +173,24 @@ public class AutoRightBlue extends LinearOpMode {
                 //drive.followTrajectory(traj4);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
-                Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
-                        .strafeTo(new Vector2d(-36,65))
-                        .strafeTo(new Vector2d(-36,45))
 
-                        .build();
                 waitForStart();
                 if(isStopRequested()) return;
 
                 //drive.followTrajectory(traj1);
                 //drive.followTrajectory(traj4);
-                drive.followTrajectory(traj2);
+               // drive.followTrajectory(traj2);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
-                Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
-                        .strafeTo(new Vector2d(-60,65))
-                        .build();
-                Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                        .strafeTo(new Vector2d(-60,45))
-                                .build();
+
 
                 //drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
                 //drive.followTrajectory(myTrajectory);
                // drive.followTrajectory(traj1);
-                drive.followTrajectory(traj3);
-                drive.followTrajectory(traj5);
+               // drive.followTrajectory(traj3);
+               // drive.followTrajectory(traj5);
             }
             PoseStorage.currentPose = drive.getPoseEstimate();
         }
