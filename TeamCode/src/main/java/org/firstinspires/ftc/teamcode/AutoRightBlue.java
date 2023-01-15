@@ -112,11 +112,9 @@ public class AutoRightBlue extends LinearOpMode {
                     .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
-            drive.followTrajectory(myTrajectory);
-            drive.followTrajectory(myTrajectory1);
-            drive.turn(Math.toRadians(-108));
+
             //drive.turn(Math.toRadians(180) + 1e-6);
-            afLeft.setPower(-1);
+            /afLeft.setPower(-1);
             afRight.setPower(-1);
             sleep(2000);
             afLeft.setPower(0);
