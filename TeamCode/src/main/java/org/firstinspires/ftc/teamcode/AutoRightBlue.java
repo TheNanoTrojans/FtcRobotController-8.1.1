@@ -93,11 +93,11 @@ public class AutoRightBlue extends LinearOpMode {
                     .lineToLinearHeading(new Pose2d(8, 65, Math.toRadians(180)))
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .strafeTo(new Vector2d(-12,65))
+                    .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
-                            .strafeTo(new Vector2d(-12,40 ))
+                            .strafeTo(new Vector2d(-12,45 ))
                             .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
@@ -163,8 +163,8 @@ public class AutoRightBlue extends LinearOpMode {
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
-                        //.strafeTo(new Vector2d(-36,65))
-                        .strafeTo(new Vector2d(-36,40))
+                        .strafeTo(new Vector2d(-36,65))
+                        .strafeTo(new Vector2d(-36,45))
 
                         .build();
                 waitForStart();
