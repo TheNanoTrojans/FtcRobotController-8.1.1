@@ -147,7 +147,7 @@ public class AutoRightBlue extends LinearOpMode {
             sleep(2000);
             afLeft.setPower(0);
             afRight.setPower(0);
-            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
 
 
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
@@ -161,7 +161,7 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(traj4);
             }
             if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
-                Trajectory traj2 = drive.trajectoryBuilder(myTrajectory1.end())
+                Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
                         .strafeTo(new Vector2d(-36,65))
                         //.strafeTo(new Vector2d(-36,45))
 
@@ -169,10 +169,11 @@ public class AutoRightBlue extends LinearOpMode {
                 waitForStart();
                 if(isStopRequested()) return;
 
-               // drive.followTrajectory(traj1);
+                drive.followTrajectory(traj1);
+                drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
             }
-            if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
+            if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
                 Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
