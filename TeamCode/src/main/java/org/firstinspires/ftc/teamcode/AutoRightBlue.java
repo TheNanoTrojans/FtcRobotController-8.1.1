@@ -100,9 +100,9 @@ public class AutoRightBlue extends LinearOpMode {
                             .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
-            //drive.followTrajectory(myTrajectory);
-            //drive.followTrajectory(myTrajectory1);
-            //drive.turn(Math.toRadians(-105));
+            drive.followTrajectory(myTrajectory);
+            drive.followTrajectory(myTrajectory1);
+            drive.turn(Math.toRadians(-105));
             //drive.turn(Math.toRadians(180) + 1e-6);
             afLeft.setPower(-1);
             afRight.setPower(-1);
@@ -111,7 +111,7 @@ public class AutoRightBlue extends LinearOpMode {
             afRight.setPower(0);
             //ArmUp(50000,1);
             armturn.setPower(0.5);
-            sleep(900);
+            sleep(800);
             armturn.setPower(0);
             lsLeft.setPower(1);
             lsRight.setPower(1);
@@ -135,7 +135,7 @@ public class AutoRightBlue extends LinearOpMode {
             //sleep(1000);
             //afLeft.setPower(0);
             //afRight.setPower(0);
-            sleep(2100);
+            sleep(2250);
             lsLeft.setPower(0);
             lsRight.setPower(0);
             intakeClaw.setPosition(1);
@@ -144,10 +144,10 @@ public class AutoRightBlue extends LinearOpMode {
             armturn.setPower(0);
             afLeft.setPower(1);
             afRight.setPower(1);
-            sleep(1000);
+            sleep(2000);
             afLeft.setPower(0);
             afRight.setPower(0);
-           /* if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
@@ -187,7 +187,7 @@ public class AutoRightBlue extends LinearOpMode {
                // drive.followTrajectory(traj1);
                 drive.followTrajectory(traj3);
                 drive.followTrajectory(traj5);
-            }*/
+            }
             PoseStorage.currentPose = drive.getPoseEstimate();
         }
 

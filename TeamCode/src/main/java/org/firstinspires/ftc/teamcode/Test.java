@@ -57,7 +57,7 @@ public class Test extends LinearOpMode {
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
             afLeft.setPower(gamepad2.right_stick_y);
-            afRight.setPower( gamepad2.right_stick_y);
+            afRight.setPower(gamepad2.right_stick_y);
             armturn.setPower(-gamepad2.right_stick_x);
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
