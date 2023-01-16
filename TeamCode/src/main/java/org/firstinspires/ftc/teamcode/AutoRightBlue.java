@@ -90,7 +90,7 @@ public class AutoRightBlue extends LinearOpMode {
 
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .lineToLinearHeading(new Pose2d(11, 65, Math.toRadians(180)))
+                    .splineToSplineHeading(new Pose2d(11, 65, Math.toRadians(73)),0)
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
@@ -197,8 +197,10 @@ public class AutoRightBlue extends LinearOpMode {
                // drive.followTrajectory(traj3);
                // drive.followTrajectory(traj5);
                 drive.followTrajectory(myTrajectory);
+                //drive.turn(Math.toRadians(-107));
+
                 drive.followTrajectory(myTrajectory1);
-                drive.turn(Math.toRadians(-108));
+
                 runArm();
 
                 drive.followTrajectory(traj3);
