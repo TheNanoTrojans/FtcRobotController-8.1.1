@@ -72,7 +72,7 @@ public class AutoRightRed extends LinearOpMode {
             public void onError(int errorCode) {}
         });
         if(opModeInInit()){
-            intakeClaw.setPosition(0.2);
+            intakeClaw.setPosition(0.4);
         }
         if(isStopRequested()){
             intakeClaw.setPosition(1);
@@ -268,7 +268,7 @@ public class AutoRightRed extends LinearOpMode {
         lsRight.setPower(0);
         sleep(100);
 
-        intakeClaw.setPosition(0.2);
+        intakeClaw.setPosition(0.4);
 
         sleep(500);
         //intakeClaw.setPosition(0);
