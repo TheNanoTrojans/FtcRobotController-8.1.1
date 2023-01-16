@@ -90,7 +90,7 @@ public class AutoRightBlue extends LinearOpMode {
 
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .splineToSplineHeading(new Pose2d(13, 63, Math.toRadians(73)),0)
+                    .splineToSplineHeading(new Pose2d(12, 62, Math.toRadians(73)),0)
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
