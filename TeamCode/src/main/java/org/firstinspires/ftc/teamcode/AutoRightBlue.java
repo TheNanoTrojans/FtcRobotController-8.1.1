@@ -102,6 +102,7 @@ public class AutoRightBlue extends LinearOpMode {
             Trajectory myTrajectory4 = drive.trajectoryBuilder(myTrajectory3.end())
                     .lineToLinearHeading(new Pose2d(11.5 , 66, Math.toRadians(80)))
                     .build();
+            Trajectory myTrajectory5 = 
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,70,Math.toRadians(90)))
                     .build();
@@ -189,8 +190,7 @@ public class AutoRightBlue extends LinearOpMode {
                 //drive.turn(Math.toRadians(-108));
                 drive.followTrajectory(myTrajectory3);
                 runArm();
-                drive.followTrajectory(myTrajectory1);
-
+                runafDown();
                 drive.followTrajectory(myTrajectory4);
                 //stop();
                 drive.followTrajectory(traj1);
@@ -280,6 +280,13 @@ public class AutoRightBlue extends LinearOpMode {
         armturn.setPower(-0.5);
         sleep(700);
         armturn.setPower(0);
+        afLeft.setPower(1);
+        afRight.setPower(1);
+        sleep(2000);
+        afLeft.setPower(0);
+        afRight.setPower(0);
+    }
+    public void runafDown() {
         afLeft.setPower(1);
         afRight.setPower(1);
         sleep(2000);
