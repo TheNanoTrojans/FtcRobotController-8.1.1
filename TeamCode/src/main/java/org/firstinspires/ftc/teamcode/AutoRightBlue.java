@@ -202,7 +202,7 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
                 //drive.turn(Math.toRadians(-108));
-
+                runaf();
                 runArm();
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
@@ -276,7 +276,7 @@ public class AutoRightBlue extends LinearOpMode {
         lsRight.setPower(0);
         intakeClaw.setPosition(1);
         armturn.setPower(-0.5);
-        sleep(550);
+        sleep(600);
         armturn.setPower(0);
         afLeft.setPower(1);
         afRight.setPower(1);
