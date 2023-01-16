@@ -99,7 +99,7 @@ public class AutoLeftBlue extends LinearOpMode {
 
 
             Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(8,67))
+                    .lineTo(new Vector2d(8.5,67.5))
                     .build();
             Trajectory myTrajectory4 = drive.trajectoryBuilder(myTrajectory3.end())
                     .lineToLinearHeading(new Pose2d(8 , 64.5, Math.toRadians(74)))
