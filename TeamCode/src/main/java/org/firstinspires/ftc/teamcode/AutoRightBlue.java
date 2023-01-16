@@ -89,13 +89,14 @@ public class AutoRightBlue extends LinearOpMode {
 
 
                     .build();
-            Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
+            Trajectory myTrajectory2 = drive.trajectoryBuilder(myTrajectory.end())
+                    .strafeTo(new Vector2d(-10,67))
+                    .build();
+            Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
                     .splineToSplineHeading(new Pose2d(12 , 62, Math.toRadians(73)),0)
                     .build();
-            Trajectory myTrajectory2 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(-10,67))
-                    .build();
-            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory2.end())
+
+            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
                     .build();
 
@@ -175,8 +176,9 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(myTrajectory1);
                 //drive.turn(Math.toRadians(-108));
                 runArm();
-                drive.followTrajectory(traj1);
-                drive.followTrajectory(traj4);
+                stop();
+                //drive.followTrajectory(traj1);
+                //drive.followTrajectory(traj4);
                 stop();
             } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
 
@@ -234,7 +236,7 @@ public class AutoRightBlue extends LinearOpMode {
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
-        intakeClaw.setPosition(0.2);
+        /*intakeClaw.setPosition(0.2);
 
         sleep(500);
         //intakeClaw.setPosition(0);
@@ -261,6 +263,6 @@ public class AutoRightBlue extends LinearOpMode {
         afRight.setPower(1);
         sleep(2000);
         afLeft.setPower(0);
-        afRight.setPower(0);
+        afRight.setPower(0);*/
     }
 }
