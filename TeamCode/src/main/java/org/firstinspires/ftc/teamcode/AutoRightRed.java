@@ -91,13 +91,13 @@ public class AutoRightRed extends LinearOpMode {
 
                     .build();
             Trajectory myTrajectory2 = drive.trajectoryBuilder(myTrajectory.end())
-                    .strafeTo(new Vector2d(-10,-67))
+                    .strafeTo(new Vector2d(5,-67))
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
-                    .splineToSplineHeading(new Pose2d(11.5 , -62, Math.toRadians(-70)),0)
+                    .lineToLinearHeading(new Pose2d(11.5 , -62, Math.toRadians(-70)))
                     .build();
             Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(13.5,-63))
+                    .lineTo(new Vector2d(12.5,-64))
                     .build();
             Trajectory myTrajectory5 = drive.trajectoryBuilder(myTrajectory3.end())
                     .strafeTo(new Vector2d(11,-63))
