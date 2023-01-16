@@ -86,8 +86,8 @@ public class AutoBlueRight51 extends LinearOpMode {
 
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35.5,70,Math.toRadians(180)))
-                    .strafeTo(new Vector2d(60,66.5))
+            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35,70,Math.toRadians(180)))
+                    .strafeTo(new Vector2d(45,66.5))
 
 
                     .build();
