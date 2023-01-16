@@ -19,7 +19,7 @@ package org.firstinspires.ftc.teamcode;
         import org.openftc.easyopencv.OpenCvCameraRotation;
 
 @Autonomous(name = "AutoBlueRight51")
-public class AutoLeftBlue extends LinearOpMode {
+public class AutoBlueRight51 extends LinearOpMode {
 
     private SleeveDetection sleeveDetection;
     private OpenCvCamera camera;
@@ -87,7 +87,7 @@ public class AutoLeftBlue extends LinearOpMode {
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
             Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(35.5,70,Math.toRadians(180)))
-                    .strafeTo(new Vector2d(37,67))
+                    .strafeTo(new Vector2d(60,66.5))
 
 
                     .build();
@@ -127,50 +127,6 @@ public class AutoLeftBlue extends LinearOpMode {
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
 
-            //drive.turn(Math.toRadians(180) + 1e-6);
-           /* afLeft.setPower(-1);
-            afRight.setPower(-1);
-            sleep(2000);
-            afLeft.setPower(0);
-            afRight.setPower(0);
-            //ArmUp(50000,1);
-            armturn.setPower(0.5);
-            sleep(800);
-            armturn.setPower(0);
-            lsLeft.setPower(1);
-            lsRight.setPower(1);
-            sleep(2250);
-            lsLeft.setPower(0);
-            lsRight.setPower(0);
-            sleep(100);
-            intakeClaw.setPosition(0.2);
-
-            sleep(500);
-            //intakeClaw.setPosition(0);
-            //  ArmUp(40000,1);
-            //armturn.setPosition(0);
-            //armturn.setPosition(0.5);
-            lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            lsLeft.setPower(-1);
-            lsRight.setPower(-1);
-            //afLeft.setPower(1);
-            //afRight.setPower(1);
-            //sleep(1000);
-            //afLeft.setPower(0);
-            //afRight.setPower(0);
-            sleep(2250);
-            lsLeft.setPower(0);
-            lsRight.setPower(0);
-            intakeClaw.setPosition(1);
-            armturn.setPower(-0.5);
-            sleep(550);
-            armturn.setPower(0);
-            afLeft.setPower(1);
-            afRight.setPower(1);
-            sleep(2000);
-            afLeft.setPower(0);
-            afRight.setPower(0);*/
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
@@ -179,63 +135,17 @@ public class AutoLeftBlue extends LinearOpMode {
                 waitForStart();
                 if(isStopRequested()) return;
 
-                //drive.turn(Math.toRadians(90));
-                //drive.followTrajectory(myTrajectory);
-                drive.followTrajectory(myTrajectory);
-                drive.followTrajectory(myTrajectory2);
-                drive.followTrajectory(myTrajectory1);
-                runaf();
-                //drive.turn(Math.toRadians(-108));
-                drive.followTrajectory(myTrajectory3);
-                runArm();
-                drive.followTrajectory(myTrajectory4);
-                runafDown();
-                //stop();
-                drive.followTrajectory(traj1);
-                drive.followTrajectory(traj4);
+
                 stop();
             } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
 
                 waitForStart();
                 if(isStopRequested()) return;
-                drive.followTrajectory(myTrajectory);
-                drive.followTrajectory(myTrajectory2);
-                drive.followTrajectory(myTrajectory1);
-                runaf();
-                //drive.turn(Math.toRadians(-108));
-                drive.followTrajectory(myTrajectory3);
-                runArm();
-                drive.followTrajectory(myTrajectory4);
-                runafDown();
-                drive.followTrajectory(traj1);
-                drive.followTrajectory(traj4);
-                drive.followTrajectory(traj2);
+
                 stop();
             } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
-
-
-
-
-                //drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
-                //drive.followTrajectory(myTrajectory);
-                // drive.followTrajectory(traj1);
-                // drive.followTrajectory(traj3);
-                // drive.followTrajectory(traj5);
                 drive.followTrajectory(myTrajectory);
-                //drive.turn(Math.toRadians(-107));
-                drive.followTrajectory(myTrajectory2);
 
-                drive.followTrajectory(myTrajectory1);
-                runaf();
-                //drive.turn(Math.toRadians(-108));
-                drive.followTrajectory(myTrajectory3);
-                runArm();
-                drive.followTrajectory(myTrajectory4);
-                runafDown();
-
-
-                drive.followTrajectory(traj3);
-                drive.followTrajectory(traj5);
                 stop();
             }
             PoseStorage.currentPose = drive.getPoseEstimate();
