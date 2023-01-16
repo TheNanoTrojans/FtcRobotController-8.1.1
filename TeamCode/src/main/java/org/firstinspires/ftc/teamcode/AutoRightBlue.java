@@ -122,7 +122,7 @@ public class AutoRightBlue extends LinearOpMode {
                     .strafeTo(new Vector2d(-59,45))
                     .build();
             Trajectory alignment = drive.trajectoryBuilder(new Pose2d(-37,70,Math.toRadians(180)))
-                            .lineTo(new Vector2d(37,70))
+                            .lineTo(new Vector2d(35.5,70))
                             .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
