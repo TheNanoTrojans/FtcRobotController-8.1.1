@@ -84,16 +84,16 @@ public class AutoRightRed extends LinearOpMode {
 
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-35,-70,Math.toRadians(180)))
-                    .strafeTo(new Vector2d(-35,-67))
+            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(180)))
+                    .strafeTo(new Vector2d(-37,-67))
 
 
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .lineToLinearHeading(new Pose2d(8, -65, Math.toRadians(180)))
+                    .splineToSplineHeading(new Pose2d(11, -63, Math.toRadians(107)),0)
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineToLinearHeading(new Pose2d(-12,-65,Math.toRadians(180)))
+                    .lineToLinearHeading(new Pose2d(-12,-65,Math.toRadians(90)))
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
@@ -104,13 +104,13 @@ public class AutoRightRed extends LinearOpMode {
                     //.strafeTo(new Vector2d(-36,45))
 
                     .build();
-            Trajectory traj3 = drive.trajectoryBuilder(traj4.end())
-                    .strafeTo(new Vector2d(-60,-43))
+            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
+                    .lineToLinearHeading(new Pose2d(-59,-65,Math.toRadians(90)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                    .strafeTo(new Vector2d(-60,-45))
+                    .strafeTo(new Vector2d(-59,-47))
                     .build();
-            drive.setPoseEstimate(new Pose2d(-35,-70, Math.toRadians(180)));
+            drive.setPoseEstimate(new Pose2d(-37,-70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
 
             //drive.turn(Math.toRadians(180) + 1e-6);
@@ -169,7 +169,7 @@ public class AutoRightRed extends LinearOpMode {
                 //drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory1);
-                drive.turn(Math.toRadians(-72));
+               // drive.turn(Math.toRadians(-108));
                 runArm();
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
@@ -180,7 +180,7 @@ public class AutoRightRed extends LinearOpMode {
                 if(isStopRequested()) return;
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory1);
-                drive.turn(Math.toRadians(-72));
+                //drive.turn(Math.toRadians(-108));
                 runArm();
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
@@ -197,12 +197,14 @@ public class AutoRightRed extends LinearOpMode {
                 // drive.followTrajectory(traj3);
                 // drive.followTrajectory(traj5);
                 drive.followTrajectory(myTrajectory);
+                //drive.turn(Math.toRadians(-107));
+
                 drive.followTrajectory(myTrajectory1);
-                drive.turn(Math.toRadians(-72));
+
                 runArm();
-                drive.followTrajectory(traj1);
-                drive.followTrajectory(traj4);
+
                 drive.followTrajectory(traj3);
+                drive.followTrajectory(traj5);
             }
             PoseStorage.currentPose = drive.getPoseEstimate();
         }
