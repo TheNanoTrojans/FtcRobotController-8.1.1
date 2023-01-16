@@ -130,6 +130,7 @@ public class AutoRightBlue extends LinearOpMode {
                             .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
+            sleep(500);
 
             //drive.turn(Math.toRadians(180) + 1e-6);
            /* afLeft.setPower(-1);
@@ -186,6 +187,7 @@ public class AutoRightBlue extends LinearOpMode {
                // stop();
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
+                intakeClaw.setPosition(1);
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
