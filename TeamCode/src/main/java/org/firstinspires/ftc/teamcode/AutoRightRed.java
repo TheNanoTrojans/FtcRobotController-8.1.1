@@ -85,7 +85,7 @@ public class AutoRightRed extends LinearOpMode {
 
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(180)))
+            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(90)))
                     .strafeTo(new Vector2d(-37,-67))
 
 
@@ -128,7 +128,7 @@ public class AutoRightRed extends LinearOpMode {
             Trajectory alignment = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(180)))
                     .lineTo(new Vector2d(35.5,-70))
                     .build();
-            drive.setPoseEstimate(new Pose2d(-35,-70, Math.toRadians(180)));
+            drive.setPoseEstimate(new Pose2d(-35,-70, Math.toRadians(90)));
             intakeClaw.setPosition(1);
 
             //drive.turn(Math.toRadians(180) + 1e-6);
