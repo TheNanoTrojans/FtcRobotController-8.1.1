@@ -130,7 +130,7 @@ public class AutoRightBlue extends LinearOpMode {
                             .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
-            sleep(500);
+            sleep(1000);
 
             //drive.turn(Math.toRadians(180) + 1e-6);
            /* afLeft.setPower(-1);
