@@ -168,13 +168,13 @@ public class AutoRightBlue extends LinearOpMode {
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory);
-                drive.followTrajectory(myTrajectory1);
+                //drive.followTrajectory(myTrajectory1);
                 //drive.turn(Math.toRadians(-108));
-                runArm();
+                //runArm();
                 //drive.followTrajectory(traj1);
                 //drive.followTrajectory(traj4);
-            }
-            if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
+                stop();
+            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
 
                 waitForStart();
                 if(isStopRequested()) return;
@@ -185,8 +185,7 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
-            }
-            if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+            }if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
 
