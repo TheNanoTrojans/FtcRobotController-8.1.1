@@ -85,7 +85,7 @@ public class AutoRightRed extends LinearOpMode {
 
             SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(90)))
+            Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(0)))
                     .strafeTo(new Vector2d(-37,-67))
 
 
@@ -94,7 +94,7 @@ public class AutoRightRed extends LinearOpMode {
                     .strafeTo(new Vector2d(-10,-67))
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
-                    .splineToSplineHeading(new Pose2d(11.5 , -62, Math.toRadians(70)),0)
+                    .splineToSplineHeading(new Pose2d(11.5 , -62, Math.toRadians(-110)),0)
                     .build();
             Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineTo(new Vector2d(12.5,-66))
@@ -103,7 +103,7 @@ public class AutoRightRed extends LinearOpMode {
                     .strafeTo(new Vector2d(11,-63))
                     .build();
             Trajectory myTrajectory4 = drive.trajectoryBuilder(myTrajectory5.end())
-                    .lineToLinearHeading(new Pose2d(11.5 , -66, Math.toRadians(80)))
+                    .lineToLinearHeading(new Pose2d(11.5 , -66, Math.toRadians(-120)))
                     .build();
 
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory4.end())
@@ -128,7 +128,7 @@ public class AutoRightRed extends LinearOpMode {
             Trajectory alignment = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(180)))
                     .lineTo(new Vector2d(35.5,-70))
                     .build();
-            drive.setPoseEstimate(new Pose2d(-35,-70, Math.toRadians(90)));
+            drive.setPoseEstimate(new Pose2d(-35,-70, Math.toRadians(0)));
             intakeClaw.setPosition(1);
 
             //drive.turn(Math.toRadians(180) + 1e-6);
