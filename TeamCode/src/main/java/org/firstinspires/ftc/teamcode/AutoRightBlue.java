@@ -31,6 +31,7 @@ public class AutoRightBlue extends LinearOpMode {
     protected Servo intakeClaw;
     protected int ArmUpPos = 0;
     protected float power = 0;
+    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
 
     // Name of the Webcam to be set in the config
@@ -236,6 +237,7 @@ public class AutoRightBlue extends LinearOpMode {
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
+        Trajectory myTrajectory3 = drive.trajectoryBuilder()
         intakeClaw.setPosition(0.2);
 
         sleep(500);
