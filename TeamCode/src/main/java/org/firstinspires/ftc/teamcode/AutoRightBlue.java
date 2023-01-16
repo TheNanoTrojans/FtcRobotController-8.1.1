@@ -232,7 +232,7 @@ public class AutoRightBlue extends LinearOpMode {
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
-        sleep(2250);
+        sleep(2350);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
