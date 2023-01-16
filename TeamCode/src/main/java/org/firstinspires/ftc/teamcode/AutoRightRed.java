@@ -91,7 +91,7 @@ public class AutoRightRed extends LinearOpMode {
 
                     .build();
             Trajectory myTrajectory2 = drive.trajectoryBuilder(myTrajectory.end())
-                    .strafeTo(new Vector2d(5,-67))
+                    .strafeTo(new Vector2d(10,-67))
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
                     .lineToLinearHeading(new Pose2d(11.5 , -62, Math.toRadians(-70)))
@@ -111,7 +111,7 @@ public class AutoRightRed extends LinearOpMode {
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
-                    .strafeTo(new Vector2d(-11,-43 ))
+                    .strafeTo(new Vector2d(-11,-45 ))
                     .build();
 
             Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
@@ -176,7 +176,7 @@ public class AutoRightRed extends LinearOpMode {
             sleep(2000);
             afLeft.setPower(0);
             afRight.setPower(0);*/
-            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
+            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
@@ -220,7 +220,7 @@ public class AutoRightRed extends LinearOpMode {
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
-            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
 
 
 
@@ -262,7 +262,7 @@ public class AutoRightRed extends LinearOpMode {
     }
     private void runArm(){
         armturn.setPower(0.5);
-        sleep(800);
+        sleep(740);
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
@@ -292,7 +292,7 @@ public class AutoRightRed extends LinearOpMode {
         lsRight.setPower(0);
         intakeClaw.setPosition(1);
         armturn.setPower(-0.5);
-        sleep(850);
+        sleep(775);
         armturn.setPower(0);
     }
     public void runafDown() {
