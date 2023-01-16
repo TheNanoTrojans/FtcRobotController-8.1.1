@@ -90,7 +90,7 @@ public class AutoRightBlue extends LinearOpMode {
 
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .splineToSplineHeading(new Pose2d(11, 65, Math.toRadians(73)),0)
+                    .splineToSplineHeading(new Pose2d(11, 63, Math.toRadians(73)),0)
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
@@ -105,10 +105,10 @@ public class AutoRightBlue extends LinearOpMode {
 
                     .build();
             Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .strafeTo(new Vector2d(-55,65))
+                    .lineToLinearHeading(new Pose2d(-59,65,Math.toRadians(90)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                    .strafeTo(new Vector2d(-55,47))
+                    .strafeTo(new Vector2d(-59,47))
                     .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
