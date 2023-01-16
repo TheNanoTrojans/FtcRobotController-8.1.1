@@ -96,12 +96,12 @@ public class AutoLeftBlue extends LinearOpMode {
 
 
             Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(10,66))
+                    .lineTo(new Vector2d(11,66))
                     .build();
             Trajectory myTrajectory4 = drive.trajectoryBuilder(myTrajectory3.end())
                     .lineToLinearHeading(new Pose2d(11.5 , 62, Math.toRadians(74)))
                     .build();
-            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
+            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory3.end())
                     .lineToLinearHeading(new Pose2d(12,65,Math.toRadians(90)))
                     .build();
 
@@ -244,6 +244,7 @@ public class AutoLeftBlue extends LinearOpMode {
         sleep(2000);
         afLeft.setPower(0);
         afRight.setPower(0);
+        intakeClaw.setPosition(1);
         //ArmUp(50000,1);
 
     }
@@ -260,7 +261,6 @@ public class AutoLeftBlue extends LinearOpMode {
 
         intakeClaw.setPosition(0.2);
 
-        sleep(500);
         //intakeClaw.setPosition(0);
         //  ArmUp(40000,1);
         //armturn.setPosition(0);
