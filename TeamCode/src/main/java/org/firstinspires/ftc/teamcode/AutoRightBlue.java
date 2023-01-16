@@ -90,7 +90,7 @@ public class AutoRightBlue extends LinearOpMode {
 
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .lineToLinearHeading(new Pose2d(10, 65, Math.toRadians(180)))
+                    .lineToLinearHeading(new Pose2d(11, 65, Math.toRadians(180)))
                     .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
@@ -104,11 +104,11 @@ public class AutoRightBlue extends LinearOpMode {
                     //.strafeTo(new Vector2d(-36,45))
 
                     .build();
-            Trajectory traj3 = drive.trajectoryBuilder(traj4.end())
-                    .strafeTo(new Vector2d(-45,43))
+            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
+                    .strafeTo(new Vector2d(-55,65))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                    .strafeTo(new Vector2d(-60,45))
+                    .strafeTo(new Vector2d(-55,47))
                     .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
@@ -200,9 +200,9 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(myTrajectory1);
                 drive.turn(Math.toRadians(-108));
                 runArm();
-                drive.followTrajectory(traj1);
-                drive.followTrajectory(traj4);
+
                 drive.followTrajectory(traj3);
+                drive.followTrajectory(traj5);
             }
             PoseStorage.currentPose = drive.getPoseEstimate();
         }
@@ -223,7 +223,7 @@ public class AutoRightBlue extends LinearOpMode {
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
-        sleep(2300);
+        sleep(2250);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
