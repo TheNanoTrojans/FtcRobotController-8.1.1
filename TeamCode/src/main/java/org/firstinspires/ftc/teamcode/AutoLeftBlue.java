@@ -133,8 +133,8 @@ public class AutoLeftBlue extends LinearOpMode {
                 drive.followTrajectory(myTrajectory);
                 drive.turn(Math.toRadians(-107));
                 runArm();
-                drive.followTrajectory(traj1);
-                drive.followTrajectory(traj3);
+                //drive.followTrajectory(traj1);
+                //drive.followTrajectory(traj3);
             }
             PoseStorage.currentPose = drive.getPoseEstimate();
         }
@@ -159,7 +159,7 @@ public class AutoLeftBlue extends LinearOpMode {
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
-        intakeClaw.setPosition(0.2);
+        /*intakeClaw.setPosition(0.2);
 
         sleep(500);
         //intakeClaw.setPosition(0);
@@ -186,7 +186,7 @@ public class AutoLeftBlue extends LinearOpMode {
         afRight.setPower(1);
         sleep(2000);
         afLeft.setPower(0);
-        afRight.setPower(0);
+        afRight.setPower(0);*/
     }
 
 }
