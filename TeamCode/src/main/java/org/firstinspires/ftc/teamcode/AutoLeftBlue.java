@@ -167,7 +167,7 @@ public class AutoLeftBlue extends LinearOpMode {
             sleep(2000);
             afLeft.setPower(0);
             afRight.setPower(0);*/
-            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
+            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
@@ -203,7 +203,7 @@ public class AutoLeftBlue extends LinearOpMode {
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
-            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
 
 
 
