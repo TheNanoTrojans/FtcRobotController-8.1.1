@@ -31,6 +31,7 @@ public class AutoRightRed extends LinearOpMode {
     protected Servo intakeClaw;
     protected int ArmUpPos = 0;
     protected float power = 0;
+    //SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
 
     // Name of the Webcam to be set in the config
@@ -89,28 +90,45 @@ public class AutoRightRed extends LinearOpMode {
 
 
                     .build();
-            Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory.end())
-                    .splineToSplineHeading(new Pose2d(11, -63, Math.toRadians(107)),0)
+            Trajectory myTrajectory2 = drive.trajectoryBuilder(myTrajectory.end())
+                    .strafeTo(new Vector2d(-10,-67))
                     .build();
-            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineToLinearHeading(new Pose2d(-12,-65,Math.toRadians(90)))
+            Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
+                    .splineToSplineHeading(new Pose2d(11.5 , -62, Math.toRadians(70)),0)
+                    .build();
+            Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
+                    .lineTo(new Vector2d(12.5,-66))
+                    .build();
+            Trajectory myTrajectory5 = drive.trajectoryBuilder(myTrajectory3.end())
+                    .strafeTo(new Vector2d(11,-63))
+                    .build();
+            Trajectory myTrajectory4 = drive.trajectoryBuilder(myTrajectory5.end())
+                    .lineToLinearHeading(new Pose2d(11.5 , -66, Math.toRadians(80)))
+                    .build();
+
+            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory4.end())
+                    .lineToLinearHeading(new Pose2d(-6,-70,Math.toRadians(90)))
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
-                    .strafeTo(new Vector2d(-12,-43 ))
+                    .strafeTo(new Vector2d(-6,-43 ))
                     .build();
+
             Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
-                    .strafeTo(new Vector2d(-36,-43))
+                    .strafeTo(new Vector2d(-26,-43))
                     //.strafeTo(new Vector2d(-36,45))
 
                     .build();
-            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineToLinearHeading(new Pose2d(-59,-65,Math.toRadians(90)))
+            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory4.end())
+                    .lineToLinearHeading(new Pose2d(-46,-64,Math.toRadians(90)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                    .strafeTo(new Vector2d(-59,-47))
+                    .strafeTo(new Vector2d(-46,-45))
                     .build();
-            drive.setPoseEstimate(new Pose2d(-37,-70, Math.toRadians(180)));
+            Trajectory alignment = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(180)))
+                    .lineTo(new Vector2d(35.5,-70))
+                    .build();
+            drive.setPoseEstimate(new Pose2d(-35,-70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
 
             //drive.turn(Math.toRadians(180) + 1e-6);
@@ -164,29 +182,42 @@ public class AutoRightRed extends LinearOpMode {
 
                 waitForStart();
                 if(isStopRequested()) return;
-
+                //drive.followTrajectory(alignment);
+                // stop();
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory);
+                drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
-               // drive.turn(Math.toRadians(-108));
+                runaf();
+                //drive.turn(Math.toRadians(-108));
+                drive.followTrajectory(myTrajectory3);
                 runArm();
+                drive.followTrajectory(myTrajectory5);
+                runafDown();
+                drive.followTrajectory(myTrajectory4);
+                //stop();
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
-            }
-            if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
+                stop();
+            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
 
                 waitForStart();
                 if(isStopRequested()) return;
                 drive.followTrajectory(myTrajectory);
+                drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
+                runaf();
                 //drive.turn(Math.toRadians(-108));
+                drive.followTrajectory(myTrajectory3);
                 runArm();
+                drive.followTrajectory(myTrajectory5);
+                runafDown();
+                drive.followTrajectory(myTrajectory4);
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
-            }
-            if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
 
@@ -197,11 +228,15 @@ public class AutoRightRed extends LinearOpMode {
                 // drive.followTrajectory(traj3);
                 // drive.followTrajectory(traj5);
                 drive.followTrajectory(myTrajectory);
-                //drive.turn(Math.toRadians(-107));
-
+                drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
-
+                runaf();
+                //drive.turn(Math.toRadians(-108));
+                drive.followTrajectory(myTrajectory3);
                 runArm();
+                drive.followTrajectory(myTrajectory5);
+                runafDown();
+                drive.followTrajectory(myTrajectory4);
 
                 drive.followTrajectory(traj3);
                 drive.followTrajectory(traj5);
@@ -213,22 +248,26 @@ public class AutoRightRed extends LinearOpMode {
 
         waitForStart();
     }
-    public void runArm(){
+    public void runaf(){
         afLeft.setPower(-1);
         afRight.setPower(-1);
         sleep(2000);
         afLeft.setPower(0);
         afRight.setPower(0);
         //ArmUp(50000,1);
+
+    }
+    private void runArm(){
         armturn.setPower(0.5);
         sleep(800);
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
-        sleep(2250);
+        sleep(2425);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
+
         intakeClaw.setPosition(0.2);
 
         sleep(500);
@@ -245,17 +284,20 @@ public class AutoRightRed extends LinearOpMode {
         //sleep(1000);
         //afLeft.setPower(0);
         //afRight.setPower(0);
-        sleep(2250);
+        sleep(2520);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         intakeClaw.setPosition(1);
         armturn.setPower(-0.5);
-        sleep(550);
+        sleep(850);
         armturn.setPower(0);
+    }
+    public void runafDown() {
         afLeft.setPower(1);
         afRight.setPower(1);
         sleep(2000);
         afLeft.setPower(0);
         afRight.setPower(0);
     }
+
 }
