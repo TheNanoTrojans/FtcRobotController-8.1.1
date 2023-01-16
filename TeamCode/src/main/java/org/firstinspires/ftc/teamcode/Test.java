@@ -110,7 +110,7 @@ public class Test extends LinearOpMode {
 
             }
              if (gamepad2.y){
-                 intakeClaw.setPosition(1);
+                 intakeClaw.setPosition(1 );
              }
              if (gamepad2.a){
                  intakeClaw.setPosition(0.2);
