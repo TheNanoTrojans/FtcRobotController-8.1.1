@@ -93,7 +93,7 @@ public class AutoRightBlue extends LinearOpMode {
                     .strafeTo(new Vector2d(-10,67))
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
-                    .splineToSplineHeading(new Pose2d(12 , 62, Math.toRadians(73)),0)
+                    .splineToSplineHeading(new Pose2d(11 , 62, Math.toRadians(73)),0)
                     .build();
 
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
@@ -232,7 +232,7 @@ public class AutoRightBlue extends LinearOpMode {
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
-        sleep(2350);
+        sleep(2300);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
