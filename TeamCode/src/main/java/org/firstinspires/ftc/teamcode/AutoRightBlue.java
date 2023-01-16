@@ -94,9 +94,11 @@ public class AutoRightBlue extends LinearOpMode {
                     .strafeTo(new Vector2d(-10,67))
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
-                    .splineToSplineHeading(new Pose2d(10.5 , 62, Math.toRadians(74)),0)
+                    .splineToSplineHeading(new Pose2d(11.5 , 62, Math.toRadians(74)),0)
                     .build();
-
+            Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
+                    .lineTo(new Vector2d(10.5,62))
+                    .build();
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory1.end())
                     .lineToLinearHeading(new Pose2d(-12,65,Math.toRadians(90)))
                     .build();
@@ -104,6 +106,7 @@ public class AutoRightBlue extends LinearOpMode {
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
                             .strafeTo(new Vector2d(-12,43 ))
                             .build();
+
             Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
                     .strafeTo(new Vector2d(-36,43))
                     //.strafeTo(new Vector2d(-36,45))
@@ -175,7 +178,9 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
+                runaf();
                 //drive.turn(Math.toRadians(-108));
+                drive.followTrajectory(myTrajectory3);
                 runArm();
                 //stop();
                 drive.followTrajectory(traj1);
@@ -189,6 +194,7 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
                 //drive.turn(Math.toRadians(-108));
+                
                 runArm();
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
@@ -221,13 +227,16 @@ public class AutoRightBlue extends LinearOpMode {
 
         waitForStart();
     }
-    public void runArm(){
+    public void runaf(){
         afLeft.setPower(-1);
         afRight.setPower(-1);
         sleep(2000);
         afLeft.setPower(0);
         afRight.setPower(0);
         //ArmUp(50000,1);
+
+    }
+    private void runArm(){
         armturn.setPower(0.5);
         sleep(800);
         armturn.setPower(0);
@@ -267,4 +276,5 @@ public class AutoRightBlue extends LinearOpMode {
         afLeft.setPower(0);
         afRight.setPower(0);
     }
+
 }
