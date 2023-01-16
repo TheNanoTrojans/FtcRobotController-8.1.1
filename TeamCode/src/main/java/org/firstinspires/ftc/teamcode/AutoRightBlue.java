@@ -207,9 +207,13 @@ public class AutoRightBlue extends LinearOpMode {
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
-                //drive.turn(Math.toRadians(-108));
                 runaf();
+                //drive.turn(Math.toRadians(-108));
+                drive.followTrajectory(myTrajectory3);
                 runArm();
+                //drive.followTrajectory(myTrajectory5);
+                runafDown();
+                drive.followTrajectory(myTrajectory4);
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
@@ -224,12 +228,15 @@ public class AutoRightBlue extends LinearOpMode {
                // drive.followTrajectory(traj3);
                // drive.followTrajectory(traj5);
                 drive.followTrajectory(myTrajectory);
-                //drive.turn(Math.toRadians(-107));
                 drive.followTrajectory(myTrajectory2);
-
                 drive.followTrajectory(myTrajectory1);
-
+                runaf();
+                //drive.turn(Math.toRadians(-108));
+                drive.followTrajectory(myTrajectory3);
                 runArm();
+                //drive.followTrajectory(myTrajectory5);
+                runafDown();
+                drive.followTrajectory(myTrajectory4);
 
                 drive.followTrajectory(traj3);
                 drive.followTrajectory(traj5);
@@ -252,7 +259,7 @@ public class AutoRightBlue extends LinearOpMode {
     }
     private void runArm(){
         armturn.setPower(0.5);
-        sleep(800);
+        sleep(850);
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
@@ -282,13 +289,8 @@ public class AutoRightBlue extends LinearOpMode {
         lsRight.setPower(0);
         intakeClaw.setPosition(1);
         armturn.setPower(-0.5);
-        sleep(700);
+        sleep(850);
         armturn.setPower(0);
-        afLeft.setPower(1);
-        afRight.setPower(1);
-        sleep(2000);
-        afLeft.setPower(0);
-        afRight.setPower(0);
     }
     public void runafDown() {
         afLeft.setPower(1);
