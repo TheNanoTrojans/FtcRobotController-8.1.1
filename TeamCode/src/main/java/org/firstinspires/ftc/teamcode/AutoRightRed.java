@@ -112,7 +112,7 @@ public class AutoRightRed extends LinearOpMode {
                     .build();
 
             Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
-                    .strafeTo(new Vector2d(-26,-43))
+                    .strafeTo(new Vector2d(-37,-43))
                     //.strafeTo(new Vector2d(-36,45))
 
                     .build();
