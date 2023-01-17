@@ -104,11 +104,11 @@ public class AutoRightRed extends LinearOpMode {
                     .build();
 
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory4.end())
-                    .lineToLinearHeading(new Pose2d(-11,-70,Math.toRadians(270)))
+                    .lineToLinearHeading(new Pose2d(-10,-70,Math.toRadians(270)))
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
-                    .strafeTo(new Vector2d(-11,-45 ))
+                    .strafeTo(new Vector2d(-10,-43 ))
                     .build();
 
             Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
@@ -117,10 +117,10 @@ public class AutoRightRed extends LinearOpMode {
 
                     .build();
             Trajectory traj3 = drive.trajectoryBuilder(myTrajectory4.end())
-                    .lineToLinearHeading(new Pose2d(-55,-64,Math.toRadians(270)))
+                    .lineToLinearHeading(new Pose2d(-58,-64,Math.toRadians(270)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                    .strafeTo(new Vector2d(-55,-45))
+                    .strafeTo(new Vector2d(-58,-45))
                     .build();
             Trajectory alignment = drive.trajectoryBuilder(new Pose2d(-37,-70,Math.toRadians(180)))
                     .lineTo(new Vector2d(35.5,-70))
