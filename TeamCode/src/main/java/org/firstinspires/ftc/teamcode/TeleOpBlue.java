@@ -18,7 +18,7 @@ import org.firstinspires.ftc.teamcode.drive.StandardTrackingWheelLocalizer;
 
 
 @TeleOp(group = "advanced")
-public class TeleOpJustLocalizer extends LinearOpMode {
+public class TeleOpBlue extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         // Initialize your own robot class
@@ -47,7 +47,7 @@ public class TeleOpJustLocalizer extends LinearOpMode {
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(8,65, Math.toRadians(75)))
+                    .lineToLinearHeading(new Pose2d(7,67, Math.toRadians(74)))
                     .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
