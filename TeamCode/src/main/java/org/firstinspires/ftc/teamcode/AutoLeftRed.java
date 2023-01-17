@@ -94,7 +94,7 @@ public class AutoLeftRed extends LinearOpMode {
                     .lineToLinearHeading(new Pose2d(11.5 , -62, Math.toRadians(-70)))
                     .build();
             Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(13.5,-65.5))
+                    .lineTo(new Vector2d(12.5,-65.5))
                     .build();
             Trajectory myTrajectory5 = drive.trajectoryBuilder(myTrajectory3.end())
                     .strafeTo(new Vector2d(11,-63))
@@ -173,7 +173,7 @@ public class AutoLeftRed extends LinearOpMode {
             sleep(2000);
             afLeft.setPower(0);
             afRight.setPower(0);*/
-            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
+            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
 
 
                 //.lineToLinearHeading(new Pose2d(0,55,Math.toRadians(90)))
@@ -219,7 +219,7 @@ public class AutoLeftRed extends LinearOpMode {
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
-            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
+            } else if (sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN){
 
 
 
