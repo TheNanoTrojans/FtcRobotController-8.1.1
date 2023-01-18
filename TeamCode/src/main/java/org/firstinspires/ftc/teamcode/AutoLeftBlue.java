@@ -294,7 +294,7 @@ public class AutoLeftBlue extends LinearOpMode {
     public void runafDown(){
         afLeft.setPower(1);
         afRight.setPower(1);
-        sleep(1550);
+        sleep(1350);
         afLeft.setPower(0);
         afRight.setPower(0);
     }

@@ -93,7 +93,7 @@ public class TeleOpLeftBlue extends LinearOpMode {
                 intakeClaw.setPosition(1);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
-                sleep(2475);
+                sleep(2415);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
@@ -114,11 +114,11 @@ public class TeleOpLeftBlue extends LinearOpMode {
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
                 armturn.setPower(-0.5);
-                sleep(800);
+                sleep(725);
                 armturn.setPower(0);
                 afLeft.setPower(1);
                 afRight.setPower(1);
-                sleep(1550);
+                sleep(1350);
                 afLeft.setPower(0);
                 afRight.setPower(0);
 
