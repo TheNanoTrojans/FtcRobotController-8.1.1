@@ -100,7 +100,7 @@ public class TeleOpLeftRed extends LinearOpMode {
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
                 armturn.setPower(-0.5);
-                sleep(775);
+                sleep(725);
                 armturn.setPower(0);
                 afLeft.setPower(1);
                 afRight.setPower(1);
