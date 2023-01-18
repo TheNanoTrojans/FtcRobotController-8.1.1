@@ -21,7 +21,7 @@ import org.firstinspires.ftc.teamcode.drive.StandardTrackingWheelLocalizer;
 
 
 @TeleOp(group = "advanced")
-public class TeleOpRed extends LinearOpMode {
+public class TeleOpLeftBlue extends LinearOpMode {
     protected CRServo afLeft;
     protected CRServo afRight;
     protected DcMotor lsLeft;
@@ -50,12 +50,24 @@ public class TeleOpRed extends LinearOpMode {
 
         waitForStart();
 
-        ///       if (isStopRequested()) return;
+ ///       if (isStopRequested()) return;
 
         while (opModeIsActive() && !isStopRequested()) {
             // Make sure to call myLocalizer.update() on *every* loop
             // Increasing loop time by utilizing bulk reads and minimizing writes will increase your
             // odometry accuracy
+            myLocalizer.update();
+
+            // Retrieve your pose
+            Pose2d myPose = myLocalizer.getPoseEstimate();
+            Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
+                    .lineToLinearHeading(new Pose2d(7,67, Math.toRadians(74)))
+                    .build();
+            // Print your pose to telemetry
+            telemetry.addData("x", myPose.getX());
+            telemetry.addData("y", myPose.getY());
+            telemetry.addData("heading", myPose.getHeading());
+            telemetry.update();
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
@@ -74,15 +86,17 @@ public class TeleOpRed extends LinearOpMode {
                 sleep(2000);
                 afLeft.setPower(0);
                 afRight.setPower(0);
+                intakeClaw.setPosition(1);
                 armturn.setPower(0.5);
-                sleep(725);
+                sleep(800);
                 armturn.setPower(0);
+                intakeClaw.setPosition(1);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
                 sleep(2475);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
-                sleep(100);
+                intakeClaw.setPosition(1);
             }
             if(gamepad2.left_bumper){
 
@@ -95,12 +109,12 @@ public class TeleOpRed extends LinearOpMode {
                 //sleep(1000);
                 //afLeft.setPower(0);
                 //afRight.setPower(0);
-                sleep(2520);
+                sleep(2450);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
                 armturn.setPower(-0.5);
-                sleep(775);
+                sleep(800);
                 armturn.setPower(0);
                 afLeft.setPower(1);
                 afRight.setPower(1);
@@ -115,19 +129,6 @@ public class TeleOpRed extends LinearOpMode {
             if (gamepad2.a){
                 intakeClaw.setPosition(0.4);
             }
-            myLocalizer.update();
-
-            // Retrieve your pose
-            Pose2d myPose = myLocalizer.getPoseEstimate();
-            Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(13,-65.5, Math.toRadians(-70)))
-                    .build();
-            // Print your pose to telemetry
-            telemetry.addData("x", myPose.getX());
-            telemetry.addData("y", myPose.getY());
-            telemetry.addData("heading", myPose.getHeading());
-            telemetry.update();
-
             // Teleop driving part
             // Mecanum example code from gm0
             // https://gm0.org/en/stable/docs/software/mecanum-drive.html
