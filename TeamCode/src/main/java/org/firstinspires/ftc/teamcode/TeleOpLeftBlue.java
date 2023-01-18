@@ -61,7 +61,7 @@ public class TeleOpLeftBlue extends LinearOpMode {
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(7,67, Math.toRadians(74)))
+                    .lineToLinearHeading(new Pose2d(7,673, Math.toRadians(74)))
                     .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
@@ -109,7 +109,7 @@ public class TeleOpLeftBlue extends LinearOpMode {
                 //sleep(1000);
                 //afLeft.setPower(0);
                 //afRight.setPower(0);
-                sleep(2450);
+                sleep(2375);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
