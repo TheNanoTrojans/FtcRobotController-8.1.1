@@ -144,7 +144,7 @@ public class TeleOpLeftBlue extends LinearOpMode {
             if(gamepad1.y){
                 myLocalizer.followTrajectory(myTrajectory);
             }
-            if(gamepad1.a){
+            if(gamepad1.b){
                 myLocalizer.followTrajectory(myTrajectory1);
             }
         }
