@@ -125,7 +125,7 @@ public class AutoLeftBlue extends LinearOpMode {
                     .build();
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
-
+            sleep(500);
             //drive.turn(Math.toRadians(180) + 1e-6);
            /* afLeft.setPower(-1);
             afRight.setPower(-1);
@@ -177,13 +177,13 @@ public class AutoLeftBlue extends LinearOpMode {
 
                 waitForStart();
                 if(isStopRequested()) return;
-
+                runaf();
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
-                runaf();
+
                 //drive.turn(Math.toRadians(-108));
                 drive.followTrajectory(myTrajectory3);
                 runArm();
@@ -197,10 +197,10 @@ public class AutoLeftBlue extends LinearOpMode {
 
                 waitForStart();
                 if(isStopRequested()) return;
+                runaf();
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
                 drive.followTrajectory(myTrajectory1);
-                runaf();
                 //drive.turn(Math.toRadians(-108));
                 drive.followTrajectory(myTrajectory3);
                 runArm();
@@ -220,12 +220,12 @@ public class AutoLeftBlue extends LinearOpMode {
                 // drive.followTrajectory(traj1);
                 // drive.followTrajectory(traj3);
                 // drive.followTrajectory(traj5);
+                runaf();
                 drive.followTrajectory(myTrajectory);
                 //drive.turn(Math.toRadians(-107));
                 drive.followTrajectory(myTrajectory2);
 
                 drive.followTrajectory(myTrajectory1);
-                runaf();
                 //drive.turn(Math.toRadians(-108));
                 drive.followTrajectory(myTrajectory3);
                 runArm();
@@ -256,7 +256,7 @@ public class AutoLeftBlue extends LinearOpMode {
     }
     private void runArm(){
         armturn.setPower(0.5);
-        sleep(800);
+        sleep(725);
         armturn.setPower(0);
         intakeClaw.setPosition(1);
         lsLeft.setPower(1);
