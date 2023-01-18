@@ -61,7 +61,7 @@ public class TeleOpRightBlue extends LinearOpMode {
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(10.26,61.89, Math.toRadians(70)))
+                    .lineToLinearHeading(new Pose2d(15.81,62.41, Math.toRadians(65)))
                     .build();
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
                     .lineToLinearHeading(new Pose2d(-4.55,61.34,Math.toRadians(85.90)))
@@ -82,7 +82,7 @@ public class TeleOpRightBlue extends LinearOpMode {
             lsRight.setPower(-gamepad2.left_stick_y);
             afLeft.setPower(gamepad2.right_stick_y);
             afRight.setPower(gamepad2.right_stick_y);
-            armturn.setPower(-gamepad2.right_stick_x);
+            armturn.setPower(-gamepad2.right_stick_x * 0.5);
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
