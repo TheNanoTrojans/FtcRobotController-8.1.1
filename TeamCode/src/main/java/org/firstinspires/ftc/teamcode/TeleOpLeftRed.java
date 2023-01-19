@@ -120,7 +120,10 @@ public class TeleOpLeftRed extends LinearOpMode {
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(13,-65.5, Math.toRadians(-70)))
+                    .lineToLinearHeading(new Pose2d(10.03,-64.440, Math.toRadians(294)))
+                    .build();
+            Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
+                    .lineToLinearHeading(new Pose2d(-3.31,-61.34,Math.toRadians(-85.90)))
                     .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
@@ -139,6 +142,9 @@ public class TeleOpLeftRed extends LinearOpMode {
             robot.setDrivePower(x, y, rx);
             if(gamepad1.y){
                 myLocalizer.followTrajectory(myTrajectory);
+            }
+            if(gamepad1.b){
+                myLocalizer.followTrajectory(myTrajectory1);
             }
         }
     }

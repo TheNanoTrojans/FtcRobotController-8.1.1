@@ -94,7 +94,7 @@ public class AutoLeftRed extends LinearOpMode {
                     .lineToLinearHeading(new Pose2d(11.5 , -62, Math.toRadians(-70)))
                     .build();
             Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(13 ,-65.5))
+                    .lineTo(new Vector2d(12.5 ,-65.5))
                     .build();
             Trajectory myTrajectory5 = drive.trajectoryBuilder(myTrajectory3.end())
                     .strafeTo(new Vector2d(11,-63))
@@ -117,10 +117,10 @@ public class AutoLeftRed extends LinearOpMode {
 
                     .build();
             Trajectory traj3 = drive.trajectoryBuilder(myTrajectory4.end())
-                    .lineToLinearHeading(new Pose2d(58,-70,Math.toRadians(270)))
+                    .lineToLinearHeading(new Pose2d(55,-70,Math.toRadians(270)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                    .strafeTo(new Vector2d(58,-43))
+                    .strafeTo(new Vector2d(55,-43))
                     .build();
             Trajectory alignment = drive.trajectoryBuilder(new Pose2d(37,-70,Math.toRadians(180)))
                     .lineTo(new Vector2d(35.5,-70))
@@ -266,7 +266,7 @@ public class AutoLeftRed extends LinearOpMode {
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
-        sleep(2475);
+        sleep(2425);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
@@ -287,12 +287,12 @@ public class AutoLeftRed extends LinearOpMode {
         //sleep(1000);
         //afLeft.setPower(0);
         //afRight.setPower(0);
-        sleep(2520);
+        sleep(2420);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         intakeClaw.setPosition(1);
         armturn.setPower(-0.5);
-        sleep(775);
+        sleep(725);
         armturn.setPower(0);
     }
     public void runafDown() {
