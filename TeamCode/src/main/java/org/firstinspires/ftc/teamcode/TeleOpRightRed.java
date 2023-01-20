@@ -171,10 +171,10 @@ public class TeleOpRightRed extends LinearOpMode {
             // Set drive power
             robot.setDrivePower(x, y, rx);
             if(gamepad1.y){
-                myLocalizer.followTrajectoryAsync(myTrajectory);
+                myLocalizer.followTrajectory(myTrajectory);
             }
             if(gamepad1.b){
-                myLocalizer.followTrajectoryAsync(myTrajectory1);
+                myLocalizer.followTrajectory(myTrajectory1);
             }
         }
     }
