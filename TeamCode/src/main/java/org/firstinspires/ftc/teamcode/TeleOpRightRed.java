@@ -83,6 +83,14 @@ public class TeleOpRightRed extends LinearOpMode {
             afLeft.setPower(gamepad2.right_stick_y);
             afRight.setPower(gamepad2.right_stick_y);
             armturn.setPower(-gamepad2.right_stick_x * 0.5);
+            while(gamepad1.right_trigger > 0.45){
+                double x = gamepad1.left_stick_x;
+                double y = -gamepad1.left_stick_y;
+                double rx = gamepad1.right_stick_x;
+
+                // Set drive power
+                robot.setDrivePower(x *0.5, y*0.5, rx*0.5);
+            }
             if(gamepad2.right_trigger >= 0.1){
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
