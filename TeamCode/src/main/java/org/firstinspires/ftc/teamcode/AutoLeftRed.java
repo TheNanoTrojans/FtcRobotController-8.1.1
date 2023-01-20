@@ -91,10 +91,10 @@ public class AutoLeftRed extends LinearOpMode {
                     .strafeTo(new Vector2d(12,-67))
                     .build();
             Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
-                    .lineToLinearHeading(new Pose2d(11.5 , -62, Math.toRadians(-70)))
+                    .lineToLinearHeading(new Pose2d(11.5 , -62, Math.toRadians(297)))
                     .build();
             Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(12.5 ,-65.5))
+                    .lineTo(new Vector2d(13.05 ,-65.22))
                     .build();
             Trajectory myTrajectory5 = drive.trajectoryBuilder(myTrajectory3.end())
                     .strafeTo(new Vector2d(11,-63))
@@ -104,7 +104,7 @@ public class AutoLeftRed extends LinearOpMode {
                     .build();
 
             Trajectory traj1 = drive.trajectoryBuilder(myTrajectory4.end())
-                    .lineToLinearHeading(new Pose2d(12.5,-70,Math.toRadians(270)))
+                    .lineToLinearHeading(new Pose2d(11.5,-70,Math.toRadians(270)))
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
@@ -117,7 +117,7 @@ public class AutoLeftRed extends LinearOpMode {
 
                     .build();
             Trajectory traj3 = drive.trajectoryBuilder(myTrajectory4.end())
-                    .lineToLinearHeading(new Pose2d(50,-65,Math.toRadians(270)))
+                    .lineToLinearHeading(new Pose2d(50,-69,Math.toRadians(270)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
                     .strafeTo(new Vector2d(50,-48))
@@ -262,7 +262,7 @@ public class AutoLeftRed extends LinearOpMode {
     }
     private void runArm(){
         armturn.setPower(0.5);
-        sleep(725);
+        sleep(700);
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
@@ -292,7 +292,7 @@ public class AutoLeftRed extends LinearOpMode {
         lsRight.setPower(0);
         intakeClaw.setPosition(1);
         armturn.setPower(-0.5);
-        sleep(725);
+        sleep(700);
         armturn.setPower(0);
     }
     public void runafDown() {
