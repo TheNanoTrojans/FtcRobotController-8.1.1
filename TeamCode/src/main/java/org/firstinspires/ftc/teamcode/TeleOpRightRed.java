@@ -56,6 +56,21 @@ public class TeleOpRightRed extends LinearOpMode {
             // Make sure to call myLocalizer.update() on *every* loop
             // Increasing loop time by utilizing bulk reads and minimizing writes will increase your
             // odometry accuracy
+            myLocalizer.update();
+
+            // Retrieve your pose
+            Pose2d myPose = myLocalizer.getPoseEstimate();
+            Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
+                    .lineToLinearHeading(new Pose2d(17.79,67.77, Math.toRadians(62.79)))
+                    .build();
+            Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
+                    .lineToLinearHeading(new Pose2d(2.46,63.52,Math.toRadians(90)))
+                    .build();
+            // Print your pose to telemetry
+            telemetry.addData("x", myPose.getX());
+            telemetry.addData("y", myPose.getY());
+            telemetry.addData("heading", myPose.getHeading());
+            telemetry.update();
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
@@ -67,22 +82,24 @@ public class TeleOpRightRed extends LinearOpMode {
             lsRight.setPower(-gamepad2.left_stick_y);
             afLeft.setPower(gamepad2.right_stick_y);
             afRight.setPower(gamepad2.right_stick_y);
-            armturn.setPower(-gamepad2.right_stick_x);
+            armturn.setPower(-gamepad2.right_stick_x * 0.5);
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);
-                sleep(2000);
+                sleep(1550);
                 afLeft.setPower(0);
                 afRight.setPower(0);
+                intakeClaw.setPosition(1);
                 armturn.setPower(0.5);
                 sleep(725);
                 armturn.setPower(0);
+                intakeClaw.setPosition(1);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
                 sleep(2475);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
-                sleep(100);
+                intakeClaw.setPosition(1);
             }
             if(gamepad2.left_bumper){
 
@@ -95,16 +112,16 @@ public class TeleOpRightRed extends LinearOpMode {
                 //sleep(1000);
                 //afLeft.setPower(0);
                 //afRight.setPower(0);
-                sleep(2520);
+                sleep(2450);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
                 armturn.setPower(-0.5);
-                sleep(775);
+                sleep(725);
                 armturn.setPower(0);
                 afLeft.setPower(1);
                 afRight.setPower(1);
-                sleep(2000);
+                sleep(1300);
                 afLeft.setPower(0);
                 afRight.setPower(0);
 
@@ -115,19 +132,6 @@ public class TeleOpRightRed extends LinearOpMode {
             if (gamepad2.a){
                 intakeClaw.setPosition(0.4);
             }
-            myLocalizer.update();
-
-            // Retrieve your pose
-            Pose2d myPose = myLocalizer.getPoseEstimate();
-            Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(13.5,-65.5, Math.toRadians(-70)))
-                    .build();
-            // Print your pose to telemetry
-            telemetry.addData("x", myPose.getX());
-            telemetry.addData("y", myPose.getY());
-            telemetry.addData("heading", myPose.getHeading());
-            telemetry.update();
-
             // Teleop driving part
             // Mecanum example code from gm0
             // https://gm0.org/en/stable/docs/software/mecanum-drive.html
@@ -139,6 +143,9 @@ public class TeleOpRightRed extends LinearOpMode {
             robot.setDrivePower(x, y, rx);
             if(gamepad1.y){
                 myLocalizer.followTrajectory(myTrajectory);
+            }
+            if(gamepad1.b){
+                myLocalizer.followTrajectory(myTrajectory1);
             }
         }
     }
