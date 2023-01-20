@@ -118,10 +118,10 @@ public class AutoLeftRed extends LinearOpMode {
 
                     .build();
             Trajectory traj3 = drive.trajectoryBuilder(traj1.end())
-                    .lineToLinearHeading(new Pose2d(59,65,Math.toRadians(90)))
+                    .lineToLinearHeading(new Pose2d(60,65,Math.toRadians(90)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
-                    .strafeTo(new Vector2d(59,45))
+                    .strafeTo(new Vector2d(60,45))
                     .build();
             drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
