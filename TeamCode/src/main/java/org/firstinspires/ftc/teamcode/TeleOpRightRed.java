@@ -69,6 +69,9 @@ public class TeleOpRightRed extends LinearOpMode {
 
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
+            telemetry.addData("x", myPose.getX());
+            telemetry.addData("y", myPose.getY());
+            telemetry.addData("heading", myPose.getHeading());
             if(gamepad1.left_bumper){
                 //myLocalizer.setPoseEstimate(myPose);
                 X= myPose.getX();
@@ -83,13 +86,10 @@ public class TeleOpRightRed extends LinearOpMode {
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
                     .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
                     .build();
-          //  Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
-            //        .lineToLinearHeading(new Pose2d(X,Y,Heading))
-              //      .build();
+            //Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
+            //        .lineToLinearHeading(new Pose2d(X,Y,Math.toRadians(Heading))
+            //        .build();
             // Print your pose to telemetry
-            telemetry.addData("x", myPose.getX());
-            telemetry.addData("y", myPose.getY());
-            telemetry.addData("heading", myPose.getHeading());
             telemetry.addData("LeftBumperX", X);
             telemetry.addData("LeftBumperY",Y);
             telemetry.addData("LeftBumperHeading",Heading);
