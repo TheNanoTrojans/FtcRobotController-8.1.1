@@ -79,6 +79,9 @@ public class TeleOpRightBlue extends LinearOpMode {
             telemetry.addData("x", myPose.getX());
             telemetry.addData("y", myPose.getY());
             telemetry.addData("heading", myPose.getHeading());
+            telemetry.addData("LeftBumperX", X);
+            telemetry.addData("LeftBumperY",Y);
+            telemetry.addData("LeftBumperHeading",Heading);
             telemetry.update();
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);

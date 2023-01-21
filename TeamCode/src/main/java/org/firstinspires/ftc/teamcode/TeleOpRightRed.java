@@ -28,6 +28,10 @@ public class TeleOpRightRed extends LinearOpMode {
     protected DcMotor lsRight;
     protected CRServo armturn;
     protected Servo intakeClaw;
+    private double X;
+    private double Y;
+    private double Heading;
+
     @Override
     public void runOpMode() throws InterruptedException {
         // Initialize your own robot class
@@ -56,20 +60,29 @@ public class TeleOpRightRed extends LinearOpMode {
             // Make sure to call myLocalizer.update() on *every* loop
             // Increasing loop time by utilizing bulk reads and minimizing writes will increase your
             // odometry accuracy
+            X = 17.5;
+            Y = 64;
+            Heading = Math.toRadians(62.67);
             myLocalizer.update();
 
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(17,64, Math.toRadians(62.67)))
+                    .lineToLinearHeading(new Pose2d(17.5,64, Math.toRadians(62.67)))
                     .build();
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
                     .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
+                    .build();
+            Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
+                    .lineToLinearHeading(new Pose2d(X,Y,Heading))
                     .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
             telemetry.addData("y", myPose.getY());
             telemetry.addData("heading", myPose.getHeading());
+            telemetry.addData("LeftBumperX", X);
+            telemetry.addData("LeftBumperY",Y);
+            telemetry.addData("LeftBumperHeading",Heading);
             telemetry.update();
             afLeft.setDirection(CRServo.Direction.REVERSE);
             lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -101,6 +114,14 @@ public class TeleOpRightRed extends LinearOpMode {
                 armturn.setPower(0.5);
                 sleep(725);
                 armturn.setPower(0);
+            }
+            if(gamepad1.left_bumper){
+                //myLocalizer.setPoseEstimate(myPose);
+                X= myPose.getX();
+                Y= myPose.getY();
+                Heading= myPose.getHeading();
+                Heading= Math.toRadians(Heading);
+
             }
             if(gamepad2.left_trigger >= 0.1){
                 armturn.setPower(-0.5);
@@ -176,7 +197,11 @@ public class TeleOpRightRed extends LinearOpMode {
             if(gamepad1.b){
                 myLocalizer.followTrajectory(myTrajectory1);
             }
+            if(gamepad1.x){
+                myLocalizer.followTrajectory(myTrajectory2);
+            }
         }
+    }
     }
     // Simple custom robot class
     // Holds the hardware for a basic mecanum drive
@@ -231,4 +256,4 @@ public class TeleOpRightRed extends LinearOpMode {
             rightRear.setPower(powerBackRight);
         }
     }//*
-}
+
