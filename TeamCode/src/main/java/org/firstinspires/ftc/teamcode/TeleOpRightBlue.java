@@ -61,10 +61,10 @@ public class TeleOpRightBlue extends LinearOpMode {
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(17.79,67.77, Math.toRadians(62.79)))
+                    .lineToLinearHeading(new Pose2d(14.12,60.59, Math.toRadians(66.43)))
                     .build();
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(2.46,63.52,Math.toRadians(90)))
+                    .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
                     .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
@@ -83,6 +83,35 @@ public class TeleOpRightBlue extends LinearOpMode {
             afLeft.setPower(gamepad2.right_stick_y);
             afRight.setPower(gamepad2.right_stick_y);
             armturn.setPower(-gamepad2.right_stick_x * 0.5);
+            while(gamepad1.right_trigger > 0.45){
+                double x = gamepad1.left_stick_x;
+                double y = -gamepad1.left_stick_y;
+                double rx = gamepad1.right_stick_x;
+
+                // Set drive power
+                robot.setDrivePower(x *0.25, y*0.25, rx*0.25);
+            }
+            if(gamepad2.right_trigger >= 0.1){
+                afLeft.setPower(-1);
+                afRight.setPower(-1);
+                sleep(1550);
+                afLeft.setPower(0);
+                afRight.setPower(0);
+                intakeClaw.setPosition(1);
+                armturn.setPower(0.5);
+                sleep(725);
+                armturn.setPower(0);
+            }
+            if(gamepad2.left_trigger >= 0.1){
+                armturn.setPower(-0.5);
+                sleep(725);
+                armturn.setPower(0);
+                afLeft.setPower(1);
+                afRight.setPower(1);
+                sleep(1300);
+                afLeft.setPower(0);
+                afRight.setPower(0);
+            }
             if (gamepad2.right_bumper) {
                 afLeft.setPower(-1);
                 afRight.setPower(-1);

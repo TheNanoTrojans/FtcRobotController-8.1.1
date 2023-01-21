@@ -17,8 +17,8 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
-@Autonomous(name = "AutoRightBlue")
-public class AutoRightBlue extends LinearOpMode {
+@Autonomous(name = "AutoRightBluePARKING")
+public class AutoRightBluePARKING extends LinearOpMode {
 
     private SleeveDetection sleeveDetection;
     private OpenCvCamera camera;
@@ -93,41 +93,30 @@ public class AutoRightBlue extends LinearOpMode {
             Trajectory myTrajectory2 = drive.trajectoryBuilder(myTrajectory.end())
                     .strafeTo(new Vector2d(-10,67))
                     .build();
-           /* Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
-                    .lineToLinearHeading(new Pose2d(11.5 , 62, Math.toRadians(74)))
-                    .build();*/
-            Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory2.end())
-                    .lineToLinearHeading(new Pose2d(10.25,68,Math.toRadians(74)))
-                    .build();
-            Trajectory myTrajectory5 = drive.trajectoryBuilder(myTrajectory3.end())
-                    .strafeTo(new Vector2d(11,63))
-                    .build();
-            Trajectory myTrajectory4 = drive.trajectoryBuilder(myTrajectory5.end())
-                    .lineToLinearHeading(new Pose2d(11.5 , 66, Math.toRadians(80)))
-                    .build();
 
-            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory4.end())
+
+            Trajectory traj1 = drive.trajectoryBuilder(myTrajectory2.end())
                     .lineToLinearHeading(new Pose2d(-14,70,Math.toRadians(90)))
                     .build();
 
             Trajectory traj4 = drive.trajectoryBuilder(traj1.end())
-                            .strafeTo(new Vector2d(-13.5,43 ))
-                            .build();
+                    .strafeTo(new Vector2d(-13.5,43 ))
+                    .build();
 
             Trajectory traj2 = drive.trajectoryBuilder(traj4.end())
                     .strafeTo(new Vector2d(-37,43))
                     //.strafeTo(new Vector2d(-36,45))
 
                     .build();
-            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory4.end())
+            Trajectory traj3 = drive.trajectoryBuilder(myTrajectory2.end())
                     .lineToLinearHeading(new Pose2d(-60,64,Math.toRadians(90)))
                     .build();
             Trajectory traj5 = drive.trajectoryBuilder(traj3.end())
                     .strafeTo(new Vector2d(-60,45))
                     .build();
             Trajectory alignment = drive.trajectoryBuilder(new Pose2d(-37,70,Math.toRadians(180)))
-                            .lineTo(new Vector2d(35.5,70))
-                            .build();
+                    .lineTo(new Vector2d(35.5,70))
+                    .build();
             drive.setPoseEstimate(new Pose2d(-35,70, Math.toRadians(180)));
             intakeClaw.setPosition(1);
             sleep(500);
@@ -184,20 +173,14 @@ public class AutoRightBlue extends LinearOpMode {
                 waitForStart();
                 if(isStopRequested()) return;
                 //drive.followTrajectory(alignment);
-               // stop();
+                // stop();
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectory(myTrajectory);
                 runaf();
                 intakeClaw.setPosition(1);
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
-                //drive.followTrajectory(myTrajectory1);
-                //drive.turn(Math.toRadians(-108));
-                drive.followTrajectory(myTrajectory3);
-                runArm();
-                drive.followTrajectory(myTrajectory5);
-                runafDown();
-                drive.followTrajectory(myTrajectory4);
+
                 //stop();
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
@@ -209,14 +192,7 @@ public class AutoRightBlue extends LinearOpMode {
                 runaf();
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
-                //drive.followTrajectory(myTrajectory1);
 
-                //drive.turn(Math.toRadians(-108));
-                drive.followTrajectory(myTrajectory3);
-                runArm();
-                drive.followTrajectory(myTrajectory5);
-                runafDown();
-                drive.followTrajectory(myTrajectory4);
                 drive.followTrajectory(traj1);
                 drive.followTrajectory(traj4);
                 drive.followTrajectory(traj2);
@@ -227,20 +203,13 @@ public class AutoRightBlue extends LinearOpMode {
 
                 //drive.setPoseEstimate(new Pose2d(35,70, Math.toRadians(90)));
                 //drive.followTrajectory(myTrajectory);
-               // drive.followTrajectory(traj1);
-               // drive.followTrajectory(traj3);
-               // drive.followTrajectory(traj5);
+                // drive.followTrajectory(traj1);
+                // drive.followTrajectory(traj3);
+                // drive.followTrajectory(traj5);
                 runaf();
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
-                //drive.followTrajectory(myTrajectory1);
 
-                //drive.turn(Math.toRadians(-108));
-                drive.followTrajectory(myTrajectory3);
-                runArm();
-                drive.followTrajectory(myTrajectory5);
-                runafDown();
-                drive.followTrajectory(myTrajectory4);
 
                 drive.followTrajectory(traj3);
                 drive.followTrajectory(traj5);
@@ -267,7 +236,7 @@ public class AutoRightBlue extends LinearOpMode {
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
-        sleep(2530);
+        sleep(2425);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
