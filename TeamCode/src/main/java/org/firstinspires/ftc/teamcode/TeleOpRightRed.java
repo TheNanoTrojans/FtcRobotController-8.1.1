@@ -61,10 +61,10 @@ public class TeleOpRightRed extends LinearOpMode {
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(17.79,67.77, Math.toRadians(62.79)))
+                    .lineToLinearHeading(new Pose2d(17,64, Math.toRadians(62.67)))
                     .build();
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(2.46,63.52,Math.toRadians(90)))
+                    .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
                     .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
@@ -125,7 +125,7 @@ public class TeleOpRightRed extends LinearOpMode {
                 intakeClaw.setPosition(1);
                 lsLeft.setPower(1);
                 lsRight.setPower(1);
-                sleep(2475);
+                sleep(2525);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
@@ -141,7 +141,7 @@ public class TeleOpRightRed extends LinearOpMode {
                 //sleep(1000);
                 //afLeft.setPower(0);
                 //afRight.setPower(0);
-                sleep(2450);
+                sleep(2425);
                 lsLeft.setPower(0);
                 lsRight.setPower(0);
                 intakeClaw.setPosition(1);
@@ -178,7 +178,6 @@ public class TeleOpRightRed extends LinearOpMode {
             }
         }
     }
-
     // Simple custom robot class
     // Holds the hardware for a basic mecanum drive
     class Robot {
