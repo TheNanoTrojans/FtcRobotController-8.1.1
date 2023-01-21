@@ -102,6 +102,9 @@ public class TeleOpRightBlue extends LinearOpMode {
                 sleep(725);
                 armturn.setPower(0);
             }
+            if(gamepad1.left_bumper){
+                myLocalizer.setPoseEstimate(myPose);
+            }
             if(gamepad2.left_trigger >= 0.1){
                 armturn.setPower(-0.5);
                 sleep(725);
