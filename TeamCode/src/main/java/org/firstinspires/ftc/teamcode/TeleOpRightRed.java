@@ -87,7 +87,7 @@ public class TeleOpRightRed extends LinearOpMode {
                     .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
                     .build();
             //Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
-            //        .lineToLinearHeading(new Pose2d(X,Y,Math.toRadians(Heading))
+            //        .lineToLinearHeading(new Pose2d(X,Y,Math.toRadians(Heading)))
             //        .build();
             // Print your pose to telemetry
             telemetry.addData("LeftBumperX", X);
