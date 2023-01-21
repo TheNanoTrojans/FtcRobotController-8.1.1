@@ -55,16 +55,18 @@ public class TeleOpRightRed extends LinearOpMode {
         waitForStart();
 
         ///       if (isStopRequested()) return;
-
+        if(opModeIsActive()){
+            X = 17.5;
+            Y = 64;
+            Heading = Math.toRadians(62.67);
+        }
         while (opModeIsActive() && !isStopRequested()) {
             // Make sure to call myLocalizer.update() on *every* loop
             // Increasing loop time by utilizing bulk reads and minimizing writes will increase your
             // odometry accuracy
-            X = 17.5;
-            Y = 64;
-            Heading = Math.toRadians(62.67);
+
             myLocalizer.update();
-            
+
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             if(gamepad1.left_bumper){
@@ -81,9 +83,9 @@ public class TeleOpRightRed extends LinearOpMode {
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
                     .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
                     .build();
-           // Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
-             //       .lineToLinearHeading(new Pose2d(X,Y,Heading))
-               //     .build();
+          //  Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
+            //        .lineToLinearHeading(new Pose2d(X,Y,Heading))
+              //      .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
             telemetry.addData("y", myPose.getY());
