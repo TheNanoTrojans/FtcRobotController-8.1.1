@@ -93,11 +93,11 @@ public class AutoRightRed extends LinearOpMode {
             Trajectory myTrajectory2 = drive.trajectoryBuilder(myTrajectory.end())
                     .strafeTo(new Vector2d(-10,67))
                     .build();
-            Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
+           /* Trajectory myTrajectory1 = drive.trajectoryBuilder(myTrajectory2.end())
                     .lineToLinearHeading(new Pose2d(11.5 , 62, Math.toRadians(74)))
-                    .build();
-            Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory1.end())
-                    .lineTo(new Vector2d(8.25,67))
+                    .build();*/
+            Trajectory myTrajectory3 = drive.trajectoryBuilder(myTrajectory2.end())
+                    .lineToLinearHeading(new Pose2d(10.25,68,Math.toRadians(74)))
                     .build();
             Trajectory myTrajectory5 = drive.trajectoryBuilder(myTrajectory3.end())
                     .strafeTo(new Vector2d(11,63))
@@ -191,7 +191,7 @@ public class AutoRightRed extends LinearOpMode {
                 intakeClaw.setPosition(1);
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
-                drive.followTrajectory(myTrajectory1);
+                //drive.followTrajectory(myTrajectory1);
                 //drive.turn(Math.toRadians(-108));
                 drive.followTrajectory(myTrajectory3);
                 runArm();
@@ -209,7 +209,7 @@ public class AutoRightRed extends LinearOpMode {
                 runaf();
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
-                drive.followTrajectory(myTrajectory1);
+                //drive.followTrajectory(myTrajectory1);
 
                 //drive.turn(Math.toRadians(-108));
                 drive.followTrajectory(myTrajectory3);
@@ -233,7 +233,7 @@ public class AutoRightRed extends LinearOpMode {
                 runaf();
                 drive.followTrajectory(myTrajectory);
                 drive.followTrajectory(myTrajectory2);
-                drive.followTrajectory(myTrajectory1);
+                //drive.followTrajectory(myTrajectory1);
 
                 //drive.turn(Math.toRadians(-108));
                 drive.followTrajectory(myTrajectory3);
@@ -263,11 +263,11 @@ public class AutoRightRed extends LinearOpMode {
     }
     private void runArm(){
         armturn.setPower(0.5);
-        sleep(725);
+        sleep(700);
         armturn.setPower(0);
         lsLeft.setPower(1);
         lsRight.setPower(1);
-        sleep(2425);
+        sleep(2530);
         lsLeft.setPower(0);
         lsRight.setPower(0);
         sleep(100);
@@ -293,7 +293,7 @@ public class AutoRightRed extends LinearOpMode {
         lsRight.setPower(0);
         intakeClaw.setPosition(1);
         armturn.setPower(-0.5);
-        sleep(725);
+        sleep(700);
         armturn.setPower(0);
     }
     public void runafDown() {
@@ -303,5 +303,4 @@ public class AutoRightRed extends LinearOpMode {
         afLeft.setPower(0);
         afRight.setPower(0);
     }
-
 }
