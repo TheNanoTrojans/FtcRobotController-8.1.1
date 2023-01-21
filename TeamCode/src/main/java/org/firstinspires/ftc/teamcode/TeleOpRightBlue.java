@@ -28,6 +28,9 @@ public class TeleOpRightBlue extends LinearOpMode {
     protected DcMotor lsRight;
     protected CRServo armturn;
     protected Servo intakeClaw;
+    private double X;
+    private double Y;
+    private double Heading;
     @Override
     public void runOpMode() throws InterruptedException {
         // Initialize your own robot class
@@ -56,12 +59,15 @@ public class TeleOpRightBlue extends LinearOpMode {
             // Make sure to call myLocalizer.update() on *every* loop
             // Increasing loop time by utilizing bulk reads and minimizing writes will increase your
             // odometry accuracy
+            X = 17.5;
+            Y = 64;
+            Heading = 62.67;
             myLocalizer.update();
 
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(17.5,64, Math.toRadians(62.67)))
+                    .lineToLinearHeading(new Pose2d(X,Y, Math.toRadians(Heading)))
                     .build();
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
                     .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
@@ -104,6 +110,7 @@ public class TeleOpRightBlue extends LinearOpMode {
             }
             if(gamepad1.left_bumper){
                 myLocalizer.setPoseEstimate(myPose);
+                X=
             }
             if(gamepad2.left_trigger >= 0.1){
                 armturn.setPower(-0.5);
