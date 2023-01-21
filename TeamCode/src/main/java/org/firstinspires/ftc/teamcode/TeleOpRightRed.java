@@ -64,18 +64,26 @@ public class TeleOpRightRed extends LinearOpMode {
             Y = 64;
             Heading = Math.toRadians(62.67);
             myLocalizer.update();
-
+            
             // Retrieve your pose
             Pose2d myPose = myLocalizer.getPoseEstimate();
+            if(gamepad1.left_bumper){
+                //myLocalizer.setPoseEstimate(myPose);
+                X= myPose.getX();
+                Y= myPose.getY();
+                Heading= myPose.getHeading();
+                Heading= Math.toRadians(Heading);
+
+            }
             Trajectory myTrajectory = myLocalizer.trajectoryBuilder(myPose)
                     .lineToLinearHeading(new Pose2d(17.5,64, Math.toRadians(62.67)))
                     .build();
             Trajectory myTrajectory1 = myLocalizer.trajectoryBuilder(myPose)
                     .lineToLinearHeading(new Pose2d(0,65.76,Math.toRadians(90)))
                     .build();
-            Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
-                    .lineToLinearHeading(new Pose2d(X,Y,Heading))
-                    .build();
+           // Trajectory myTrajectory2 = myLocalizer.trajectoryBuilder(myPose)
+             //       .lineToLinearHeading(new Pose2d(X,Y,Heading))
+               //     .build();
             // Print your pose to telemetry
             telemetry.addData("x", myPose.getX());
             telemetry.addData("y", myPose.getY());
@@ -115,14 +123,7 @@ public class TeleOpRightRed extends LinearOpMode {
                 sleep(725);
                 armturn.setPower(0);
             }
-            if(gamepad1.left_bumper){
-                //myLocalizer.setPoseEstimate(myPose);
-                X= myPose.getX();
-                Y= myPose.getY();
-                Heading= myPose.getHeading();
-                Heading= Math.toRadians(Heading);
 
-            }
             if(gamepad2.left_trigger >= 0.1){
                 armturn.setPower(-0.5);
                 sleep(725);
@@ -198,7 +199,7 @@ public class TeleOpRightRed extends LinearOpMode {
                 myLocalizer.followTrajectory(myTrajectory1);
             }
             if(gamepad1.x){
-                myLocalizer.followTrajectory(myTrajectory2);
+                //myLocalizer.followTrajectory(myTrajectory2);
             }
         }
     }
