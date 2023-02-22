@@ -34,16 +34,16 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-39,67))
                        .build();
                Trajectory myTraj1 = drive.trajectoryBuilder(traj1.end())
-                       .lineTo(new Vector2d(-39,18))
+                       .lineTo(new Vector2d(-37,16))
                        .build();
                Trajectory myTraj2 = drive.trajectoryBuilder(myTraj1.end())
-                       .lineToLinearHeading(new Pose2d(-61,18,Math.toRadians(180)))
+                       .lineToLinearHeading(new Pose2d(-61,20,Math.toRadians(180)))
                        .build();
                Trajectory myTraj3 = drive.trajectoryBuilder(myTraj1.end())
-                       .lineToLinearHeading(new Pose2d(26,19.5,Math.toRadians(-90)))
+                       .lineToLinearHeading(new Pose2d(-26,19.5,Math.toRadians(-90)))
                        .build();
                Trajectory myTraj4 = drive.trajectoryBuilder(myTraj3.end())
-                       .lineToLinearHeading(new Pose2d(-40,18,Math.toRadians(180)))
+                       .lineToLinearHeading(new Pose2d(-40,20,Math.toRadians(180)))
                        .build();
                Trajectory myTraj5  = drive.trajectoryBuilder(myTraj4.end())
                        .lineTo(new Vector2d(-61,18))
@@ -53,7 +53,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.followTrajectory(traj1);
                drive.followTrajectory(myTraj1);
                linearSlide(3200,1);
-               Turret(600,1);
+               Turret(560,1);
                sleep(2000);
                LsIntake(380,1);
                linearSlide(2800,1);
@@ -64,7 +64,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                Turret(0,1);
                LsIntake(0,1);
                sleep(200);
-               linearSlide(350,1);
+               linearSlide(50,1);
                drive.followTrajectory(myTraj2);
                intakeClaw.setPosition(1);
                sleep(250);
