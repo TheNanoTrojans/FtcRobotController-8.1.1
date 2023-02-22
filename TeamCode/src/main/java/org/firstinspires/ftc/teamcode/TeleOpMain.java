@@ -53,7 +53,7 @@ public class TeleOpMain extends LinearOpMode {
             backRight.setPower(backRightPower);
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
-            lsTurn.setPower(-gamepad2.right_stick_y);
+            lsTurn.setPower(-gamepad2.right_stick_x);
             lsIntake.setPower(-gamepad2.right_stick_y);
         }
     }
