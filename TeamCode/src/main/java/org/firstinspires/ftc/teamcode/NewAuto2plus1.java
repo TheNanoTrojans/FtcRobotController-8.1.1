@@ -27,6 +27,7 @@ public class NewAuto2plus1 extends LinearOpMode {
            intakeClaw = hardwareMap.servo.get("intakeClaw");
            lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
            lsTurn.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+           waitForStart();
            if(opModeIsActive()){
                Trajectory traj1 = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(-90)))
                        .lineTo(new Vector2d(-39,67))
