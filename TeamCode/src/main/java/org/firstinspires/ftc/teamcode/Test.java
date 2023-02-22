@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 //declares motors
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "TeleOpMain")
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp (name = "TeleOpFailed")
 public class Test extends LinearOpMode {
 
     protected CRServo afLeft;

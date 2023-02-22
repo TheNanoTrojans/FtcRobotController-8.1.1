@@ -17,7 +17,7 @@ public class NewAuto2plus1 extends LinearOpMode {
     private DcMotor lsTurn;
     private DcMotor lsIntake;
     private Servo intakeClaw;
-    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+
     @Override
     public void runOpMode(){
            lsLeft = hardwareMap.dcMotor.get("lsLeft");
@@ -27,6 +27,7 @@ public class NewAuto2plus1 extends LinearOpMode {
            intakeClaw = hardwareMap.servo.get("intakeClaw");
            lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
            lsTurn.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+           SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
            waitForStart();
            if(opModeIsActive()){
                Trajectory traj1 = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(-90)))
