@@ -55,7 +55,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                linearSlide(3200,1);
                Turret(600,1);
                sleep(2000);
-               LsIntake(300,1);
+               LsIntake(380,1);
                linearSlide(2800,1);
                sleep(400);
                linearSlide(2400,1);
