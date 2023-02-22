@@ -48,7 +48,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                 //       .splineTo(new Vector2d(-50,21.5), Math.toRadians(-25))
                   //     .build();
                Trajectory myTraj3 = drive.trajectoryBuilder(myTraj1.end())
-                       .splineToLinearHeading(new Pose2d(-26,21.5,Math.toRadians(-90)),Math.toRadians(-25))
+                       .splineToLinearHeading(new Pose2d(-26,21.5,Math.toRadians(-90)),Math.toRadians(-50))
                        .build();
                Trajectory myTraj6 = drive.trajectoryBuilder(myTraj3.end())
                        .lineTo(new Vector2d(-33,24))
