@@ -58,7 +58,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                linearSlide(3200,1);
                Turret(560,1);
                sleep(2000);
-               LsIntake(380,1);
+               LsIntake(280,1);
                linearSlide(2800,1);
                sleep(400);
                linearSlide(2400,1);
@@ -73,7 +73,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                sleep(250);
                linearSlide(3200,1);
                drive.followTrajectory(myTraj3);
-               LsIntake(150,1);
+               LsIntake(50,1);
                linearSlide(2800,1);
                sleep(200);
                linearSlide(2400,1);
@@ -89,7 +89,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                sleep(250);
                linearSlide(3200,1);
                drive.followTrajectory(myTraj3);
-               LsIntake(150,1);
+               LsIntake(50,1);
                linearSlide(2800,1);
                sleep(200);
                linearSlide(2400,1);
