@@ -60,13 +60,13 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.setPoseEstimate(new Pose2d(-35,70,Math.toRadians(-90)));
                drive.followTrajectory(traj1);
                drive.followTrajectory(myTraj1);
-               linearSlide(3200,1);
+               linearSlide(6200,1);
                Turret(560,1);
                sleep(2000);
                LsIntake(110,1);
-               linearSlide(2800,1);
+               linearSlide(5800,1);
                sleep(400);
-               linearSlide(2400,1);
+               linearSlide(5400,1);
                intakeClaw.setPosition(0.5);
                sleep(200);
                Turret(0,1);
@@ -77,12 +77,12 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.followTrajectory(myTraj2);
                intakeClaw.setPosition(1);
                sleep(250);
-               linearSlide(3200,1);
+               linearSlide(6200,1);
                drive.followTrajectory(myTraj3);
                LsIntake(50,1);
-               linearSlide(2800,1);
+               linearSlide(5800,1);
                sleep(200);
-               linearSlide(2400,1);
+               linearSlide(5400,1);
                intakeClaw.setPosition(0.4);
                sleep(250);
 
@@ -96,12 +96,12 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.followTrajectory(myTraj5);
                intakeClaw.setPosition(1);
                sleep(250);
-               linearSlide(3200,1);
+               linearSlide(6200,1);
                drive.followTrajectory(myTraj3);
                LsIntake(50,1);
-               linearSlide(2800,1);
+               linearSlide(5800,1);
                sleep(200);
-               linearSlide(2400,1);
+               linearSlide(5400,1);
                intakeClaw.setPosition(0.4);
                sleep(250);
                drive.followTrajectory(myTraj6);
