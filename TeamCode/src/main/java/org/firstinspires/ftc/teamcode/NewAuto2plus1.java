@@ -38,7 +38,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-37,17.5))
                        .build();
                Trajectory myTraj2 = drive.trajectoryBuilder(myTraj1.end())
-                       .lineToLinearHeading(new Pose2d(-61,21,Math.toRadians(180)))
+                       .lineToLinearHeading(new Pose2d(-61,18,Math.toRadians(180)))
                        .build();
                Trajectory myTraj3 = drive.trajectoryBuilder(myTraj1.end())
                        .lineToLinearHeading(new Pose2d(-26,21.5,Math.toRadians(-90)))
