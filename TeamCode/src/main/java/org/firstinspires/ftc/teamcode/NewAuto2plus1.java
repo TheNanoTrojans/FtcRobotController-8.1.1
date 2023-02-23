@@ -25,6 +25,14 @@ public class NewAuto2plus1 extends LinearOpMode {
            lsTurn = hardwareMap.dcMotor.get("lsTurn");
            lsIntake = hardwareMap.dcMotor.get("lsIntake");
            intakeClaw = hardwareMap.servo.get("intakeClaw");
+           lsLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+           lsRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+           lsTurn.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+           lsIntake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+           lsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+           lsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+           lsTurn.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+           lsIntake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
            lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
            lsTurn.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
            SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
@@ -63,8 +71,8 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.setPoseEstimate(new Pose2d(-35,70,Math.toRadians(-90)));
                drive.followTrajectory(traj1);
                drive.followTrajectory(myTraj1);
-               linearSlide(5600,1);
-               sleep(900);
+               linearSlide(3200,1);
+               sleep(1150);
                Turret(560,1);
                sleep(1000);
 
@@ -73,6 +81,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                intakeClaw.setPosition(0.4);
                sleep(200);
                Turret(0,1);
+               LsIntake(0,1);
                lsLeft.setPower(0);
                lsRight.setPower(0);
                //linearSlide(5800,1);
