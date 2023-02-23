@@ -46,7 +46,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                Trajectory myTraj1 = drive.trajectoryBuilder(traj1.end())
                        .lineTo(new Vector2d(-37,17.5))
                        .build();
-               Trajectory myTraj7 = drive.trajectoryBuilder(new Pose2d(-37,17.5,Math.toRadians(180)))
+               Trajectory myTraj7 = drive.trajectoryBuilder(myTraj1.end())
                        .lineTo(new Vector2d(-37,20))
                        .build();
                Trajectory myTraj2 = drive.trajectoryBuilder(myTraj7.end())
@@ -56,8 +56,8 @@ public class NewAuto2plus1 extends LinearOpMode {
               // Trajectory myTraj8 = drive.trajectoryBuilder(myTraj1.end())
                 //       .splineTo(new Vector2d(-50,21.5), Math.toRadians(-25))
                   //     .build();
-               Trajectory myTraj3 = drive.trajectoryBuilder(myTraj1.end())
-                       .lineToLinearHeading(new Pose2d(-26,21.5,Math.toRadians(180)))
+               Trajectory myTraj3 = drive.trajectoryBuilder(myTraj2.end())
+                       .lineToLinearHeading(new Pose2d(-26,18,Math.toRadians(180)))
                        .build();
                Trajectory myTraj6 = drive.trajectoryBuilder(new Pose2d(-26,21.5, Math.toRadians(-90)))
                        .lineTo(new Vector2d(-33,24))
@@ -98,23 +98,35 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.followTrajectory(myTraj2);
 
                intakeClaw.setPosition(1);
+               sleep(250);
+               linearSlide(1200,1);
                sleep(500);
-               /*sleep(250);
-               linearSlide(4200,1);
+
                //drive.followTrajectory(myTraj8);
                drive.followTrajectory(myTraj3);
-               drive.turn(Math.toRadians(90));
-               LsIntake(50,1);
-               sleep(100);
+               //drive.turn(Math.toRadians(90));
+               linearSlide(2600,1);
+               sleep(1150);
+               Turret(560,1);
+               sleep(1000);
+
+               LsIntake(310,1);
+               sleep(800);
+               intakeClaw.setPosition(0.4);
+               sleep(200);
+               Turret(0,1);
+               LsIntake(0,1);
                lsLeft.setPower(0);
                lsRight.setPower(0);
-
                //linearSlide(5800,1);
-               //sleep(200);
+               sleep(400);
                //linearSlide(5400,1);
-               intakeClaw.setPosition(0.4);
-               sleep(250);
-
+               intakeClaw.setPosition(0.5);
+               sleep(200);
+               Turret(0,1);
+               LsIntake(0,1);
+               sleep(200);
+/*
                drive.followTrajectory(myTraj6);
 
                //linearSlide(0,1);
