@@ -63,7 +63,8 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.setPoseEstimate(new Pose2d(-35,70,Math.toRadians(-90)));
                drive.followTrajectory(traj1);
                drive.followTrajectory(myTraj1);
-               linearSlide(6200,1);
+               linearSlide(5600,1);
+               sleep(900);
                Turret(560,1);
                sleep(1000);
 
