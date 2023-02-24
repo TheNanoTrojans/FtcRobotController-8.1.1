@@ -9,7 +9,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+
 @Autonomous
 public class NewAuto2plus1 extends LinearOpMode {
     private DcMotor lsLeft;
@@ -17,9 +22,16 @@ public class NewAuto2plus1 extends LinearOpMode {
     private DcMotor lsTurn;
     private DcMotor lsIntake;
     private Servo intakeClaw;
-
+    private SleeveDetection sleeveDetection;
+    private OpenCvCamera camera;
+    private String color;
+    private String webcamName = "Webcam 1";
     @Override
     public void runOpMode(){
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
+        sleeveDetection = new SleeveDetection();
+        camera.setPipeline(sleeveDetection);
            lsLeft = hardwareMap.dcMotor.get("lsLeft");
            lsRight = hardwareMap.dcMotor.get("lsRight");
            lsTurn = hardwareMap.dcMotor.get("lsTurn");
@@ -37,6 +49,21 @@ public class NewAuto2plus1 extends LinearOpMode {
            lsTurn.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
            SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
            intakeClaw.setPosition(1);
+        camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
+        {
+            @Override
+            public void onOpened()
+            {
+                camera.startStreaming(320,240, OpenCvCameraRotation.SIDEWAYS_LEFT);
+            }
+
+            @Override
+            public void onError(int errorCode) {}
+        });
+        while(opModeInInit()){
+            telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
+            telemetry.update();
+        }
            waitForStart();
            if(opModeIsActive()){
                intakeClaw.setPosition(1);
@@ -143,7 +170,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                //drive.turn(Math.toRadians(90));
                linearSlide(2800,1);
                sleep(1150);
-               Turret(650,1);
+               Turret(550,1);
                //sleep(1000);
 
                LsIntake(530,1);
