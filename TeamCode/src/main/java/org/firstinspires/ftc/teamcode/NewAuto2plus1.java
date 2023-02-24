@@ -63,6 +63,11 @@ public class NewAuto2plus1 extends LinearOpMode {
         while(opModeInInit()){
             telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
             telemetry.update();
+            if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
+                color = "MAGENTA";
+            }
+            telemetry.addData("COLOR:", color);
+            telemetry.update();
         }
            waitForStart();
            if(opModeIsActive()){
@@ -193,7 +198,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                    LsIntake(0,1);
                    sleep(200);
                    linearSlide(280,1);
-               } else if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
+               } else if(color == "MAGENTA"){
                    drive.followTrajectory(parkMagenta);
                } else if(sleeveDetection.getPosition()== SleeveDetection.SleeveColors.GREEN){
                    stop();
