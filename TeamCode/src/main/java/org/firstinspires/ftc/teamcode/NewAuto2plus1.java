@@ -111,10 +111,10 @@ public class NewAuto2plus1 extends LinearOpMode {
                //drive.turn(Math.toRadians(90));
                linearSlide(2800,1);
                sleep(1150);
-               Turret(560,1);
+               Turret(610,1);
                //sleep(1000);
 
-               LsIntake(270,1);
+               LsIntake(290,1);
                sleep(1000);
                linearSlide(2600,1);
                intakeClaw.setPosition(0.4);
@@ -143,10 +143,10 @@ public class NewAuto2plus1 extends LinearOpMode {
                //drive.turn(Math.toRadians(90));
                linearSlide(2800,1);
                sleep(1150);
-               Turret(560,1);
+               Turret(610,1);
                //sleep(1000);
 
-               LsIntake(350,1);
+               LsIntake(390,1);
                sleep(1000);
                linearSlide(2600,1);
                intakeClaw.setPosition(0.4);
