@@ -96,6 +96,9 @@ public class NewAuto2plus1 extends LinearOpMode {
                Trajectory myTraj5  = drive.trajectoryBuilder(myTraj8.end())
                        .lineTo(new Vector2d(-16,19))
                        .build();
+               Trajectory parkMagenta = drive.trajectoryBuilder(myTraj8.end())
+                       .lineTo(new Vector2d(-36,19))
+                       .build();
 
 
                drive.setPoseEstimate(new Pose2d(-35,70,Math.toRadians(-90)));
@@ -163,34 +166,41 @@ public class NewAuto2plus1 extends LinearOpMode {
                intakeClaw.setPosition(1);
                sleep(350);
                linearSlide(1200,1);
+               if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
+                   //drive.followTrajectory(myTraj8);
+                   drive.followTrajectory(myTraj5);
+                   //drive.turn(Math.toRadians(90));
+                   linearSlide(2800,1);
+                   sleep(1150);
+                   Turret(550,1);
+                   //sleep(1000);
+
+                   LsIntake(530,1);
+                   sleep(1000);
+                   linearSlide(2600,1);
+                   intakeClaw.setPosition(0.4);
+                   sleep(200);
+                   Turret(0,1);
+                   LsIntake(0,1);
+                   lsLeft.setPower(0);
+                   lsRight.setPower(0);
+                   //linearSlide(5800,1);
+                   sleep(400);
+                   //linearSlide(5400,1);
+                   intakeClaw.setPosition(0.5);
+                   sleep(200);
+                   Turret(0,1);
+                   LsIntake(0,1);
+                   sleep(200);
+                   linearSlide(280,1);
+               } else if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
+                   drive.followTrajectory(parkMagenta);
+               } else if(sleeveDetection.getPosition()== SleeveDetection.SleeveColors.GREEN){
+                   stop();
+               }
                sleep(500);
 
-               //drive.followTrajectory(myTraj8);
-               drive.followTrajectory(myTraj5);
-               //drive.turn(Math.toRadians(90));
-               linearSlide(2800,1);
-               sleep(1150);
-               Turret(550,1);
-               //sleep(1000);
 
-               LsIntake(530,1);
-               sleep(1000);
-               linearSlide(2600,1);
-               intakeClaw.setPosition(0.4);
-               sleep(200);
-               Turret(0,1);
-               LsIntake(0,1);
-               lsLeft.setPower(0);
-               lsRight.setPower(0);
-               //linearSlide(5800,1);
-               sleep(400);
-               //linearSlide(5400,1);
-               intakeClaw.setPosition(0.5);
-               sleep(200);
-               Turret(0,1);
-               LsIntake(0,1);
-               sleep(200);
-               linearSlide(280,1);
 /*
                drive.followTrajectory(myTraj6);
 
