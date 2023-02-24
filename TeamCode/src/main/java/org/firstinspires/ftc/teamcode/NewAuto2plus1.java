@@ -67,7 +67,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineToLinearHeading(new Pose2d(-40,22,Math.toRadians(180)))
                        .build();
                Trajectory myTraj5  = drive.trajectoryBuilder(myTraj8.end())
-                       .lineTo(new Vector2d(-17,19))
+                       .lineTo(new Vector2d(-16,19))
                        .build();
 
 
@@ -143,10 +143,10 @@ public class NewAuto2plus1 extends LinearOpMode {
                //drive.turn(Math.toRadians(90));
                linearSlide(2800,1);
                sleep(1150);
-               Turret(700,1);
+               Turret(650,1);
                //sleep(1000);
 
-               LsIntake(490,1);
+               LsIntake(530,1);
                sleep(1000);
                linearSlide(2600,1);
                intakeClaw.setPosition(0.4);
