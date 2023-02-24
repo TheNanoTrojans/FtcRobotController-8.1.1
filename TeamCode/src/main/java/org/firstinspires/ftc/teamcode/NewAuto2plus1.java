@@ -50,7 +50,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-37,20))
                        .build();
                Trajectory myTraj2 = drive.trajectoryBuilder(myTraj7.end())
-                       .lineTo(new Vector2d(-62.5,18))
+                       .lineTo(new Vector2d(-62.5,19))
                        .build();
 
               // Trajectory myTraj8 = drive.trajectoryBuilder(myTraj1.end())
@@ -72,7 +72,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.followTrajectory(traj1);
                drive.followTrajectory(myTraj1);
                linearSlide(2600,1);
-               sleep(1150);
+               sleep(1350);
                Turret(560,1);
                //sleep(1000);
 
