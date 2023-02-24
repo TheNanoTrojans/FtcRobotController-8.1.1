@@ -111,7 +111,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                Turret(560,1);
                //sleep(1000);
 
-               LsIntake(350,1);
+               LsIntake(200,1);
                sleep(1000);
                intakeClaw.setPosition(0.4);
                sleep(200);
