@@ -67,7 +67,7 @@ public class NewAuto2plus1 extends LinearOpMode {
             } else if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN) {
                 color = "GREEN";
             } else if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
-                color = "YELLOW";
+                color = "YELLOW"; b       
             }
             telemetry.addData("COLOR:", color);
             telemetry.update();
