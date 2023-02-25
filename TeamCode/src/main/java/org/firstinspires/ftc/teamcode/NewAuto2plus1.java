@@ -176,9 +176,10 @@ public class NewAuto2plus1 extends LinearOpMode {
                drive.followTrajectory(myTraj8);
                intakeClaw.setPosition(1);
                sleep(350);
-               linearSlide(1200,1);
+
                if(color == "YELLOW"){
                    //drive.followTrajectory(myTraj8);
+                   linearSlide(1200,1);
                    drive.followTrajectory(myTraj5);
                    //drive.turn(Math.toRadians(90));
                    linearSlide(2800,1);
@@ -205,8 +206,10 @@ public class NewAuto2plus1 extends LinearOpMode {
                    sleep(200);
                    linearSlide(280,1);
                } else if(color == "MAGENTA"){
+                   linearSlide(1200,1);
                    drive.followTrajectory(parkMagenta);
                } else if(color == "GREEN"){
+                   //linearSlide(1200,1);
                    stop();
                }
                sleep(500);
