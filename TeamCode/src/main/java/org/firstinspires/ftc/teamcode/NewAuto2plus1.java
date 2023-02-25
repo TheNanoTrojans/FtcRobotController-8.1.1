@@ -62,9 +62,12 @@ public class NewAuto2plus1 extends LinearOpMode {
         });
         while(opModeInInit()){
             telemetry.addData("ROTATION: ", sleeveDetection.getPosition());
-            telemetry.update();
             if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.MAGENTA){
                 color = "MAGENTA";
+            } else if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.GREEN) {
+                color = "GREEN";
+            } else if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
+                color = "YELLOW";
             }
             telemetry.addData("COLOR:", color);
             telemetry.update();
@@ -82,7 +85,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-37,20))
                        .build();
                Trajectory myTraj2 = drive.trajectoryBuilder(myTraj7.end())
-                       .lineTo(new Vector2d(-63,19))
+                       .lineTo(new Vector2d(-63.5,19))
                        .build();
 
 
@@ -90,7 +93,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-19.5,19))
                        .build();
                Trajectory myTraj8 = drive.trajectoryBuilder(myTraj3.end())
-                       .strafeTo(new Vector2d(-63,19))
+                       .strafeTo(new Vector2d(-63.5,19))
                        .build();
                Trajectory myTraj6 = drive.trajectoryBuilder(new Pose2d(-26,21.5, Math.toRadians(-90)))
                        .lineTo(new Vector2d(-33,24))
