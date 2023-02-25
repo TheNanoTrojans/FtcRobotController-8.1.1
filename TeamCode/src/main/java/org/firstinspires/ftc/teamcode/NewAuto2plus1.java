@@ -108,7 +108,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-16,19))
                        .build();
                Trajectory parkMagenta = drive.trajectoryBuilder(myTraj8.end())
-                       .lineTo(new Vector2d(-42,19))
+                       .lineTo(new Vector2d(-39,19))
                        .build();
 
 
