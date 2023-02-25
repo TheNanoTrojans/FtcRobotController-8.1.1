@@ -73,6 +73,9 @@ public class NewAuto2plus1 extends LinearOpMode {
             telemetry.update();
         }
            waitForStart();
+        if(isStopRequested()){
+            intakeClaw.setPosition(1);
+        }
            if(opModeIsActive()){
                intakeClaw.setPosition(1);
                Trajectory traj1 = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(-90)))
@@ -85,7 +88,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-37,20))
                        .build();
                Trajectory myTraj2 = drive.trajectoryBuilder(myTraj7.end())
-                       .lineTo(new Vector2d(-63.5,19))
+                       .lineTo(new Vector2d(-63,19))
                        .build();
 
 
@@ -105,7 +108,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-16,19))
                        .build();
                Trajectory parkMagenta = drive.trajectoryBuilder(myTraj8.end())
-                       .lineTo(new Vector2d(-36,19))
+                       .lineTo(new Vector2d(-42,19))
                        .build();
 
 
@@ -174,7 +177,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                intakeClaw.setPosition(1);
                sleep(350);
                linearSlide(1200,1);
-               if(sleeveDetection.getPosition() == SleeveDetection.SleeveColors.YELLOW){
+               if(color == "YELLOW"){
                    //drive.followTrajectory(myTraj8);
                    drive.followTrajectory(myTraj5);
                    //drive.turn(Math.toRadians(90));
@@ -203,7 +206,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                    linearSlide(280,1);
                } else if(color == "MAGENTA"){
                    drive.followTrajectory(parkMagenta);
-               } else if(sleeveDetection.getPosition()== SleeveDetection.SleeveColors.GREEN){
+               } else if(color == "GREEN"){
                    stop();
                }
                sleep(500);
