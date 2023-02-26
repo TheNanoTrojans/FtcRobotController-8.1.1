@@ -48,7 +48,7 @@ public class NewAuto2plus1 extends LinearOpMode {
            lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
            lsTurn.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
            SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-           intakeClaw.setPosition(1);
+           //intakeClaw.setPosition(1);
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
         {
             @Override
@@ -78,6 +78,8 @@ public class NewAuto2plus1 extends LinearOpMode {
         }
            if(opModeIsActive()){
                intakeClaw.setPosition(1);
+               sleep(500);
+               linearSlide(350,1);
                Trajectory traj1 = drive.trajectoryBuilder(new Pose2d(-35,70,Math.toRadians(-90)))
                        .lineTo(new Vector2d(-39,67))
                        .build();
@@ -88,7 +90,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-37,20))
                        .build();
                Trajectory myTraj2 = drive.trajectoryBuilder(myTraj7.end())
-                       .lineTo(new Vector2d(-63,19))
+                       .lineTo(new Vector2d(-62.1,19))
                        .build();
 
 
@@ -108,19 +110,22 @@ public class NewAuto2plus1 extends LinearOpMode {
                        .lineTo(new Vector2d(-16,19))
                        .build();
                Trajectory parkMagenta = drive.trajectoryBuilder(myTraj8.end())
-                       .lineTo(new Vector2d(-39,19))
+                       .lineTo(new Vector2d(-38,19))
+                       .build();
+               Trajectory parkYellow = drive.trajectoryBuilder(myTraj5.end())
+                       .lineTo(new Vector2d(-14,19))
                        .build();
 
 
                drive.setPoseEstimate(new Pose2d(-35,70,Math.toRadians(-90)));
                drive.followTrajectory(traj1);
                drive.followTrajectory(myTraj1);
-               linearSlide(2600,1);
+               linearSlide(3000,1);
                sleep(1350);
                Turret(560,1);
                //sleep(1000);
 
-               LsIntake(350,1);
+               LsIntake(320,1);
                sleep(1000);
                linearSlide(2400,1);
                intakeClaw.setPosition(0.4);
@@ -150,12 +155,12 @@ public class NewAuto2plus1 extends LinearOpMode {
                //drive.followTrajectory(myTraj8);
                drive.followTrajectory(myTraj3);
                //drive.turn(Math.toRadians(90));
-               linearSlide(2800,1);
+               linearSlide(3000,1);
                sleep(1150);
                Turret(610,1);
                //sleep(1000);
 
-               LsIntake(290,1);
+               LsIntake(260,1);
                sleep(1000);
                linearSlide(2600,1);
                intakeClaw.setPosition(0.4);
@@ -187,7 +192,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                    Turret(550,1);
                    //sleep(1000);
 
-                   LsIntake(530,1);
+                   LsIntake(625,1);
                    sleep(1000);
                    linearSlide(2600,1);
                    intakeClaw.setPosition(0.4);
@@ -205,6 +210,7 @@ public class NewAuto2plus1 extends LinearOpMode {
                    LsIntake(0,1);
                    sleep(200);
                    linearSlide(280,1);
+                   drive.followTrajectory(parkYellow);
                } else if(color == "MAGENTA"){
                    linearSlide(1200,1);
                    drive.followTrajectory(parkMagenta);
