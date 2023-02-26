@@ -13,6 +13,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.SleeveDetection;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.util.Encoder;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -31,6 +32,8 @@ public class AutoRightRed extends LinearOpMode {
     protected Servo intakeClaw;
     protected int ArmUpPos = 0;
     protected float power = 0;
+    private Encoder Right;
+
     //SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
 
@@ -44,6 +47,7 @@ public class AutoRightRed extends LinearOpMode {
         sleeveDetection = new SleeveDetection();
         camera.setPipeline(sleeveDetection);
         intakeClaw = hardwareMap.servo.get("intakeClaw");
+
         afLeft =  hardwareMap.crservo.get("afLeft");
         afRight = hardwareMap.crservo.get("afRight");
         armturn =  hardwareMap.crservo.get("armturn");
