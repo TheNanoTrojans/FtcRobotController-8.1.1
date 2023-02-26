@@ -3,8 +3,11 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.teamcode.util.Encoder;
 
 @TeleOp
 public class TeleOpMain extends LinearOpMode {
@@ -17,6 +20,8 @@ public class TeleOpMain extends LinearOpMode {
     private DcMotor backRight;
     private DcMotor backLeft;
     private Servo intakeClaw;
+    private Encoder right;
+    private Encoder left;
     @Override
     public void runOpMode(){
         lsLeft = hardwareMap.dcMotor.get("lsLeft");
@@ -28,6 +33,9 @@ public class TeleOpMain extends LinearOpMode {
         frontRight = hardwareMap.dcMotor.get("frontRight");
         backRight = hardwareMap.dcMotor.get("backRight");
         intakeClaw = hardwareMap.servo.get("intakeClaw");
+        left = new Encoder(hardwareMap.get(DcMotorEx.class, "frontRight"));
+        right = new Encoder(hardwareMap.get(DcMotorEx.class, "backLeft"));
+        right.setDirection(Encoder.Direction.REVERSE);
         lsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         lsTurn.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -46,7 +54,10 @@ public class TeleOpMain extends LinearOpMode {
             double backLeftPower = (y - x + rx) / denominator;
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
-
+            telemetry.addData(" Right Encoder Current Position",right.getCurrentPosition());
+            telemetry.addData(" Left Encoder Current Position",left.getCurrentPosition());
+            telemetry.addData(" Right Encoder Corrected Velocity",right.getCorrectedVelocity());
+            telemetry.addData(" Left Encoder Corrected Velocity",left.getCorrectedVelocity());
             frontLeft.setPower(frontLeftPower);
             backLeft.setPower(backLeftPower);
             frontRight.setPower(frontRightPower);
@@ -54,7 +65,8 @@ public class TeleOpMain extends LinearOpMode {
             lsLeft.setPower(-gamepad2.left_stick_y);
             lsRight.setPower(-gamepad2.left_stick_y);
             lsTurn.setPower(-gamepad2.right_stick_x);
-            lsIntake.setPower(-gamepad2.right_stick_y * 0.8   );
+            lsIntake.setPower(-gamepad2.right_stick_y * 0.8);
+            telemetry.update();
             if(gamepad2.left_trigger >=0.1){
                 intakeClaw.setPosition(1);
             }
