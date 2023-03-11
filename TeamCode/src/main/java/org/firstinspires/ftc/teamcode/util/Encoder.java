@@ -84,9 +84,10 @@ public class Encoder {
      *
      * @return encoder position
      */
+    int currentPosition = 0;
     public int getCurrentPosition() {
         int multiplier = getMultiplier();
-        int currentPosition = motor.getCurrentPosition() * multiplier;
+        currentPosition = motor.getCurrentPosition() * multiplier;
         if (currentPosition != lastPosition) {
             double currentTime = clock.seconds();
             double dt = currentTime - lastUpdateTime;
